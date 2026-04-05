@@ -7,7 +7,7 @@ src = "src"
 [output.html]
 default-theme = "light"
 preferred-dark-theme = "navy"
-git-repository-url = "https://github.com/purs-org/pu-rs.org"
+git-repository-url = "https://github.com/yijunyu/pu-rs.org"
 additional-css = ["custom.css"]
 additional-js = [
     "js/leaderboard.js",
