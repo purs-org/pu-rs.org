@@ -1,0 +1,4 @@
+/book/
+/db/xpu_bench.db
+/src/data/*.json
+/target/

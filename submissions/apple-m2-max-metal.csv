@@ -1,0 +1,15 @@
+device_id,kernel_id,dtype,input_shape,batch_size,impl_lang,latency_us,driver_version,toolchain,git_sha,submitter
+apple-m2-max-38,softmax,f32,"[1, 1024]",1,metal,56.2,Metal 3.1,ascend-rs 0.1.0,,pu-rs.org
+apple-m2-max-38,softmax,f32,"[16, 1024]",1,metal,110.0,Metal 3.1,ascend-rs 0.1.0,,pu-rs.org
+apple-m2-max-38,softmax,f32,"[64, 1024]",1,metal,201.0,Metal 3.1,ascend-rs 0.1.0,,pu-rs.org
+apple-m2-max-38,softmax,f32,"[64, 4096]",1,metal,545.1,Metal 3.1,ascend-rs 0.1.0,,pu-rs.org
+apple-m2-max-38,layernorm,f32,"[1, 768]",1,metal,6.0,Metal 3.1,ascend-rs 0.1.0,,pu-rs.org
+apple-m2-max-38,layernorm,f32,"[64, 768]",1,metal,7.2,Metal 3.1,ascend-rs 0.1.0,,pu-rs.org
+apple-m2-max-38,layernorm,f32,"[256, 768]",1,metal,11.4,Metal 3.1,ascend-rs 0.1.0,,pu-rs.org
+apple-m2-max-38,layernorm,f32,"[1024, 768]",1,metal,25.5,Metal 3.1,ascend-rs 0.1.0,,pu-rs.org
+apple-m2-max-38,softmax,f32,"[1, 1024]",1,mps,89.4,PyTorch MPS,torch 2.5,,pu-rs.org
+apple-m2-max-38,softmax,f32,"[64, 1024]",1,mps,183.2,PyTorch MPS,torch 2.5,,pu-rs.org
+apple-m2-max-38,softmax,f32,"[64, 4096]",1,mps,191.4,PyTorch MPS,torch 2.5,,pu-rs.org
+apple-m2-max-38,layernorm,f32,"[1, 768]",1,mps,17.6,PyTorch MPS,torch 2.5,,pu-rs.org
+apple-m2-max-38,layernorm,f32,"[64, 768]",1,mps,23.7,PyTorch MPS,torch 2.5,,pu-rs.org
+apple-m2-max-38,layernorm,f32,"[1024, 768]",1,mps,79.7,PyTorch MPS,torch 2.5,,pu-rs.org

@@ -1,0 +1,57 @@
+/* pu-rs.org leaderboard styling */
+
+.xpu-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85em;
+}
+.xpu-table th {
+  background: #2c3e50;
+  color: white;
+  padding: 8px 6px;
+  text-align: left;
+  white-space: nowrap;
+  user-select: none;
+}
+.xpu-table th:hover {
+  background: #34495e;
+}
+.xpu-table th::after {
+  content: " \2195";
+  font-size: 0.7em;
+  opacity: 0.5;
+}
+.xpu-table td {
+  padding: 6px;
+  border-bottom: 1px solid #eee;
+}
+.xpu-table tr:hover {
+  background: #f0f7ff;
+}
+.xpu-table tr.best-row {
+  background: #e8f5e9;
+  font-weight: 600;
+}
+.xpu-table tr.best-row td {
+  border-bottom-color: #a5d6a7;
+}
+
+#filters select {
+  padding: 4px 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.85em;
+}
+#btn-reset {
+  padding: 4px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #f5f5f5;
+  font-size: 0.85em;
+}
+#btn-reset:hover {
+  background: #e0e0e0;
+}
+#summary-bar {
+  font-family: monospace;
+}

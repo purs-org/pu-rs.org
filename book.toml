@@ -1,0 +1,15 @@
+[book]
+title = "pu-rs.org — xPU Kernel Benchmark"
+authors = ["pu-rs.org contributors"]
+language = "en"
+src = "src"
+
+[output.html]
+default-theme = "light"
+preferred-dark-theme = "navy"
+git-repository-url = "https://github.com/purs-org/pu-rs.org"
+additional-css = ["custom.css"]
+additional-js = [
+    "js/leaderboard.js",
+    "js/charts.js",
+]
