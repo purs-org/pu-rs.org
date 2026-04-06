@@ -27,12 +27,21 @@ nvidia-h100-sxm,softmax,f32,"[64, 1024]",1,cuda,12.3,CUDA 12.4,nvcc 12.4,abc1234
 ## Running the benchmark
 
 ```bash
-# Metal (Apple Silicon)
+# Metal (Apple Silicon) — requires ascend_metal_kernels installed via maturin
+# Use the Python that has the module: check with `python3 -c "import ascend_metal_kernels"`
 ASCEND_METAL_KERNELS=1 python3 scripts/bench_metal.py --device apple-m2-max-38
+ASCEND_METAL_KERNELS=1 python3 scripts/bench_metal.py --device apple-m4-max-40 -o submissions/m4-max.csv
 
-# CUDA (NVIDIA)
-python3 scripts/bench_cuda.py --device nvidia-h100-sxm
-
-# Ascend (Huawei NPU)
+# Ascend (Huawei NPU) — run from the ascend-rs repo
+cd /path/to/ascend-rs-priv
 bash benchmarks/kernel_bench/bench.sh
 ```
+
+### Supported backends
+
+| Backend | Script | Status |
+|---|---|---|
+| Apple Metal | `scripts/bench_metal.py` | Available |
+| Huawei Ascend | `ascend-rs-priv/benchmarks/kernel_bench/bench.sh` | Available (separate repo) |
+| NVIDIA CUDA | `scripts/bench_cuda.py` | Planned |
+| AMD ROCm | `scripts/bench_rocm.py` | Planned |
