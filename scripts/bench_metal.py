@@ -3,11 +3,15 @@
 bench_metal.py — Systematic benchmark runner for ascend-rs Metal kernels.
 
 Outputs CSV in pu-rs.org standard format to stdout or a file.
-Requires: ASCEND_METAL_KERNELS=1 and ascend_metal_kernels installed.
+Requires: ASCEND_METAL_KERNELS=1 and ascend_metal_kernels installed
+          (build: cd ascend-rs-priv/crates/ascend_metal_py && maturin develop --release)
 
 Usage:
   ASCEND_METAL_KERNELS=1 python3 scripts/bench_metal.py --device apple-m2-max-38
   ASCEND_METAL_KERNELS=1 python3 scripts/bench_metal.py --device apple-m4-max-40 -o submissions/apple-m4-max.csv
+
+Note: Use the same Python that maturin installed into. Check with:
+  python3 -c "import ascend_metal_kernels"
 """
 
 import argparse
