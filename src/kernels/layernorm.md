@@ -27,4 +27,8 @@ Uses SIMD group shuffles for warp-level reductions (1 threadgroup barrier instea
 | (64, 768) | Typical batch |
 | (1024, 768) | Large batch |
 
-*See [Leaderboard](../leaderboard.md) filtered to LayerNorm for full results.*
+## Results
+
+<div id="kernel-results" data-kernel="layernorm"></div>
+
+*See [Leaderboard](../leaderboard.md) filtered to LayerNorm for the full filterable view.*

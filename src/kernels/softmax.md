@@ -25,6 +25,6 @@ This is 33% less memory traffic than the naive 3-pass algorithm (max, exp+sum, n
 
 ## Results
 
-<div id="softmax-chart"><canvas id="softmax-bars" width="700" height="300"></canvas></div>
+<div id="kernel-results" data-kernel="softmax"></div>
 
-*See [Leaderboard](../leaderboard.md) filtered to Softmax for full results.*
+*See [Leaderboard](../leaderboard.md) filtered to Softmax for the full filterable view.*
