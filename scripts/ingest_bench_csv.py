@@ -63,17 +63,29 @@ def ingest_standard(conn, csv_path):
 
         config_id = get_or_create_config(conn, kernel_id, dtype, shape, batch)
 
+        # Use throughput from CSV if provided, otherwise compute from shape
+        throughput = None
+        if row.get("throughput_gbps"):
+            throughput = float(row["throughput_gbps"])
+        else:
+            m = __import__("re").match(r'\[?\s*(\d+)\s*[,x]\s*(\d+)\s*\]?', shape)
+            if m:
+                elements = int(m.group(1)) * int(m.group(2))
+                med = statistics.median(latencies)
+                throughput = 2.0 * elements * 4.0 / (med * 1e-6) / 1e9
+
         conn.execute("""
             INSERT INTO bench_results
                 (device_id, config_id, impl_lang, latency_us, latency_min_us,
-                 latency_max_us, latency_p99_us, num_runs, driver_version,
-                 toolchain, git_sha, submitter)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                 latency_max_us, latency_p99_us, throughput_gops, num_runs,
+                 driver_version, toolchain, git_sha, submitter)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         """, (
             device_id, config_id, impl_lang,
             statistics.median(latencies),
             min(latencies), max(latencies),
             sorted(latencies)[int(len(latencies) * 0.99)],
+            throughput,
             len(latencies),
             row.get("driver_version"),
             row.get("toolchain"),
