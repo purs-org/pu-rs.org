@@ -1,6 +1,8 @@
 INSERT OR IGNORE INTO xpu_devices VALUES
     ('apple-m2-max-38', 'Apple', 'M2 Max (38-core GPU)', 'Apple GPU Gen5', 'GPU',
      67, 96, 400, 38, '2023-01-17', 3499, 'MacBook Pro 16"', datetime('now')),
+    ('apple-m4', 'Apple', 'M4 (10-core GPU)', 'Apple GPU Gen6', 'GPU',
+     22, 16, 120, 10, '2024-10-30', 499, 'Mac mini', datetime('now')),
     ('apple-m4-max-40', 'Apple', 'M4 Max (40-core GPU)', 'Apple GPU Gen6', 'GPU',
      75, 128, 546, 40, '2024-11-08', 3999, 'MacBook Pro 16"', datetime('now')),
     ('nvidia-a100-80', 'NVIDIA', 'A100 80GB SXM', 'Ampere', 'GPU',
