@@ -110,4 +110,4 @@ FROM bench_results r
 JOIN xpu_devices d   ON d.device_id = r.device_id
 JOIN bench_configs c ON c.config_id = r.config_id
 JOIN kernels k       ON k.kernel_id = c.kernel_id
-ORDER BY r.latency_us ASC;
+ORDER BY r.throughput_gops DESC;

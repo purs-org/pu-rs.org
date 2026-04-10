@@ -7,8 +7,8 @@
 
   const DATA_URL = "data/leaderboard.json";
   let allRows = [];
-  let sortCol = "latency_us";
-  let sortAsc = true;
+  let sortCol = "throughput_gops";
+  let sortAsc = false;
 
   // ── Bootstrap ───────────────────────────────────────────────────────────
   document.addEventListener("DOMContentLoaded", async () => {
@@ -78,7 +78,8 @@
           sortAsc = !sortAsc;
         } else {
           sortCol = col;
-          sortAsc = col === "latency_us"; // lower is better for latency
+          // lower is better for latency; higher is better for throughput metrics
+          sortAsc = col === "latency_us";
         }
         render();
       });
@@ -125,18 +126,19 @@
     }
     if (noData) noData.style.display = "none";
 
-    // Find best (lowest latency) per kernel for highlighting
-    const bestByKernel = {};
+    // Find best (highest throughput) per kernel+shape for highlighting
+    const bestByKernelShape = {};
     rows.forEach((r) => {
-      const k = r.kernel_name;
-      if (!bestByKernel[k] || r.latency_us < bestByKernel[k]) {
-        bestByKernel[k] = r.latency_us;
+      const k = r.kernel_name + "|" + r.input_shape;
+      if (r.throughput_gops != null && (!bestByKernelShape[k] || r.throughput_gops > bestByKernelShape[k])) {
+        bestByKernelShape[k] = r.throughput_gops;
       }
     });
 
     body.innerHTML = rows
       .map((r, i) => {
-        const isBest = r.latency_us === bestByKernel[r.kernel_name];
+        const k = r.kernel_name + "|" + r.input_shape;
+        const isBest = r.throughput_gops != null && r.throughput_gops === bestByKernelShape[k];
         const cls = isBest ? ' class="best-row"' : "";
         return `<tr${cls}>
         <td>${i + 1}</td>
