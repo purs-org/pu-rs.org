@@ -5,6 +5,8 @@ INSERT OR IGNORE INTO xpu_devices VALUES
      22, 16, 120, 10, '2024-10-30', 499, 'Mac mini', datetime('now')),
     ('apple-m4-max-40', 'Apple', 'M4 Max (40-core GPU)', 'Apple GPU Gen6', 'GPU',
      75, 128, 546, 40, '2024-11-08', 3999, 'MacBook Pro 16"', datetime('now')),
+    ('nvidia-tesla-t4', 'NVIDIA', 'Tesla T4', 'Turing', 'GPU',
+     70, 16, 320, 40, '2018-11-12', 2200, 'Colab free tier', datetime('now')),
     ('nvidia-a100-80', 'NVIDIA', 'A100 80GB SXM', 'Ampere', 'GPU',
      300, 80, 2039, 108, '2020-11-16', 10000, 'SXM4', datetime('now')),
     ('nvidia-h100-sxm', 'NVIDIA', 'H100 SXM', 'Hopper', 'GPU',

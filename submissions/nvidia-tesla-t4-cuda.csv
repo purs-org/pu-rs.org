@@ -1,0 +1,13 @@
+device_id,kernel_id,dtype,input_shape,batch_size,impl_lang,latency_us,throughput_gbps,max_abs_err,sums_ok,driver_version,toolchain
+nvidia-tesla-t4,softmax,f32,"[1, 1024]",1,cuda,4.722,1.7,0.00e+00,true,nvcc,ascend-rs mlir_to_cuda
+nvidia-tesla-t4,softmax,f32,"[1, 4096]",1,cuda,9.703,3.4,0.00e+00,true,nvcc,ascend-rs mlir_to_cuda
+nvidia-tesla-t4,softmax,f32,"[16, 1024]",16,cuda,4.769,27.5,0.00e+00,true,nvcc,ascend-rs mlir_to_cuda
+nvidia-tesla-t4,softmax,f32,"[16, 4096]",16,cuda,9.729,53.9,0.00e+00,true,nvcc,ascend-rs mlir_to_cuda
+nvidia-tesla-t4,softmax,f32,"[64, 1024]",64,cuda,5.142,102.0,0.00e+00,true,nvcc,ascend-rs mlir_to_cuda
+nvidia-tesla-t4,softmax,f32,"[64, 4096]",64,cuda,11.146,188.2,0.00e+00,true,nvcc,ascend-rs mlir_to_cuda
+nvidia-tesla-t4,softmax,f32,"[256, 1024]",256,cuda,9.388,223.4,0.00e+00,true,nvcc,ascend-rs mlir_to_cuda
+nvidia-tesla-t4,softmax,f32,"[256, 4096]",256,cuda,50.202,167.1,0.00e+00,true,nvcc,ascend-rs mlir_to_cuda
+nvidia-tesla-t4,softmax,f32,"[1024, 1024]",1024,cuda,44.821,187.2,0.00e+00,true,nvcc,ascend-rs mlir_to_cuda
+nvidia-tesla-t4,softmax,f32,"[1024, 4096]",1024,cuda,191.736,175.0,0.00e+00,true,nvcc,ascend-rs mlir_to_cuda
+nvidia-tesla-t4,softmax,f32,"[4096, 1024]",4096,cuda,162.496,206.5,0.00e+00,true,nvcc,ascend-rs mlir_to_cuda
+nvidia-tesla-t4,softmax,f32,"[4096, 4096]",4096,cuda,750.534,178.8,0.00e+00,true,nvcc,ascend-rs mlir_to_cuda
