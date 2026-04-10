@@ -1,0 +1,13 @@
+device_id,kernel_id,dtype,input_shape,batch_size,impl_lang,latency_us,driver_version,toolchain,git_sha,submitter
+apple-m2-max-38,softmax,f32,"[1, 1024]",1,metal,283.100,macOS 15.6.1,ascend-rs 0.1.0 (metal-swift),bench_purs,bench_purs.sh
+apple-m2-max-38,softmax,f32,"[1, 4096]",1,metal,240.500,macOS 15.6.1,ascend-rs 0.1.0 (metal-swift),bench_purs,bench_purs.sh
+apple-m2-max-38,softmax,f32,"[16, 1024]",16,metal,260.800,macOS 15.6.1,ascend-rs 0.1.0 (metal-swift),bench_purs,bench_purs.sh
+apple-m2-max-38,softmax,f32,"[16, 4096]",16,metal,270.500,macOS 15.6.1,ascend-rs 0.1.0 (metal-swift),bench_purs,bench_purs.sh
+apple-m2-max-38,softmax,f32,"[64, 1024]",64,metal,213.600,macOS 15.6.1,ascend-rs 0.1.0 (metal-swift),bench_purs,bench_purs.sh
+apple-m2-max-38,softmax,f32,"[64, 4096]",64,metal,245.400,macOS 15.6.1,ascend-rs 0.1.0 (metal-swift),bench_purs,bench_purs.sh
+apple-m2-max-38,softmax,f32,"[256, 1024]",256,metal,219.400,macOS 15.6.1,ascend-rs 0.1.0 (metal-swift),bench_purs,bench_purs.sh
+apple-m2-max-38,softmax,f32,"[256, 4096]",256,metal,230.500,macOS 15.6.1,ascend-rs 0.1.0 (metal-swift),bench_purs,bench_purs.sh
+apple-m2-max-38,softmax,f32,"[1024, 1024]",1024,metal,244.300,macOS 15.6.1,ascend-rs 0.1.0 (metal-swift),bench_purs,bench_purs.sh
+apple-m2-max-38,softmax,f32,"[1024, 4096]",1024,metal,311.500,macOS 15.6.1,ascend-rs 0.1.0 (metal-swift),bench_purs,bench_purs.sh
+apple-m2-max-38,softmax,f32,"[4096, 1024]",4096,metal,326.500,macOS 15.6.1,ascend-rs 0.1.0 (metal-swift),bench_purs,bench_purs.sh
+apple-m2-max-38,softmax,f32,"[4096, 4096]",4096,metal,679.800,macOS 15.6.1,ascend-rs 0.1.0 (metal-swift),bench_purs,bench_purs.sh
