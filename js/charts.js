@@ -23,29 +23,33 @@
             kernelDiv.innerHTML = "<p><em>No benchmark data submitted yet.</em></p>";
             return;
           }
-          matches.sort((a, b) => a.latency_us - b.latency_us);
+          matches.sort((a, b) => (b.throughput_gops || 0) - (a.throughput_gops || 0));
           const bestPerShape = {};
           matches.forEach((r) => {
             const key = r.input_shape + "|" + r.dtype;
-            if (!bestPerShape[key] || r.latency_us < bestPerShape[key]) {
-              bestPerShape[key] = r.latency_us;
+            if (r.throughput_gops != null && (!bestPerShape[key] || r.throughput_gops > bestPerShape[key])) {
+              bestPerShape[key] = r.throughput_gops;
             }
           });
+          const fmt = (v) => v == null ? "-" : v < 1 ? v.toFixed(4) : v < 100 ? v.toFixed(1) : Math.round(v).toLocaleString();
           let html = '<table class="xpu-table"><thead><tr>'
             + '<th>#</th><th>Vendor</th><th>Device</th><th>Type</th>'
-            + '<th>Shape</th><th>Dtype</th><th>Impl</th><th>Latency (us)</th>'
+            + '<th>Shape</th><th>Dtype</th><th>Impl</th>'
+            + '<th>Throughput (GB/s)</th><th>Latency (us)</th>'
             + '</tr></thead><tbody>';
           matches.forEach((r, i) => {
             const key = r.input_shape + "|" + r.dtype;
-            const isBest = r.latency_us === bestPerShape[key];
+            const isBest = r.throughput_gops != null && r.throughput_gops === bestPerShape[key];
             const cls = isBest ? ' class="best-row"' : "";
             html += `<tr${cls}><td>${i + 1}</td><td>${r.vendor}</td>`
               + `<td>${r.model}</td><td>${r.xpu_type}</td>`
               + `<td>${r.input_shape}</td><td>${r.dtype}</td>`
-              + `<td>${r.impl_lang}</td><td>${r.latency_us.toFixed(2)}</td></tr>`;
+              + `<td>${r.impl_lang}</td>`
+              + `<td>${fmt(r.throughput_gops)}</td>`
+              + `<td>${r.latency_us.toFixed(2)}</td></tr>`;
           });
           html += '</tbody></table>';
-          html += `<p style="font-size:0.85em;color:#666;">${matches.length} results across ${new Set(matches.map(r=>r.model)).size} devices. Best per (shape, dtype) highlighted.</p>`;
+          html += `<p style="font-size:0.85em;color:#666;">${matches.length} results across ${new Set(matches.map(r=>r.model)).size} devices. Best throughput per (shape, dtype) highlighted.</p>`;
           kernelDiv.innerHTML = html;
         })
         .catch((e) => {
