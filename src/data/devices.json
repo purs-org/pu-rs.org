@@ -12,7 +12,7 @@
     "launch_date": "2023-12-06",
     "msrp_usd": 15000.0,
     "notes": "HBM3",
-    "created_at": "2026-04-11 11:46:31"
+    "created_at": "2026-04-11 12:10:40"
   },
   {
     "device_id": "aws-trainium2",
@@ -27,7 +27,7 @@
     "launch_date": "2024-12-03",
     "msrp_usd": null,
     "notes": "Trn2 instances",
-    "created_at": "2026-04-11 11:46:31"
+    "created_at": "2026-04-11 12:10:40"
   },
   {
     "device_id": "apple-m2-max-38",
@@ -42,7 +42,7 @@
     "launch_date": "2023-01-17",
     "msrp_usd": 3499.0,
     "notes": "MacBook Pro 16\"",
-    "created_at": "2026-04-11 11:46:31"
+    "created_at": "2026-04-11 12:10:40"
   },
   {
     "device_id": "apple-m4",
@@ -57,7 +57,7 @@
     "launch_date": "2024-10-30",
     "msrp_usd": 499.0,
     "notes": "Mac mini",
-    "created_at": "2026-04-11 11:46:31"
+    "created_at": "2026-04-11 12:10:40"
   },
   {
     "device_id": "apple-m4-max-40",
@@ -72,7 +72,7 @@
     "launch_date": "2024-11-08",
     "msrp_usd": 3999.0,
     "notes": "MacBook Pro 16\"",
-    "created_at": "2026-04-11 11:46:31"
+    "created_at": "2026-04-11 12:10:40"
   },
   {
     "device_id": "cambricon-mlu590",
@@ -87,7 +87,7 @@
     "launch_date": "2024-01-01",
     "msrp_usd": null,
     "notes": null,
-    "created_at": "2026-04-11 11:46:31"
+    "created_at": "2026-04-11 12:10:40"
   },
   {
     "device_id": "google-tpu-v5e",
@@ -102,7 +102,7 @@
     "launch_date": "2023-08-29",
     "msrp_usd": null,
     "notes": "Cloud only, per-chip",
-    "created_at": "2026-04-11 11:46:31"
+    "created_at": "2026-04-11 12:10:40"
   },
   {
     "device_id": "google-tpu-v6e",
@@ -117,7 +117,7 @@
     "launch_date": "2024-12-01",
     "msrp_usd": null,
     "notes": "Cloud only",
-    "created_at": "2026-04-11 11:46:31"
+    "created_at": "2026-04-11 12:10:40"
   },
   {
     "device_id": "huawei-910b",
@@ -132,7 +132,7 @@
     "launch_date": "2023-08-01",
     "msrp_usd": null,
     "notes": "Atlas 800T A2",
-    "created_at": "2026-04-11 11:46:31"
+    "created_at": "2026-04-11 12:10:40"
   },
   {
     "device_id": "huawei-910c",
@@ -147,7 +147,7 @@
     "launch_date": "2024-06-01",
     "msrp_usd": null,
     "notes": "Atlas 900",
-    "created_at": "2026-04-11 11:46:31"
+    "created_at": "2026-04-11 12:10:40"
   },
   {
     "device_id": "intel-gaudi3",
@@ -162,7 +162,7 @@
     "launch_date": "2024-09-24",
     "msrp_usd": null,
     "notes": "HBM2e",
-    "created_at": "2026-04-11 11:46:31"
+    "created_at": "2026-04-11 12:10:40"
   },
   {
     "device_id": "nvidia-a100-80",
@@ -177,7 +177,7 @@
     "launch_date": "2020-11-16",
     "msrp_usd": 10000.0,
     "notes": "SXM4",
-    "created_at": "2026-04-11 11:46:31"
+    "created_at": "2026-04-11 12:10:40"
   },
   {
     "device_id": "nvidia-b200",
@@ -192,7 +192,7 @@
     "launch_date": "2025-03-17",
     "msrp_usd": 40000.0,
     "notes": "HBM3e",
-    "created_at": "2026-04-11 11:46:31"
+    "created_at": "2026-04-11 12:10:40"
   },
   {
     "device_id": "nvidia-h100-sxm",
@@ -207,7 +207,7 @@
     "launch_date": "2023-03-21",
     "msrp_usd": 30000.0,
     "notes": null,
-    "created_at": "2026-04-11 11:46:31"
+    "created_at": "2026-04-11 12:10:40"
   },
   {
     "device_id": "nvidia-h200-sxm",
@@ -222,7 +222,7 @@
     "launch_date": "2024-03-18",
     "msrp_usd": 35000.0,
     "notes": "HBM3e",
-    "created_at": "2026-04-11 11:46:31"
+    "created_at": "2026-04-11 12:10:40"
   },
   {
     "device_id": "nvidia-tesla-t4",
@@ -237,6 +237,6 @@
     "launch_date": "2018-11-12",
     "msrp_usd": 2200.0,
     "notes": "Colab free tier",
-    "created_at": "2026-04-11 11:46:31"
+    "created_at": "2026-04-11 12:10:40"
   }
 ]
