@@ -1,0 +1,34 @@
+device_id,kernel_id,dtype,input_shape,batch_size,impl_lang,latency_us,driver_version,toolchain,git_sha,submitter
+apple-m2-max-38,matmul,f16,"[256, 256]",1,metal,48.95834717899561,Metal (MPS),MPSMatrixMultiplication,,bench_gemm_metal.swift
+apple-m2-max-38,matmul,f16,"[256, 256]",1,metal,38.125086575746536,Metal (MPS),MPSMatrixMultiplication,,bench_gemm_metal.swift
+apple-m2-max-38,matmul,f16,"[256, 256]",1,metal,52.12507676333189,Metal (MPS),MPSMatrixMultiplication,,bench_gemm_metal.swift
+apple-m2-max-38,matmul,f16,"[512, 512]",1,metal,131.62498362362385,Metal (MPS),MPSMatrixMultiplication,,bench_gemm_metal.swift
+apple-m2-max-38,matmul,f16,"[512, 512]",1,metal,129.62508480995893,Metal (MPS),MPSMatrixMultiplication,,bench_gemm_metal.swift
+apple-m2-max-38,matmul,f16,"[512, 512]",1,metal,132.62499123811722,Metal (MPS),MPSMatrixMultiplication,,bench_gemm_metal.swift
+apple-m2-max-38,matmul,f16,"[1024, 1024]",1,metal,761.0833272337914,Metal (MPS),MPSMatrixMultiplication,,bench_gemm_metal.swift
+apple-m2-max-38,matmul,f16,"[1024, 1024]",1,metal,759.1666653752327,Metal (MPS),MPSMatrixMultiplication,,bench_gemm_metal.swift
+apple-m2-max-38,matmul,f16,"[1024, 1024]",1,metal,1047.8750336915255,Metal (MPS),MPSMatrixMultiplication,,bench_gemm_metal.swift
+apple-m2-max-38,matmul,f16,"[2048, 2048]",1,metal,2223.5000506043434,Metal (MPS),MPSMatrixMultiplication,,bench_gemm_metal.swift
+apple-m2-max-38,matmul,f16,"[2048, 2048]",1,metal,2218.874986283481,Metal (MPS),MPSMatrixMultiplication,,bench_gemm_metal.swift
+apple-m2-max-38,matmul,f16,"[2048, 2048]",1,metal,3188.250004313886,Metal (MPS),MPSMatrixMultiplication,,bench_gemm_metal.swift
+apple-m2-max-38,matmul,f16,"[4096, 4096]",1,metal,17374.125076457858,Metal (MPS),MPSMatrixMultiplication,,bench_gemm_metal.swift
+apple-m2-max-38,matmul,f16,"[4096, 4096]",1,metal,17357.624950818717,Metal (MPS),MPSMatrixMultiplication,,bench_gemm_metal.swift
+apple-m2-max-38,matmul,f16,"[4096, 4096]",1,metal,17444.166587665677,Metal (MPS),MPSMatrixMultiplication,,bench_gemm_metal.swift
+apple-m2-max-38,matmul,f16,"[8192, 8192]",1,metal,139596.12499456853,Metal (MPS),MPSMatrixMultiplication,,bench_gemm_metal.swift
+apple-m2-max-38,matmul,f16,"[8192, 8192]",1,metal,139329.12494055927,Metal (MPS),MPSMatrixMultiplication,,bench_gemm_metal.swift
+apple-m2-max-38,matmul,f16,"[8192, 8192]",1,metal,140147.75003306568,Metal (MPS),MPSMatrixMultiplication,,bench_gemm_metal.swift
+apple-m2-max-38,matmul,f16,"[1024, 4096] x [4096, 1024]",1,metal,1323.4165962785482,Metal (MPS),MPSMatrixMultiplication,,bench_gemm_metal.swift
+apple-m2-max-38,matmul,f16,"[1024, 4096] x [4096, 1024]",1,metal,1318.6250580474734,Metal (MPS),MPSMatrixMultiplication,,bench_gemm_metal.swift
+apple-m2-max-38,matmul,f16,"[1024, 4096] x [4096, 1024]",1,metal,1329.9999991431832,Metal (MPS),MPSMatrixMultiplication,,bench_gemm_metal.swift
+apple-m2-max-38,matmul,f16,"[4096, 1024] x [1024, 4096]",1,metal,4345.416673459113,Metal (MPS),MPSMatrixMultiplication,,bench_gemm_metal.swift
+apple-m2-max-38,matmul,f16,"[4096, 1024] x [1024, 4096]",1,metal,4339.083330705762,Metal (MPS),MPSMatrixMultiplication,,bench_gemm_metal.swift
+apple-m2-max-38,matmul,f16,"[4096, 1024] x [1024, 4096]",1,metal,4630.875075235963,Metal (MPS),MPSMatrixMultiplication,,bench_gemm_metal.swift
+apple-m2-max-38,matmul,f16,"[1024, 1024] x [1024, 4096]",1,metal,1117.4166575074196,Metal (MPS),MPSMatrixMultiplication,,bench_gemm_metal.swift
+apple-m2-max-38,matmul,f16,"[1024, 1024] x [1024, 4096]",1,metal,1113.4999804198742,Metal (MPS),MPSMatrixMultiplication,,bench_gemm_metal.swift
+apple-m2-max-38,matmul,f16,"[1024, 1024] x [1024, 4096]",1,metal,1414.6249741315842,Metal (MPS),MPSMatrixMultiplication,,bench_gemm_metal.swift
+apple-m2-max-38,matmul,f16,"[4096, 4096] x [4096, 1024]",1,metal,4423.499922268093,Metal (MPS),MPSMatrixMultiplication,,bench_gemm_metal.swift
+apple-m2-max-38,matmul,f16,"[4096, 4096] x [4096, 1024]",1,metal,4417.124902829528,Metal (MPS),MPSMatrixMultiplication,,bench_gemm_metal.swift
+apple-m2-max-38,matmul,f16,"[4096, 4096] x [4096, 1024]",1,metal,4716.791678220034,Metal (MPS),MPSMatrixMultiplication,,bench_gemm_metal.swift
+apple-m2-max-38,matmul,f16,"[2048, 8192] x [8192, 2048]",1,metal,8971.499977633357,Metal (MPS),MPSMatrixMultiplication,,bench_gemm_metal.swift
+apple-m2-max-38,matmul,f16,"[2048, 8192] x [8192, 2048]",1,metal,8957.25004374981,Metal (MPS),MPSMatrixMultiplication,,bench_gemm_metal.swift
+apple-m2-max-38,matmul,f16,"[2048, 8192] x [8192, 2048]",1,metal,9162.875008769333,Metal (MPS),MPSMatrixMultiplication,,bench_gemm_metal.swift
