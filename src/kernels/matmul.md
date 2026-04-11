@@ -31,8 +31,13 @@ All benchmarks use f16 input with f16 output (or f32 accumulation where supporte
 | Ascend 910B | [16384²]×[16384²] | 27,467 | **320.2** | 1033 |
 | Ascend 910B | [2048, 8192]×[8192, 2048] | 245 | 280.0 | 903 |
 | Ascend 910B | [4096, 1024]×[1024, 4096] | 132 | 260.1 | 839 |
+| Apple M2 Max | [4096²]×[4096²] | 17,374 | 7.9 | 53 |
+| Apple M2 Max | [8192²]×[8192²] | 139,596 | 7.9 | 53 |
+| Apple M2 Max | [2048, 8192]×[8192, 2048] | 8,972 | 7.7 | 51 |
+| Apple M2 Max | [4096, 1024]×[1024, 4096] | 4,345 | 7.9 | 53 |
 
 Peak: **320 TFLOPS** (f16) on Ascend 910B — saturating the theoretical maximum.
+Apple M2 Max peaks at **7.9 TFLOPS** (f16) via MPSMatrixMultiplication.
 
 <div id="kernel-results" data-kernel="matmul"></div>
 
