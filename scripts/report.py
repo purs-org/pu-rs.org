@@ -1,155 +1,194 @@
 #!/usr/bin/env python3
 """
-Unified kernel benchmark report.
+Cross-device kernel benchmark comparison report.
 
-Aggregates CSV results from all kernel benchmark pairs (Rust vs C++) and
-prints comparison tables with median/min/max statistics plus speedup ratios.
-
-Input CSV format (no header):
-  BENCH,<size>,<kernel>,<run>,<time_ms>
+Reads pu-rs.org submission CSVs and prints comparison tables showing
+throughput, latency, and relative performance across devices.
 
 Usage:
-  python3 report.py results/combined.csv
+  python3 report.py submissions/*.csv
+  python3 report.py submissions/huawei-910b-tile.csv submissions/nvidia-tesla-t4-all.csv
+  python3 report.py --kernel softmax submissions/*.csv
+  python3 report.py --shape "[4096, 4096]" submissions/*.csv
 """
 
-import sys
 import csv
+import sys
+import os
+import statistics
 from collections import defaultdict
 
 
-def median(vals):
-    s = sorted(vals)
-    n = len(s)
-    if n % 2 == 1:
-        return s[n // 2]
-    return (s[n // 2 - 1] + s[n // 2]) / 2.0
+def parse_args():
+    args = {"files": [], "kernel": None, "shape": None, "sort": "throughput"}
+    i = 1
+    while i < len(sys.argv):
+        if sys.argv[i] == "--kernel" and i + 1 < len(sys.argv):
+            args["kernel"] = sys.argv[i + 1]
+            i += 2
+        elif sys.argv[i] == "--shape" and i + 1 < len(sys.argv):
+            args["shape"] = sys.argv[i + 1]
+            i += 2
+        elif sys.argv[i] == "--sort" and i + 1 < len(sys.argv):
+            args["sort"] = sys.argv[i + 1]
+            i += 2
+        else:
+            args["files"].append(sys.argv[i])
+            i += 1
+    return args
 
 
-# Kernel pairs: (rust_name, cpp_name, display_name)
-KERNEL_PAIRS = [
-    ("rust_vector", "cpp_vector", "vec_add (f16)"),
-    ("rust_vector", "cpp_naive", "softmax (vs naive)"),
-    ("rust_vector", "cpp_opt", "softmax (vs opt)"),
-    ("rust_matmul", "cpp_matmul", "matmul (f16→f32)"),
-]
+def load_csvs(files):
+    """Load all CSV files, group by (device, kernel, shape)."""
+    groups = defaultdict(list)
+    for path in files:
+        if not os.path.isfile(path):
+            continue
+        with open(path) as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                device = row.get("device_id", "")
+                kernel = row.get("kernel_id", "")
+                shape = row.get("input_shape", "")
+                batch = row.get("batch_size", "1")
+                latency = float(row.get("latency_us", 0))
+                lang = row.get("impl_lang", "")
+                tp = row.get("throughput_gbps", "")
+                if latency > 0:
+                    groups[(device, kernel, shape, batch, lang)].append({
+                        "latency_us": latency,
+                        "throughput_gbps": float(tp) if tp else 0,
+                    })
+    return groups
+
+
+def compute_stats(entries):
+    """Compute median latency and throughput from a list of entries."""
+    latencies = [e["latency_us"] for e in entries]
+    throughputs = [e["throughput_gbps"] for e in entries]
+    return {
+        "latency_us": statistics.median(latencies),
+        "throughput_gbps": max(throughputs) if throughputs else 0,
+        "n": len(latencies),
+    }
 
 
 def main():
-    if len(sys.argv) < 2:
-        print("Usage: report.py <combined.csv>", file=sys.stderr)
+    args = parse_args()
+    if not args["files"]:
+        print(__doc__)
         sys.exit(1)
 
-    path = sys.argv[1]
-
-    # Collect times: {(size, kernel): [time_ms, ...]}
-    data = defaultdict(list)
-    with open(path) as f:
-        for row in csv.reader(f):
-            if len(row) < 5 or row[0] != "BENCH":
-                continue
-            size = row[1]
-            kernel = row[2]
-            time_ms = float(row[4])
-            data[(size, kernel)].append(time_ms)
-
-    if not data:
+    groups = load_csvs(args["files"])
+    if not groups:
         print("No benchmark data found.", file=sys.stderr)
         sys.exit(1)
 
-    # Compute stats
+    # Aggregate stats per group
     stats = {}
-    for key, times in data.items():
-        stats[key] = {
-            "min": min(times),
-            "max": max(times),
-            "mean": sum(times) / len(times),
-            "median": median(times),
-            "n": len(times),
-        }
+    for key, entries in groups.items():
+        stats[key] = compute_stats(entries)
 
-    # Discover all kernels and sizes
-    all_kernels = sorted({k[1] for k in data})
-    all_sizes = []
-    seen = set()
-    for k in data:
-        if k[0] not in seen:
-            seen.add(k[0])
-            all_sizes.append(k[0])
+    # Collect unique values
+    all_devices = sorted({k[0] for k in stats})
+    all_kernels = sorted({k[1] for k in stats})
+    all_shapes = sorted({k[2] for k in stats})
 
-    # --- Per-kernel summary table ---
+    # Apply filters
+    if args["kernel"]:
+        all_kernels = [k for k in all_kernels if args["kernel"] in k]
+    if args["shape"]:
+        all_shapes = [s for s in all_shapes if args["shape"] in s]
+
+    # ── Per-kernel comparison across devices ─────────────────────────────────
     print()
-    print("=" * 72)
-    print("  KERNEL BENCHMARK RESULTS")
-    print("=" * 72)
-    print()
+    print("=" * 90)
+    print("  CROSS-DEVICE KERNEL COMPARISON")
+    print("=" * 90)
 
-    # Group by kernel for a simple listing
     for kernel in all_kernels:
-        sizes_for_kernel = [s for s in all_sizes if (s, kernel) in stats]
-        if not sizes_for_kernel:
+        # Collect all (device, shape) entries for this kernel
+        entries = []
+        for key, st in stats.items():
+            dev, kid, shape, batch, lang = key
+            if kid != kernel:
+                continue
+            if args["shape"] and args["shape"] not in shape:
+                continue
+            entries.append({
+                "device": dev,
+                "shape": shape,
+                "batch": batch,
+                "lang": lang,
+                "latency_us": st["latency_us"],
+                "throughput_gbps": st["throughput_gbps"],
+                "n": st["n"],
+            })
+
+        if not entries:
             continue
-        print(f"  {kernel}:")
-        for size in sizes_for_kernel:
-            s = stats[(size, kernel)]
-            print(
-                f"    size={size:>12s}  "
-                f"median={s['median']:>10.4f}ms  "
-                f"min={s['min']:>10.4f}ms  "
-                f"max={s['max']:>10.4f}ms  "
-                f"(n={s['n']})"
-            )
+
         print()
+        print(f"  {kernel}")
+        print(f"  {'-' * 86}")
+        print(f"  {'Device':<22s} {'Shape':>14s} {'Lang':>6s} "
+              f"{'Latency(us)':>12s} {'GB/s':>10s} {'Runs':>5s}")
+        print(f"  {'-' * 86}")
 
-    # --- Comparison table ---
-    print("=" * 72)
-    print("  RUST vs C++ COMPARISON")
-    print("=" * 72)
-    print()
+        # Sort by shape then throughput descending
+        entries.sort(key=lambda e: (e["shape"], -e["throughput_gbps"]))
 
-    header = f"  {'Kernel':<25s} {'Size':>12s} {'Rust(ms)':>10s} {'C++(ms)':>10s} {'Speedup':>8s}"
-    print(header)
-    print("  " + "-" * (len(header) - 2))
+        prev_shape = None
+        for e in entries:
+            if prev_shape and e["shape"] != prev_shape:
+                print()  # blank line between shapes
+            prev_shape = e["shape"]
+            tp_str = f'{e["throughput_gbps"]:.1f}' if e["throughput_gbps"] > 0 else "-"
+            print(f'  {e["device"]:<22s} {e["shape"]:>14s} {e["lang"]:>6s} '
+                  f'{e["latency_us"]:>12.1f} {tp_str:>10s} {e["n"]:>5d}')
 
-    for rust_name, cpp_name, display_name in KERNEL_PAIRS:
-        sizes_rust = {s for s in all_sizes if (s, rust_name) in stats}
-        sizes_cpp = {s for s in all_sizes if (s, cpp_name) in stats}
-        common_sizes = sorted(sizes_rust & sizes_cpp)
+    # ── Head-to-head comparison for common shapes ────────────────────────────
+    if len(all_devices) >= 2:
+        print()
+        print("=" * 90)
+        print("  HEAD-TO-HEAD (common shapes)")
+        print("=" * 90)
 
-        for size in common_sizes:
-            rust_med = stats[(size, rust_name)]["median"]
-            cpp_med = stats[(size, cpp_name)]["median"]
-            if cpp_med > 0:
-                speedup = cpp_med / rust_med
-                speedup_str = f"{speedup:.2f}x"
-            else:
-                speedup_str = "-"
-            print(
-                f"  {display_name:<25s} {size:>12s} "
-                f"{rust_med:>10.4f} {cpp_med:>10.4f} {speedup_str:>8s}"
-            )
-
-    print()
-
-    # --- Detailed statistics ---
-    print("=" * 72)
-    print("  DETAILED STATISTICS")
-    print("=" * 72)
-    print()
-    print(
-        f"  {'Kernel':<15s} {'Size':>12s} {'N':>3s} "
-        f"{'Min':>10s} {'Median':>10s} {'Mean':>10s} {'Max':>10s}"
-    )
-    print("  " + "-" * 72)
-    for size in all_sizes:
         for kernel in all_kernels:
-            key = (size, kernel)
-            if key in stats:
-                s = stats[key]
-                print(
-                    f"  {kernel:<15s} {size:>12s} {s['n']:>3d} "
-                    f"{s['min']:>10.4f} {s['median']:>10.4f} "
-                    f"{s['mean']:>10.4f} {s['max']:>10.4f}"
-                )
+            # Find shapes that have results from multiple devices
+            shape_devices = defaultdict(dict)
+            for key, st in stats.items():
+                dev, kid, shape, batch, lang = key
+                if kid != kernel:
+                    continue
+                if args["shape"] and args["shape"] not in shape:
+                    continue
+                label = f"{dev} ({lang})"
+                if label not in shape_devices[shape] or st["throughput_gbps"] > shape_devices[shape][label]["throughput_gbps"]:
+                    shape_devices[shape][label] = st
+
+            common = {s: devs for s, devs in shape_devices.items() if len(devs) >= 2}
+            if not common:
+                continue
+
+            print()
+            print(f"  {kernel}")
+            print(f"  {'-' * 86}")
+
+            for shape in sorted(common):
+                devs = common[shape]
+                # Sort by throughput descending
+                ranked = sorted(devs.items(), key=lambda x: -x[1]["throughput_gbps"])
+                best_tp = ranked[0][1]["throughput_gbps"]
+
+                print(f"  {shape}:")
+                for label, st in ranked:
+                    ratio = (st["throughput_gbps"] / best_tp * 100) if best_tp > 0 else 0
+                    bar = "#" * int(ratio / 2)
+                    print(f"    {label:<30s} {st['latency_us']:>8.1f} us  "
+                          f"{st['throughput_gbps']:>8.1f} GB/s  "
+                          f"{ratio:>5.1f}%  {bar}")
+
     print()
 
 
