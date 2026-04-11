@@ -20,7 +20,7 @@
     "num_runs": 1,
     "driver_version": "CANN 8.5.0",
     "toolchain": "ascend-rs (tile)",
-    "run_date": "2026-04-10 19:36:22",
+    "run_date": "2026-04-11 11:42:05",
     "verified": 0,
     "gops_per_dollar": null,
     "gops_per_watt": 1.2051612903225808
@@ -46,7 +46,7 @@
     "num_runs": 1,
     "driver_version": "nvcc",
     "toolchain": "ascend-rs codegen",
-    "run_date": "2026-04-10 20:23:43",
+    "run_date": "2026-04-11 11:42:06",
     "verified": 0,
     "gops_per_dollar": 0.15563636363636363,
     "gops_per_watt": 4.8914285714285715
@@ -72,7 +72,7 @@
     "num_runs": 1,
     "driver_version": "CANN 8.5.0",
     "toolchain": "ascend-rs (tile)",
-    "run_date": "2026-04-10 19:36:22",
+    "run_date": "2026-04-11 11:42:05",
     "verified": 0,
     "gops_per_dollar": null,
     "gops_per_watt": 0.9899999999999999
@@ -98,7 +98,7 @@
     "num_runs": 1,
     "driver_version": "CANN 8.5.0",
     "toolchain": "ascend-rs (tile)",
-    "run_date": "2026-04-10 19:36:22",
+    "run_date": "2026-04-11 11:42:05",
     "verified": 0,
     "gops_per_dollar": null,
     "gops_per_watt": 0.937741935483871
@@ -124,7 +124,7 @@
     "num_runs": 1,
     "driver_version": "nvcc",
     "toolchain": "ascend-rs codegen",
-    "run_date": "2026-04-10 20:23:43",
+    "run_date": "2026-04-11 11:42:06",
     "verified": 0,
     "gops_per_dollar": 0.11622727272727272,
     "gops_per_watt": 3.6528571428571426
@@ -150,7 +150,7 @@
     "num_runs": 1,
     "driver_version": "nvcc",
     "toolchain": "ascend-rs codegen",
-    "run_date": "2026-04-10 20:23:43",
+    "run_date": "2026-04-11 11:42:06",
     "verified": 0,
     "gops_per_dollar": 0.10636363636363637,
     "gops_per_watt": 3.342857142857143
@@ -176,7 +176,7 @@
     "num_runs": 1,
     "driver_version": "nvcc",
     "toolchain": "ascend-rs codegen",
-    "run_date": "2026-04-10 20:23:43",
+    "run_date": "2026-04-11 11:42:06",
     "verified": 0,
     "gops_per_dollar": 0.10436363636363637,
     "gops_per_watt": 3.28
@@ -202,7 +202,7 @@
     "num_runs": 1,
     "driver_version": "nvcc",
     "toolchain": "ascend-rs codegen",
-    "run_date": "2026-04-10 20:23:43",
+    "run_date": "2026-04-11 11:42:06",
     "verified": 0,
     "gops_per_dollar": 0.10263636363636364,
     "gops_per_watt": 3.225714285714286
@@ -224,14 +224,14 @@
     "batch_size": 256,
     "impl_lang": "cuda",
     "latency_us": 9.388,
-    "throughput_gops": 223.38645078824032,
+    "throughput_gops": 223.4,
     "num_runs": 1,
     "driver_version": "nvcc",
     "toolchain": "ascend-rs mlir_to_cuda",
-    "run_date": "2026-04-10 19:11:22",
+    "run_date": "2026-04-11 11:42:06",
     "verified": 0,
-    "gops_per_dollar": 0.10153929581283651,
-    "gops_per_watt": 3.191235011260576
+    "gops_per_dollar": 0.10154545454545455,
+    "gops_per_watt": 3.1914285714285717
   },
   {
     "device_id": "nvidia-tesla-t4",
@@ -254,7 +254,7 @@
     "num_runs": 1,
     "driver_version": "nvcc",
     "toolchain": "ascend-rs codegen",
-    "run_date": "2026-04-10 20:23:43",
+    "run_date": "2026-04-11 11:42:06",
     "verified": 0,
     "gops_per_dollar": 0.10054545454545454,
     "gops_per_watt": 3.1599999999999997
@@ -280,7 +280,7 @@
     "num_runs": 1,
     "driver_version": "nvcc",
     "toolchain": "ascend-rs codegen",
-    "run_date": "2026-04-10 20:23:43",
+    "run_date": "2026-04-11 11:42:06",
     "verified": 0,
     "gops_per_dollar": 0.0965,
     "gops_per_watt": 3.032857142857143
@@ -302,14 +302,14 @@
     "batch_size": 4096,
     "impl_lang": "cuda",
     "latency_us": 162.496,
-    "throughput_gops": 206.4938952343442,
+    "throughput_gops": 206.5,
     "num_runs": 1,
     "driver_version": "nvcc",
     "toolchain": "ascend-rs mlir_to_cuda",
-    "run_date": "2026-04-10 19:11:22",
+    "run_date": "2026-04-11 11:42:06",
     "verified": 0,
-    "gops_per_dollar": 0.09386086147015645,
-    "gops_per_watt": 2.94991278906206
+    "gops_per_dollar": 0.09386363636363636,
+    "gops_per_watt": 2.95
   },
   {
     "device_id": "nvidia-tesla-t4",
@@ -332,7 +332,7 @@
     "num_runs": 1,
     "driver_version": "nvcc",
     "toolchain": "ascend-rs codegen",
-    "run_date": "2026-04-10 20:23:43",
+    "run_date": "2026-04-11 11:42:06",
     "verified": 0,
     "gops_per_dollar": 0.09368181818181819,
     "gops_per_watt": 2.9442857142857144
@@ -358,7 +358,7 @@
     "num_runs": 1,
     "driver_version": "nvcc",
     "toolchain": "ascend-rs codegen",
-    "run_date": "2026-04-10 20:23:43",
+    "run_date": "2026-04-11 11:42:06",
     "verified": 0,
     "gops_per_dollar": 0.09259090909090908,
     "gops_per_watt": 2.9099999999999997
@@ -384,7 +384,7 @@
     "num_runs": 1,
     "driver_version": "macOS 15.6.1",
     "toolchain": "ascend-rs 0.1.0 (metal-swift)",
-    "run_date": "2026-04-10 19:11:21",
+    "run_date": "2026-04-11 11:42:05",
     "verified": 0,
     "gops_per_dollar": 0.05642671663176829,
     "gops_per_watt": 2.9468221118590634
@@ -410,7 +410,7 @@
     "num_runs": 1,
     "driver_version": "nvcc",
     "toolchain": "ascend-rs codegen",
-    "run_date": "2026-04-10 20:23:43",
+    "run_date": "2026-04-11 11:42:06",
     "verified": 0,
     "gops_per_dollar": 0.08822727272727272,
     "gops_per_watt": 2.7728571428571427
@@ -432,14 +432,14 @@
     "batch_size": 64,
     "impl_lang": "cuda",
     "latency_us": 11.146,
-    "throughput_gops": 188.15287995693524,
+    "throughput_gops": 188.2,
     "num_runs": 1,
     "driver_version": "nvcc",
     "toolchain": "ascend-rs mlir_to_cuda",
-    "run_date": "2026-04-10 19:11:22",
+    "run_date": "2026-04-11 11:42:06",
     "verified": 0,
-    "gops_per_dollar": 0.08552403634406147,
-    "gops_per_watt": 2.6878982850990747
+    "gops_per_dollar": 0.08554545454545454,
+    "gops_per_watt": 2.6885714285714286
   },
   {
     "device_id": "nvidia-tesla-t4",
@@ -458,14 +458,14 @@
     "batch_size": 1024,
     "impl_lang": "cuda",
     "latency_us": 44.821,
-    "throughput_gops": 187.15798398072332,
+    "throughput_gops": 187.2,
     "num_runs": 1,
     "driver_version": "nvcc",
     "toolchain": "ascend-rs mlir_to_cuda",
-    "run_date": "2026-04-10 19:11:22",
+    "run_date": "2026-04-11 11:42:06",
     "verified": 0,
-    "gops_per_dollar": 0.08507181090032878,
-    "gops_per_watt": 2.6736854854389045
+    "gops_per_dollar": 0.08509090909090909,
+    "gops_per_watt": 2.674285714285714
   },
   {
     "device_id": "nvidia-tesla-t4",
@@ -484,14 +484,14 @@
     "batch_size": 4096,
     "impl_lang": "cuda",
     "latency_us": 750.534,
-    "throughput_gops": 178.82964396016703,
+    "throughput_gops": 178.8,
     "num_runs": 1,
     "driver_version": "nvcc",
     "toolchain": "ascend-rs mlir_to_cuda",
-    "run_date": "2026-04-10 19:11:22",
+    "run_date": "2026-04-11 11:42:06",
     "verified": 0,
-    "gops_per_dollar": 0.08128620180007592,
-    "gops_per_watt": 2.5547091994309574
+    "gops_per_dollar": 0.08127272727272727,
+    "gops_per_watt": 2.5542857142857143
   },
   {
     "device_id": "nvidia-tesla-t4",
@@ -514,7 +514,7 @@
     "num_runs": 1,
     "driver_version": "nvcc",
     "toolchain": "ascend-rs codegen",
-    "run_date": "2026-04-10 20:23:43",
+    "run_date": "2026-04-11 11:42:06",
     "verified": 0,
     "gops_per_dollar": 0.08040909090909092,
     "gops_per_watt": 2.527142857142857
@@ -540,7 +540,7 @@
     "num_runs": 1,
     "driver_version": "nvcc",
     "toolchain": "ascend-rs codegen",
-    "run_date": "2026-04-10 20:23:43",
+    "run_date": "2026-04-11 11:42:06",
     "verified": 0,
     "gops_per_dollar": 0.08022727272727273,
     "gops_per_watt": 2.5214285714285714
@@ -562,14 +562,14 @@
     "batch_size": 1024,
     "impl_lang": "cuda",
     "latency_us": 191.736,
-    "throughput_gops": 175.00329619894023,
+    "throughput_gops": 175.0,
     "num_runs": 1,
     "driver_version": "nvcc",
     "toolchain": "ascend-rs mlir_to_cuda",
-    "run_date": "2026-04-10 19:11:22",
+    "run_date": "2026-04-11 11:42:06",
     "verified": 0,
-    "gops_per_dollar": 0.0795469528177001,
-    "gops_per_watt": 2.500047088556289
+    "gops_per_dollar": 0.07954545454545454,
+    "gops_per_watt": 2.5
   },
   {
     "device_id": "nvidia-tesla-t4",
@@ -592,7 +592,7 @@
     "num_runs": 1,
     "driver_version": "nvcc",
     "toolchain": "ascend-rs codegen",
-    "run_date": "2026-04-10 20:23:43",
+    "run_date": "2026-04-11 11:42:06",
     "verified": 0,
     "gops_per_dollar": 0.0780909090909091,
     "gops_per_watt": 2.4542857142857146
@@ -618,7 +618,7 @@
     "num_runs": 1,
     "driver_version": "nvcc",
     "toolchain": "ascend-rs codegen",
-    "run_date": "2026-04-10 20:23:43",
+    "run_date": "2026-04-11 11:42:06",
     "verified": 0,
     "gops_per_dollar": 0.07768181818181819,
     "gops_per_watt": 2.4414285714285717
@@ -644,7 +644,7 @@
     "num_runs": 1,
     "driver_version": "nvcc",
     "toolchain": "ascend-rs codegen",
-    "run_date": "2026-04-10 20:23:43",
+    "run_date": "2026-04-11 11:42:06",
     "verified": 0,
     "gops_per_dollar": 0.0765,
     "gops_per_watt": 2.4042857142857144
@@ -666,14 +666,14 @@
     "batch_size": 256,
     "impl_lang": "cuda",
     "latency_us": 50.202,
-    "throughput_gops": 167.09708776542766,
+    "throughput_gops": 167.1,
     "num_runs": 1,
     "driver_version": "nvcc",
     "toolchain": "ascend-rs mlir_to_cuda",
-    "run_date": "2026-04-10 19:11:22",
+    "run_date": "2026-04-11 11:42:06",
     "verified": 0,
-    "gops_per_dollar": 0.07595322171155802,
-    "gops_per_watt": 2.387101253791824
+    "gops_per_dollar": 0.07595454545454546,
+    "gops_per_watt": 2.387142857142857
   },
   {
     "device_id": "nvidia-tesla-t4",
@@ -696,7 +696,7 @@
     "num_runs": 1,
     "driver_version": "nvcc",
     "toolchain": "ascend-rs codegen",
-    "run_date": "2026-04-10 20:23:43",
+    "run_date": "2026-04-11 11:42:06",
     "verified": 0,
     "gops_per_dollar": 0.07536363636363637,
     "gops_per_watt": 2.3685714285714288
@@ -722,7 +722,7 @@
     "num_runs": 1,
     "driver_version": "nvcc",
     "toolchain": "ascend-rs codegen",
-    "run_date": "2026-04-10 20:23:43",
+    "run_date": "2026-04-11 11:42:06",
     "verified": 0,
     "gops_per_dollar": 0.07436363636363637,
     "gops_per_watt": 2.337142857142857
@@ -748,7 +748,7 @@
     "num_runs": 1,
     "driver_version": "nvcc",
     "toolchain": "ascend-rs codegen",
-    "run_date": "2026-04-10 20:23:43",
+    "run_date": "2026-04-11 11:42:06",
     "verified": 0,
     "gops_per_dollar": 0.07422727272727274,
     "gops_per_watt": 2.332857142857143
@@ -774,7 +774,7 @@
     "num_runs": 1,
     "driver_version": "nvcc",
     "toolchain": "ascend-rs codegen",
-    "run_date": "2026-04-10 20:23:43",
+    "run_date": "2026-04-11 11:42:06",
     "verified": 0,
     "gops_per_dollar": 0.07386363636363637,
     "gops_per_watt": 2.3214285714285716
@@ -800,7 +800,7 @@
     "num_runs": 1,
     "driver_version": "CANN 8.5.0",
     "toolchain": "ascend-rs (tile)",
-    "run_date": "2026-04-10 19:36:22",
+    "run_date": "2026-04-11 11:42:05",
     "verified": 0,
     "gops_per_dollar": null,
     "gops_per_watt": 0.5219354838709678
@@ -826,7 +826,7 @@
     "num_runs": 1,
     "driver_version": "nvcc",
     "toolchain": "ascend-rs codegen",
-    "run_date": "2026-04-10 20:23:43",
+    "run_date": "2026-04-11 11:42:06",
     "verified": 0,
     "gops_per_dollar": 0.07263636363636364,
     "gops_per_watt": 2.282857142857143
@@ -852,7 +852,7 @@
     "num_runs": 1,
     "driver_version": "nvcc",
     "toolchain": "ascend-rs codegen",
-    "run_date": "2026-04-10 20:23:43",
+    "run_date": "2026-04-11 11:42:06",
     "verified": 0,
     "gops_per_dollar": 0.06713636363636363,
     "gops_per_watt": 2.11
@@ -878,7 +878,7 @@
     "num_runs": 1,
     "driver_version": "nvcc",
     "toolchain": "ascend-rs codegen",
-    "run_date": "2026-04-10 20:23:43",
+    "run_date": "2026-04-11 11:42:06",
     "verified": 0,
     "gops_per_dollar": 0.059000000000000004,
     "gops_per_watt": 1.8542857142857145
@@ -904,7 +904,7 @@
     "num_runs": 1,
     "driver_version": "macOS 15.6.1",
     "toolchain": "ascend-rs 0.1.0 (metal-swift)",
-    "run_date": "2026-04-10 19:11:21",
+    "run_date": "2026-04-11 11:42:05",
     "verified": 0,
     "gops_per_dollar": 0.03078561955559878,
     "gops_per_watt": 1.6077445197767184
@@ -930,7 +930,7 @@
     "num_runs": 1,
     "driver_version": "macOS 15.6.1",
     "toolchain": "ascend-rs 0.1.0 (metal-swift)",
-    "run_date": "2026-04-10 19:11:21",
+    "run_date": "2026-04-11 11:42:05",
     "verified": 0,
     "gops_per_dollar": 0.029371272562232834,
     "gops_per_watt": 1.533881831272428
@@ -952,14 +952,14 @@
     "batch_size": 64,
     "impl_lang": "cuda",
     "latency_us": 5.142,
-    "throughput_gops": 101.9618825359782,
+    "throughput_gops": 102.0,
     "num_runs": 1,
     "driver_version": "nvcc",
     "toolchain": "ascend-rs mlir_to_cuda",
-    "run_date": "2026-04-10 19:11:22",
+    "run_date": "2026-04-11 11:42:06",
     "verified": 0,
-    "gops_per_dollar": 0.046346310243626454,
-    "gops_per_watt": 1.4565983219425458
+    "gops_per_dollar": 0.046363636363636364,
+    "gops_per_watt": 1.457142857142857
   },
   {
     "device_id": "nvidia-tesla-t4",
@@ -982,7 +982,7 @@
     "num_runs": 1,
     "driver_version": "nvcc",
     "toolchain": "ascend-rs codegen",
-    "run_date": "2026-04-10 20:23:43",
+    "run_date": "2026-04-11 11:42:06",
     "verified": 0,
     "gops_per_dollar": 0.04163636363636363,
     "gops_per_watt": 1.3085714285714285
@@ -1008,7 +1008,7 @@
     "num_runs": 1,
     "driver_version": "nvcc",
     "toolchain": "ascend-rs codegen",
-    "run_date": "2026-04-10 20:23:43",
+    "run_date": "2026-04-11 11:42:06",
     "verified": 0,
     "gops_per_dollar": 0.039818181818181815,
     "gops_per_watt": 1.2514285714285713
@@ -1034,7 +1034,7 @@
     "num_runs": 1,
     "driver_version": "CANN 8.5.0",
     "toolchain": "ascend-rs (tile)",
-    "run_date": "2026-04-10 19:36:22",
+    "run_date": "2026-04-11 11:42:05",
     "verified": 0,
     "gops_per_dollar": null,
     "gops_per_watt": 0.25935483870967746
@@ -1060,7 +1060,7 @@
     "num_runs": 1,
     "driver_version": "CANN 8.5.0",
     "toolchain": "ascend-rs (tile)",
-    "run_date": "2026-04-10 19:36:22",
+    "run_date": "2026-04-11 11:42:05",
     "verified": 0,
     "gops_per_dollar": null,
     "gops_per_watt": 0.2532258064516129
@@ -1086,7 +1086,7 @@
     "num_runs": 1,
     "driver_version": "CANN 8.5.0",
     "toolchain": "ascend-rs (tile)",
-    "run_date": "2026-04-10 19:36:22",
+    "run_date": "2026-04-11 11:42:05",
     "verified": 0,
     "gops_per_dollar": null,
     "gops_per_watt": 0.25129032258064515
@@ -1112,7 +1112,7 @@
     "num_runs": 1,
     "driver_version": "macOS 26.1",
     "toolchain": "ascend-rs 0.1.0 (metal-swift)",
-    "run_date": "2026-04-10 19:11:21",
+    "run_date": "2026-04-11 11:42:05",
     "verified": 0,
     "gops_per_dollar": 0.15383094241098727,
     "gops_per_watt": 3.489165466503757
@@ -1138,7 +1138,7 @@
     "num_runs": 1,
     "driver_version": "CANN 8.5.0",
     "toolchain": "ascend-rs (tile)",
-    "run_date": "2026-04-10 19:36:22",
+    "run_date": "2026-04-11 11:42:05",
     "verified": 0,
     "gops_per_dollar": null,
     "gops_per_watt": 0.2303225806451613
@@ -1164,7 +1164,7 @@
     "num_runs": 1,
     "driver_version": "nvcc",
     "toolchain": "ascend-rs codegen",
-    "run_date": "2026-04-10 20:23:43",
+    "run_date": "2026-04-11 11:42:06",
     "verified": 0,
     "gops_per_dollar": 0.031090909090909093,
     "gops_per_watt": 0.9771428571428572
@@ -1186,14 +1186,14 @@
     "batch_size": 16,
     "impl_lang": "cuda",
     "latency_us": 9.729,
-    "throughput_gops": 53.88919724534896,
+    "throughput_gops": 53.9,
     "num_runs": 1,
     "driver_version": "nvcc",
     "toolchain": "ascend-rs mlir_to_cuda",
-    "run_date": "2026-04-10 19:11:22",
+    "run_date": "2026-04-11 11:42:06",
     "verified": 0,
-    "gops_per_dollar": 0.0244950896569768,
-    "gops_per_watt": 0.7698456749335566
+    "gops_per_dollar": 0.0245,
+    "gops_per_watt": 0.77
   },
   {
     "device_id": "apple-m4",
@@ -1216,7 +1216,7 @@
     "num_runs": 1,
     "driver_version": "macOS 26.1",
     "toolchain": "ascend-rs 0.1.0 (metal-swift)",
-    "run_date": "2026-04-10 19:11:21",
+    "run_date": "2026-04-11 11:42:05",
     "verified": 0,
     "gops_per_dollar": 0.10629679212994436,
     "gops_per_watt": 2.4110045124019197
@@ -1242,7 +1242,7 @@
     "num_runs": 1,
     "driver_version": "macOS 26.1",
     "toolchain": "ascend-rs 0.1.0 (metal-swift)",
-    "run_date": "2026-04-10 19:11:21",
+    "run_date": "2026-04-11 11:42:05",
     "verified": 0,
     "gops_per_dollar": 0.10388282203213782,
     "gops_per_watt": 2.356251281547126
@@ -1268,7 +1268,7 @@
     "num_runs": 1,
     "driver_version": "CANN 8.5.0",
     "toolchain": "ascend-rs (tile)",
-    "run_date": "2026-04-10 19:36:22",
+    "run_date": "2026-04-11 11:42:05",
     "verified": 0,
     "gops_per_dollar": null,
     "gops_per_watt": 0.15483870967741936
@@ -1294,7 +1294,7 @@
     "num_runs": 1,
     "driver_version": "nvcc",
     "toolchain": "ascend-rs codegen",
-    "run_date": "2026-04-10 20:23:43",
+    "run_date": "2026-04-11 11:42:06",
     "verified": 0,
     "gops_per_dollar": 0.021181818181818184,
     "gops_per_watt": 0.6657142857142857
@@ -1320,7 +1320,7 @@
     "num_runs": 1,
     "driver_version": "nvcc",
     "toolchain": "ascend-rs codegen",
-    "run_date": "2026-04-10 20:23:43",
+    "run_date": "2026-04-11 11:42:06",
     "verified": 0,
     "gops_per_dollar": 0.01709090909090909,
     "gops_per_watt": 0.5371428571428571
@@ -1346,7 +1346,7 @@
     "num_runs": 1,
     "driver_version": "macOS 15.6.1",
     "toolchain": "ascend-rs 0.1.0 (metal-swift)",
-    "run_date": "2026-04-10 19:11:21",
+    "run_date": "2026-04-11 11:42:05",
     "verified": 0,
     "gops_per_dollar": 0.010400998363957721,
     "gops_per_watt": 0.5431804966490756
@@ -1372,7 +1372,7 @@
     "num_runs": 1,
     "driver_version": "nvcc",
     "toolchain": "ascend-rs codegen",
-    "run_date": "2026-04-10 20:23:43",
+    "run_date": "2026-04-11 11:42:06",
     "verified": 0,
     "gops_per_dollar": 0.015636363636363636,
     "gops_per_watt": 0.4914285714285714
@@ -1398,7 +1398,7 @@
     "num_runs": 1,
     "driver_version": "macOS 15.6.1",
     "toolchain": "ascend-rs 0.1.0 (metal-swift)",
-    "run_date": "2026-04-10 19:11:21",
+    "run_date": "2026-04-11 11:42:05",
     "verified": 0,
     "gops_per_dollar": 0.009813467551748896,
     "gops_per_watt": 0.5124973576652146
@@ -1420,14 +1420,14 @@
     "batch_size": 16,
     "impl_lang": "cuda",
     "latency_us": 4.769,
-    "throughput_gops": 27.484168588802685,
+    "throughput_gops": 27.5,
     "num_runs": 1,
     "driver_version": "nvcc",
     "toolchain": "ascend-rs mlir_to_cuda",
-    "run_date": "2026-04-10 19:11:22",
+    "run_date": "2026-04-11 11:42:06",
     "verified": 0,
-    "gops_per_dollar": 0.012492803904001221,
-    "gops_per_watt": 0.39263097984003836
+    "gops_per_dollar": 0.0125,
+    "gops_per_watt": 0.39285714285714285
   },
   {
     "device_id": "apple-m4",
@@ -1450,7 +1450,7 @@
     "num_runs": 1,
     "driver_version": "macOS 26.1",
     "toolchain": "ascend-rs 0.1.0 (metal-swift)",
-    "run_date": "2026-04-10 19:11:21",
+    "run_date": "2026-04-11 11:42:05",
     "verified": 0,
     "gops_per_dollar": 0.051081244835462475,
     "gops_per_watt": 1.1586155078588989
@@ -1476,7 +1476,7 @@
     "num_runs": 1,
     "driver_version": "nvcc",
     "toolchain": "ascend-rs codegen",
-    "run_date": "2026-04-10 20:23:43",
+    "run_date": "2026-04-11 11:42:06",
     "verified": 0,
     "gops_per_dollar": 0.01090909090909091,
     "gops_per_watt": 0.34285714285714286
@@ -1502,7 +1502,7 @@
     "num_runs": 1,
     "driver_version": "CANN 8.5.0",
     "toolchain": "ascend-rs (tile)",
-    "run_date": "2026-04-10 19:36:22",
+    "run_date": "2026-04-11 11:42:05",
     "verified": 0,
     "gops_per_dollar": null,
     "gops_per_watt": 0.0767741935483871
@@ -1528,7 +1528,7 @@
     "num_runs": 1,
     "driver_version": "macOS 26.1",
     "toolchain": "ascend-rs 0.1.0 (metal-swift)",
-    "run_date": "2026-04-10 19:11:21",
+    "run_date": "2026-04-11 11:42:05",
     "verified": 0,
     "gops_per_dollar": 0.046031866580916486,
     "gops_per_watt": 1.0440864283580604
@@ -1554,7 +1554,7 @@
     "num_runs": 1,
     "driver_version": "nvcc",
     "toolchain": "ascend-rs codegen",
-    "run_date": "2026-04-10 20:23:43",
+    "run_date": "2026-04-11 11:42:06",
     "verified": 0,
     "gops_per_dollar": 0.009045454545454544,
     "gops_per_watt": 0.28428571428571425
@@ -1580,7 +1580,7 @@
     "num_runs": 40,
     "driver_version": "CANN 8.5.0",
     "toolchain": "ascend-rs 0.1.0 (rust_pipeline)",
-    "run_date": "2026-04-10 19:11:22",
+    "run_date": "2026-04-11 11:42:06",
     "verified": 0,
     "gops_per_dollar": null,
     "gops_per_watt": 0.06406256109481916
@@ -1606,10 +1606,62 @@
     "num_runs": 40,
     "driver_version": "CANN 8.5.0",
     "toolchain": "ascend-rs 0.1.0 (rust_pipeline)",
-    "run_date": "2026-04-10 19:11:22",
+    "run_date": "2026-04-11 11:42:06",
     "verified": 0,
     "gops_per_dollar": null,
     "gops_per_watt": 0.0569828710546909
+  },
+  {
+    "device_id": "huawei-910b",
+    "vendor": "Huawei",
+    "model": "Ascend 910B",
+    "xpu_type": "NPU",
+    "tdp_watts": 310.0,
+    "msrp_usd": null,
+    "memory_gb": 64.0,
+    "memory_bw_gbps": 1600.0,
+    "kernel_id": "layernorm",
+    "kernel_name": "Layer Normalization",
+    "kernel_category": "normalization",
+    "dtype": "f32",
+    "input_shape": "[16, 512]",
+    "batch_size": 16,
+    "impl_lang": "rust",
+    "latency_us": 5.17,
+    "throughput_gops": 12.68,
+    "num_runs": 1,
+    "driver_version": "CANN 8.5.0",
+    "toolchain": "ascend-rs (tile)",
+    "run_date": "2026-04-11 11:42:05",
+    "verified": 0,
+    "gops_per_dollar": null,
+    "gops_per_watt": 0.040903225806451615
+  },
+  {
+    "device_id": "huawei-910b",
+    "vendor": "Huawei",
+    "model": "Ascend 910B",
+    "xpu_type": "NPU",
+    "tdp_watts": 310.0,
+    "msrp_usd": null,
+    "memory_gb": 64.0,
+    "memory_bw_gbps": 1600.0,
+    "kernel_id": "layernorm",
+    "kernel_name": "Layer Normalization",
+    "kernel_category": "normalization",
+    "dtype": "f32",
+    "input_shape": "[1, 8192]",
+    "batch_size": 1,
+    "impl_lang": "rust",
+    "latency_us": 6.7,
+    "throughput_gops": 9.78,
+    "num_runs": 1,
+    "driver_version": "CANN 8.5.0",
+    "toolchain": "ascend-rs (tile)",
+    "run_date": "2026-04-11 11:42:05",
+    "verified": 0,
+    "gops_per_dollar": null,
+    "gops_per_watt": 0.03154838709677419
   },
   {
     "device_id": "apple-m2-max-38",
@@ -1632,7 +1684,7 @@
     "num_runs": 1,
     "driver_version": "macOS 15.6.1",
     "toolchain": "ascend-rs 0.1.0 (metal-swift)",
-    "run_date": "2026-04-10 19:11:21",
+    "run_date": "2026-04-11 11:42:05",
     "verified": 0,
     "gops_per_dollar": 0.0027318027836055777,
     "gops_per_watt": 0.1426653423856107
@@ -1658,7 +1710,7 @@
     "num_runs": 1,
     "driver_version": "macOS 15.6.1",
     "toolchain": "ascend-rs 0.1.0 (metal-swift)",
-    "run_date": "2026-04-10 19:11:21",
+    "run_date": "2026-04-11 11:42:05",
     "verified": 0,
     "gops_per_dollar": 0.0024423697258478556,
     "gops_per_watt": 0.1275500249364425
@@ -1684,7 +1736,7 @@
     "num_runs": 1,
     "driver_version": "macOS 26.1",
     "toolchain": "ascend-rs 0.1.0 (metal-swift)",
-    "run_date": "2026-04-10 19:11:21",
+    "run_date": "2026-04-11 11:42:05",
     "verified": 0,
     "gops_per_dollar": 0.01597381002978972,
     "gops_per_watt": 0.3623150547665941
@@ -1710,7 +1762,7 @@
     "num_runs": 1,
     "driver_version": "macOS 26.1",
     "toolchain": "ascend-rs 0.1.0 (metal-swift)",
-    "run_date": "2026-04-10 19:11:21",
+    "run_date": "2026-04-11 11:42:05",
     "verified": 0,
     "gops_per_dollar": 0.015577129054253801,
     "gops_per_watt": 0.3533176090033021
@@ -1736,7 +1788,7 @@
     "num_runs": 20,
     "driver_version": "Metal (metal)",
     "toolchain": "ascend-rs 0.1.0 (metal)",
-    "run_date": "2026-04-10 19:11:21",
+    "run_date": "2026-04-11 11:42:05",
     "verified": 0,
     "gops_per_dollar": 0.001956926065539348,
     "gops_per_watt": 0.10219827318391313
@@ -1762,7 +1814,7 @@
     "num_runs": 20,
     "driver_version": "Metal (metal)",
     "toolchain": "ascend-rs 0.1.0 (metal)",
-    "run_date": "2026-04-10 19:11:21",
+    "run_date": "2026-04-11 11:42:05",
     "verified": 0,
     "gops_per_dollar": 0.0019545435783326084,
     "gops_per_watt": 0.10207385045650443
@@ -1788,7 +1840,7 @@
     "num_runs": 40,
     "driver_version": "CANN 8.5.0",
     "toolchain": "ascend-rs 0.1.0 (rust_pipeline)",
-    "run_date": "2026-04-10 19:11:22",
+    "run_date": "2026-04-11 11:42:06",
     "verified": 0,
     "gops_per_dollar": null,
     "gops_per_watt": 0.020889965574397554
@@ -1814,10 +1866,36 @@
     "num_runs": 40,
     "driver_version": "CANN 8.5.0",
     "toolchain": "ascend-rs 0.1.0 (rust_pipeline)",
-    "run_date": "2026-04-10 19:11:22",
+    "run_date": "2026-04-11 11:42:06",
     "verified": 0,
     "gops_per_dollar": null,
     "gops_per_watt": 0.02048512128032008
+  },
+  {
+    "device_id": "huawei-910b",
+    "vendor": "Huawei",
+    "model": "Ascend 910B",
+    "xpu_type": "NPU",
+    "tdp_watts": 310.0,
+    "msrp_usd": null,
+    "memory_gb": 64.0,
+    "memory_bw_gbps": 1600.0,
+    "kernel_id": "layernorm",
+    "kernel_name": "Layer Normalization",
+    "kernel_category": "normalization",
+    "dtype": "f32",
+    "input_shape": "[16, 256]",
+    "batch_size": 16,
+    "impl_lang": "rust",
+    "latency_us": 5.16,
+    "throughput_gops": 6.35,
+    "num_runs": 1,
+    "driver_version": "CANN 8.5.0",
+    "toolchain": "ascend-rs (tile)",
+    "run_date": "2026-04-11 11:42:05",
+    "verified": 0,
+    "gops_per_dollar": null,
+    "gops_per_watt": 0.020483870967741933
   },
   {
     "device_id": "apple-m2-max-38",
@@ -1840,7 +1918,7 @@
     "num_runs": 20,
     "driver_version": "Metal (metal)",
     "toolchain": "ascend-rs 0.1.0 (metal)",
-    "run_date": "2026-04-10 19:11:21",
+    "run_date": "2026-04-11 11:42:05",
     "verified": 0,
     "gops_per_dollar": 0.0017617799256997757,
     "gops_per_watt": 0.0920069844779629
@@ -1866,7 +1944,7 @@
     "num_runs": 20,
     "driver_version": "Metal (metal)",
     "toolchain": "ascend-rs 0.1.0 (metal)",
-    "run_date": "2026-04-10 19:11:21",
+    "run_date": "2026-04-11 11:42:05",
     "verified": 0,
     "gops_per_dollar": 0.0017569769024215513,
     "gops_per_watt": 0.09175615196377623
@@ -1892,10 +1970,36 @@
     "num_runs": 20,
     "driver_version": "Metal (metal)",
     "toolchain": "ascend-rs 0.1.0 (metal)",
-    "run_date": "2026-04-10 19:11:21",
+    "run_date": "2026-04-11 11:42:05",
     "verified": 0,
     "gops_per_dollar": 0.0016288364817186258,
     "gops_per_watt": 0.0850641619333354
+  },
+  {
+    "device_id": "huawei-910b",
+    "vendor": "Huawei",
+    "model": "Ascend 910B",
+    "xpu_type": "NPU",
+    "tdp_watts": 310.0,
+    "msrp_usd": null,
+    "memory_gb": 64.0,
+    "memory_bw_gbps": 1600.0,
+    "kernel_id": "layernorm",
+    "kernel_name": "Layer Normalization",
+    "kernel_category": "normalization",
+    "dtype": "f32",
+    "input_shape": "[1, 4096]",
+    "batch_size": 1,
+    "impl_lang": "rust",
+    "latency_us": 6.52,
+    "throughput_gops": 5.03,
+    "num_runs": 1,
+    "driver_version": "CANN 8.5.0",
+    "toolchain": "ascend-rs (tile)",
+    "run_date": "2026-04-11 11:42:05",
+    "verified": 0,
+    "gops_per_dollar": null,
+    "gops_per_watt": 0.016225806451612906
   },
   {
     "device_id": "apple-m2-max-38",
@@ -1918,7 +2022,7 @@
     "num_runs": 20,
     "driver_version": "Metal (metal)",
     "toolchain": "ascend-rs 0.1.0 (metal)",
-    "run_date": "2026-04-10 19:11:21",
+    "run_date": "2026-04-11 11:42:05",
     "verified": 0,
     "gops_per_dollar": 0.0012941173958696372,
     "gops_per_watt": 0.06758383236041583
@@ -1944,7 +2048,7 @@
     "num_runs": 1,
     "driver_version": "nvcc",
     "toolchain": "ascend-rs codegen",
-    "run_date": "2026-04-10 20:23:43",
+    "run_date": "2026-04-11 11:42:06",
     "verified": 0,
     "gops_per_dollar": 0.002,
     "gops_per_watt": 0.06285714285714286
@@ -1970,7 +2074,7 @@
     "num_runs": 1,
     "driver_version": "CANN 8.5.0",
     "toolchain": "ascend-rs (tile)",
-    "run_date": "2026-04-10 19:36:22",
+    "run_date": "2026-04-11 11:42:05",
     "verified": 0,
     "gops_per_dollar": null,
     "gops_per_watt": 0.013548387096774195
@@ -1996,7 +2100,7 @@
     "num_runs": 20,
     "driver_version": "Metal (metal)",
     "toolchain": "ascend-rs 0.1.0 (metal)",
-    "run_date": "2026-04-10 19:11:21",
+    "run_date": "2026-04-11 11:42:05",
     "verified": 0,
     "gops_per_dollar": 0.0010501288325054847,
     "gops_per_watt": 0.05484180276024912
@@ -2018,14 +2122,14 @@
     "batch_size": 1,
     "impl_lang": "cuda",
     "latency_us": 9.703,
-    "throughput_gops": 3.377099866020819,
+    "throughput_gops": 3.4,
     "num_runs": 1,
     "driver_version": "nvcc",
     "toolchain": "ascend-rs mlir_to_cuda",
-    "run_date": "2026-04-10 19:11:22",
+    "run_date": "2026-04-11 11:42:06",
     "verified": 0,
-    "gops_per_dollar": 0.0015350453936458267,
-    "gops_per_watt": 0.04824428380029741
+    "gops_per_dollar": 0.0015454545454545454,
+    "gops_per_watt": 0.04857142857142857
   },
   {
     "device_id": "apple-m2-max-38",
@@ -2048,7 +2152,7 @@
     "num_runs": 20,
     "driver_version": "Metal (metal)",
     "toolchain": "ascend-rs 0.1.0 (metal)",
-    "run_date": "2026-04-10 19:11:21",
+    "run_date": "2026-04-11 11:42:05",
     "verified": 0,
     "gops_per_dollar": 0.0008889379608493469,
     "gops_per_watt": 0.04642378992555023
@@ -2074,7 +2178,7 @@
     "num_runs": 1,
     "driver_version": "nvcc",
     "toolchain": "ascend-rs codegen",
-    "run_date": "2026-04-10 20:23:43",
+    "run_date": "2026-04-11 11:42:06",
     "verified": 0,
     "gops_per_dollar": 0.0013181818181818182,
     "gops_per_watt": 0.041428571428571426
@@ -2100,7 +2204,7 @@
     "num_runs": 20,
     "driver_version": "Metal (metal)",
     "toolchain": "ascend-rs 0.1.0 (metal)",
-    "run_date": "2026-04-10 19:11:21",
+    "run_date": "2026-04-11 11:42:05",
     "verified": 0,
     "gops_per_dollar": 0.0007545542485686672,
     "gops_per_watt": 0.0394057509812204
@@ -2126,7 +2230,7 @@
     "num_runs": 1,
     "driver_version": "macOS 26.1",
     "toolchain": "ascend-rs 0.1.0 (metal-swift)",
-    "run_date": "2026-04-10 19:11:21",
+    "run_date": "2026-04-11 11:42:05",
     "verified": 0,
     "gops_per_dollar": 0.0051078140724813755,
     "gops_per_watt": 0.11585451009855484
@@ -2152,7 +2256,7 @@
     "num_runs": 1,
     "driver_version": "macOS 15.6.1",
     "toolchain": "ascend-rs 0.1.0 (metal-swift)",
-    "run_date": "2026-04-10 19:11:21",
+    "run_date": "2026-04-11 11:42:05",
     "verified": 0,
     "gops_per_dollar": 0.0007014952372695034,
     "gops_per_watt": 0.0366348035105372
@@ -2178,7 +2282,7 @@
     "num_runs": 1,
     "driver_version": "nvcc",
     "toolchain": "ascend-rs codegen",
-    "run_date": "2026-04-10 20:23:43",
+    "run_date": "2026-04-11 11:42:06",
     "verified": 0,
     "gops_per_dollar": 0.0010454545454545454,
     "gops_per_watt": 0.032857142857142856
@@ -2204,7 +2308,7 @@
     "num_runs": 1,
     "driver_version": "nvcc",
     "toolchain": "ascend-rs codegen",
-    "run_date": "2026-04-10 20:23:43",
+    "run_date": "2026-04-11 11:42:06",
     "verified": 0,
     "gops_per_dollar": 0.0010454545454545454,
     "gops_per_watt": 0.032857142857142856
@@ -2230,7 +2334,7 @@
     "num_runs": 1,
     "driver_version": "macOS 26.1",
     "toolchain": "ascend-rs 0.1.0 (metal-swift)",
-    "run_date": "2026-04-10 19:11:21",
+    "run_date": "2026-04-11 11:42:05",
     "verified": 0,
     "gops_per_dollar": 0.004608234011883416,
     "gops_per_watt": 0.10452312599681023
@@ -2256,7 +2360,7 @@
     "num_runs": 1,
     "driver_version": "macOS 15.6.1",
     "toolchain": "ascend-rs 0.1.0 (metal-swift)",
-    "run_date": "2026-04-10 19:11:21",
+    "run_date": "2026-04-11 11:42:05",
     "verified": 0,
     "gops_per_dollar": 0.0005539348712782475,
     "gops_per_watt": 0.028928628576158032
@@ -2278,14 +2382,14 @@
     "batch_size": 1,
     "impl_lang": "cuda",
     "latency_us": 4.722,
-    "throughput_gops": 1.734858110969928,
+    "throughput_gops": 1.7,
     "num_runs": 1,
     "driver_version": "nvcc",
     "toolchain": "ascend-rs mlir_to_cuda",
-    "run_date": "2026-04-10 19:11:22",
+    "run_date": "2026-04-11 11:42:06",
     "verified": 0,
-    "gops_per_dollar": 0.0007885718686226946,
-    "gops_per_watt": 0.0247836872995704
+    "gops_per_dollar": 0.0007727272727272727,
+    "gops_per_watt": 0.024285714285714285
   },
   {
     "device_id": "nvidia-tesla-t4",
@@ -2308,10 +2412,36 @@
     "num_runs": 1,
     "driver_version": "nvcc",
     "toolchain": "ascend-rs codegen",
-    "run_date": "2026-04-10 20:23:43",
+    "run_date": "2026-04-11 11:42:06",
     "verified": 0,
     "gops_per_dollar": 0.0006818181818181819,
     "gops_per_watt": 0.02142857142857143
+  },
+  {
+    "device_id": "huawei-910b",
+    "vendor": "Huawei",
+    "model": "Ascend 910B",
+    "xpu_type": "NPU",
+    "tdp_watts": 310.0,
+    "msrp_usd": null,
+    "memory_gb": 64.0,
+    "memory_bw_gbps": 1600.0,
+    "kernel_id": "layernorm",
+    "kernel_name": "Layer Normalization",
+    "kernel_category": "normalization",
+    "dtype": "f32",
+    "input_shape": "[4, 256]",
+    "batch_size": 4,
+    "impl_lang": "rust",
+    "latency_us": 5.53,
+    "throughput_gops": 1.48,
+    "num_runs": 1,
+    "driver_version": "CANN 8.5.0",
+    "toolchain": "ascend-rs (tile)",
+    "run_date": "2026-04-11 11:42:05",
+    "verified": 0,
+    "gops_per_dollar": null,
+    "gops_per_watt": 0.0047741935483870965
   },
   {
     "device_id": "huawei-910b",
@@ -2334,10 +2464,36 @@
     "num_runs": 40,
     "driver_version": "CANN 8.5.0",
     "toolchain": "ascend-rs 0.1.0 (rust_pipeline)",
-    "run_date": "2026-04-10 19:11:22",
+    "run_date": "2026-04-11 11:42:06",
     "verified": 0,
     "gops_per_dollar": null,
     "gops_per_watt": 0.004693748925686129
+  },
+  {
+    "device_id": "huawei-910b",
+    "vendor": "Huawei",
+    "model": "Ascend 910B",
+    "xpu_type": "NPU",
+    "tdp_watts": 310.0,
+    "msrp_usd": null,
+    "memory_gb": 64.0,
+    "memory_bw_gbps": 1600.0,
+    "kernel_id": "layernorm",
+    "kernel_name": "Layer Normalization",
+    "kernel_category": "normalization",
+    "dtype": "f32",
+    "input_shape": "[1, 1024]",
+    "batch_size": 1,
+    "impl_lang": "rust",
+    "latency_us": 6.08,
+    "throughput_gops": 1.35,
+    "num_runs": 1,
+    "driver_version": "CANN 8.5.0",
+    "toolchain": "ascend-rs (tile)",
+    "run_date": "2026-04-11 11:42:05",
+    "verified": 0,
+    "gops_per_dollar": null,
+    "gops_per_watt": 0.00435483870967742
   },
   {
     "device_id": "huawei-910b",
@@ -2360,7 +2516,7 @@
     "num_runs": 1,
     "driver_version": "CANN 8.5.0",
     "toolchain": "ascend-rs (tile)",
-    "run_date": "2026-04-10 19:36:22",
+    "run_date": "2026-04-11 11:42:05",
     "verified": 0,
     "gops_per_dollar": null,
     "gops_per_watt": 0.004193548387096774
@@ -2386,7 +2542,7 @@
     "num_runs": 1,
     "driver_version": "nvcc",
     "toolchain": "ascend-rs codegen",
-    "run_date": "2026-04-10 20:23:43",
+    "run_date": "2026-04-11 11:42:06",
     "verified": 0,
     "gops_per_dollar": 0.0005909090909090909,
     "gops_per_watt": 0.018571428571428572
@@ -2412,7 +2568,7 @@
     "num_runs": 20,
     "driver_version": "Metal (metal)",
     "toolchain": "ascend-rs 0.1.0 (metal)",
-    "run_date": "2026-04-10 19:11:21",
+    "run_date": "2026-04-11 11:42:05",
     "verified": 0,
     "gops_per_dollar": 0.0002659744793396158,
     "gops_per_watt": 0.013890219450885309
@@ -2438,7 +2594,7 @@
     "num_runs": 1,
     "driver_version": "macOS 26.1",
     "toolchain": "ascend-rs 0.1.0 (metal-swift)",
-    "run_date": "2026-04-10 19:11:21",
+    "run_date": "2026-04-11 11:42:05",
     "verified": 0,
     "gops_per_dollar": 0.0013074631093944983,
     "gops_per_watt": 0.029655640526720664
@@ -2464,7 +2620,7 @@
     "num_runs": 40,
     "driver_version": "CANN 8.5.0",
     "toolchain": "ascend-rs 0.1.0 (rust_pipeline)",
-    "run_date": "2026-04-10 19:11:22",
+    "run_date": "2026-04-11 11:42:06",
     "verified": 0,
     "gops_per_dollar": null,
     "gops_per_watt": 0.0018889068228458118
@@ -2490,7 +2646,7 @@
     "num_runs": 20,
     "driver_version": "Metal (metal)",
     "toolchain": "ascend-rs 0.1.0 (metal)",
-    "run_date": "2026-04-10 19:11:21",
+    "run_date": "2026-04-11 11:42:05",
     "verified": 0,
     "gops_per_dollar": 0.00016157628394665064,
     "gops_per_watt": 0.008438140560139263
@@ -2516,7 +2672,7 @@
     "num_runs": 16,
     "driver_version": "CANN 8.5.0",
     "toolchain": "ascend-rs 0.1.0 (cpp_opt)",
-    "run_date": "2026-04-10 19:11:22",
+    "run_date": "2026-04-11 11:42:06",
     "verified": 0,
     "gops_per_dollar": null,
     "gops_per_watt": 0.0017676124716797929
@@ -2542,7 +2698,7 @@
     "num_runs": 1,
     "driver_version": "macOS 15.6.1",
     "toolchain": "ascend-rs 0.1.0 (metal-swift)",
-    "run_date": "2026-04-10 19:11:21",
+    "run_date": "2026-04-11 11:42:05",
     "verified": 0,
     "gops_per_dollar": 0.00014363437756975263,
     "gops_per_watt": 0.00750114458382932
@@ -2568,7 +2724,7 @@
     "num_runs": 40,
     "driver_version": "CANN 8.5.0",
     "toolchain": "ascend-rs 0.1.0 (rust_pipeline)",
-    "run_date": "2026-04-10 19:11:22",
+    "run_date": "2026-04-11 11:42:06",
     "verified": 0,
     "gops_per_dollar": null,
     "gops_per_watt": 0.0009816421415903753
@@ -2594,7 +2750,7 @@
     "num_runs": 20,
     "driver_version": "CANN 8.5.0",
     "toolchain": "ascend-rs 0.1.0 (cpp_opt)",
-    "run_date": "2026-04-10 19:11:22",
+    "run_date": "2026-04-11 11:42:06",
     "verified": 0,
     "gops_per_dollar": null,
     "gops_per_watt": 0.0009804811892164425
@@ -2620,7 +2776,7 @@
     "num_runs": 20,
     "driver_version": "CANN 8.5.0",
     "toolchain": "ascend-rs 0.1.0 (cpp_opt)",
-    "run_date": "2026-04-10 19:11:22",
+    "run_date": "2026-04-11 11:42:06",
     "verified": 0,
     "gops_per_dollar": null,
     "gops_per_watt": 0.0009552071733819955
@@ -2646,7 +2802,7 @@
     "num_runs": 90,
     "driver_version": "CANN 8.5.0",
     "toolchain": "ascend-rs 0.1.0 (rust_pipeline)",
-    "run_date": "2026-04-10 19:11:22",
+    "run_date": "2026-04-11 11:42:06",
     "verified": 0,
     "gops_per_dollar": null,
     "gops_per_watt": 0.0009285244712443044
@@ -2672,7 +2828,7 @@
     "num_runs": 90,
     "driver_version": "CANN 8.5.0",
     "toolchain": "ascend-rs 0.1.0 (rust_pipeline)",
-    "run_date": "2026-04-10 19:11:22",
+    "run_date": "2026-04-11 11:42:06",
     "verified": 0,
     "gops_per_dollar": null,
     "gops_per_watt": 0.0009091186531904325
@@ -2698,7 +2854,7 @@
     "num_runs": 90,
     "driver_version": "CANN 8.5.0",
     "toolchain": "ascend-rs 0.1.0 (rust_pipeline)",
-    "run_date": "2026-04-10 19:11:22",
+    "run_date": "2026-04-11 11:42:06",
     "verified": 0,
     "gops_per_dollar": null,
     "gops_per_watt": 0.000831000202880909
@@ -2724,7 +2880,7 @@
     "num_runs": 20,
     "driver_version": "Metal (metal)",
     "toolchain": "ascend-rs 0.1.0 (metal)",
-    "run_date": "2026-04-10 19:11:21",
+    "run_date": "2026-04-11 11:42:05",
     "verified": 0,
     "gops_per_dollar": 7.106152431364735e-05,
     "gops_per_watt": 0.003711108560797792
@@ -2750,7 +2906,7 @@
     "num_runs": 20,
     "driver_version": "CANN 8.5.0",
     "toolchain": "ascend-rs 0.1.0 (cpp_opt)",
-    "run_date": "2026-04-10 19:11:22",
+    "run_date": "2026-04-11 11:42:06",
     "verified": 0,
     "gops_per_dollar": null,
     "gops_per_watt": 0.0006856721964611548
@@ -2776,7 +2932,7 @@
     "num_runs": 60,
     "driver_version": "CANN 8.5.0",
     "toolchain": "ascend-rs 0.1.0 (cpp_opt)",
-    "run_date": "2026-04-10 19:11:22",
+    "run_date": "2026-04-11 11:42:06",
     "verified": 0,
     "gops_per_dollar": null,
     "gops_per_watt": 0.0006832346054324325
@@ -2802,7 +2958,7 @@
     "num_runs": 60,
     "driver_version": "CANN 8.5.0",
     "toolchain": "ascend-rs 0.1.0 (cpp_opt)",
-    "run_date": "2026-04-10 19:11:22",
+    "run_date": "2026-04-11 11:42:06",
     "verified": 0,
     "gops_per_dollar": null,
     "gops_per_watt": 0.0006343208461740975
@@ -2828,7 +2984,7 @@
     "num_runs": 20,
     "driver_version": "CANN 8.5.0",
     "toolchain": "ascend-rs 0.1.0 (cpp_opt)",
-    "run_date": "2026-04-10 19:11:22",
+    "run_date": "2026-04-11 11:42:06",
     "verified": 0,
     "gops_per_dollar": null,
     "gops_per_watt": 0.0006286619829097872
@@ -2854,7 +3010,7 @@
     "num_runs": 90,
     "driver_version": "CANN 8.5.0",
     "toolchain": "ascend-rs 0.1.0 (rust_pipeline)",
-    "run_date": "2026-04-10 19:11:22",
+    "run_date": "2026-04-11 11:42:06",
     "verified": 0,
     "gops_per_dollar": null,
     "gops_per_watt": 0.0005670773916655129
@@ -2880,7 +3036,7 @@
     "num_runs": 20,
     "driver_version": "Metal (metal)",
     "toolchain": "ascend-rs 0.1.0 (metal)",
-    "run_date": "2026-04-10 19:11:21",
+    "run_date": "2026-04-11 11:42:05",
     "verified": 0,
     "gops_per_dollar": 4.9887925727401824e-05,
     "gops_per_watt": 0.002605341076420582
@@ -2906,7 +3062,7 @@
     "num_runs": 10,
     "driver_version": "CANN 8.5.0",
     "toolchain": "ascend-rs 0.1.0 (cpp_naive)",
-    "run_date": "2026-04-10 19:11:22",
+    "run_date": "2026-04-11 11:42:06",
     "verified": 0,
     "gops_per_dollar": null,
     "gops_per_watt": 0.0005578521805784261
@@ -2932,7 +3088,7 @@
     "num_runs": 40,
     "driver_version": "CANN 8.5.0",
     "toolchain": "ascend-rs 0.1.0 (rust_pipeline)",
-    "run_date": "2026-04-10 19:11:22",
+    "run_date": "2026-04-11 11:42:06",
     "verified": 0,
     "gops_per_dollar": null,
     "gops_per_watt": 0.0004944948812053313
@@ -2958,7 +3114,7 @@
     "num_runs": 1,
     "driver_version": "macOS 26.1",
     "toolchain": "ascend-rs 0.1.0 (metal-swift)",
-    "run_date": "2026-04-10 19:11:21",
+    "run_date": "2026-04-11 11:42:05",
     "verified": 0,
     "gops_per_dollar": 0.0002754502293176958,
     "gops_per_watt": 0.006247712019524101
@@ -2984,7 +3140,7 @@
     "num_runs": 1,
     "driver_version": "macOS 15.6.1",
     "toolchain": "ascend-rs 0.1.0 (metal-swift)",
-    "run_date": "2026-04-10 19:11:21",
+    "run_date": "2026-04-11 11:42:05",
     "verified": 0,
     "gops_per_dollar": 3.893954851371256e-05,
     "gops_per_watt": 0.0020335743320817946
@@ -3010,7 +3166,7 @@
     "num_runs": 60,
     "driver_version": "CANN 8.5.0",
     "toolchain": "ascend-rs 0.1.0 (cpp_opt)",
-    "run_date": "2026-04-10 19:11:22",
+    "run_date": "2026-04-11 11:42:06",
     "verified": 0,
     "gops_per_dollar": null,
     "gops_per_watt": 0.0004380936082827073
@@ -3036,7 +3192,7 @@
     "num_runs": 20,
     "driver_version": "CANN 8.5.0",
     "toolchain": "ascend-rs 0.1.0 (cpp_opt)",
-    "run_date": "2026-04-10 19:11:22",
+    "run_date": "2026-04-11 11:42:06",
     "verified": 0,
     "gops_per_dollar": null,
     "gops_per_watt": 0.0003930072345570034
@@ -3062,7 +3218,7 @@
     "num_runs": 10,
     "driver_version": "CANN 8.5.0",
     "toolchain": "ascend-rs 0.1.0 (cpp_naive)",
-    "run_date": "2026-04-10 19:11:22",
+    "run_date": "2026-04-11 11:42:06",
     "verified": 0,
     "gops_per_dollar": null,
     "gops_per_watt": 0.0003340862712952215
@@ -3088,7 +3244,7 @@
     "num_runs": 1,
     "driver_version": "macOS 26.1",
     "toolchain": "ascend-rs 0.1.0 (metal-swift)",
-    "run_date": "2026-04-10 19:11:21",
+    "run_date": "2026-04-11 11:42:05",
     "verified": 0,
     "gops_per_dollar": 8.282963505214264e-05,
     "gops_per_watt": 0.0018787267223190534
@@ -3114,7 +3270,7 @@
     "num_runs": 1,
     "driver_version": "macOS 15.6.1",
     "toolchain": "ascend-rs 0.1.0 (metal-swift)",
-    "run_date": "2026-04-10 19:11:21",
+    "run_date": "2026-04-11 11:42:05",
     "verified": 0,
     "gops_per_dollar": 8.27001184877064e-06,
     "gops_per_watt": 0.0004318921113260965
@@ -3140,7 +3296,7 @@
     "num_runs": 500,
     "driver_version": "Metal (metal)",
     "toolchain": "ascend-rs 0.1.0 (metal)",
-    "run_date": "2026-04-10 19:11:21",
+    "run_date": "2026-04-11 11:42:05",
     "verified": 0,
     "gops_per_dollar": 6.725723104428375e-08,
     "gops_per_watt": 3.51243360334252e-06
@@ -3166,7 +3322,7 @@
     "num_runs": 500,
     "driver_version": "Metal (metal)",
     "toolchain": "ascend-rs 0.1.0 (metal)",
-    "run_date": "2026-04-10 19:11:21",
+    "run_date": "2026-04-11 11:42:05",
     "verified": 0,
     "gops_per_dollar": 6.480848295055191e-08,
     "gops_per_watt": 3.384550475283301e-06
@@ -3192,7 +3348,7 @@
     "num_runs": 500,
     "driver_version": "Metal (metal)",
     "toolchain": "ascend-rs 0.1.0 (metal)",
-    "run_date": "2026-04-10 19:11:21",
+    "run_date": "2026-04-11 11:42:05",
     "verified": 0,
     "gops_per_dollar": 5.157823039267425e-08,
     "gops_per_watt": 2.6936153454323464e-06
