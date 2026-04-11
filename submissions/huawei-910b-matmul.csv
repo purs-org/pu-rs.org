@@ -1,0 +1,23 @@
+device_id,kernel_id,dtype,input_shape,batch_size,impl_lang,latency_us,throughput_gbps,driver_version,toolchain,git_sha,submitter
+huawei-910b,matmul,f16,"[1024, 1024]",1,aclnn,26.7,80430,CANN 8.5.0,aclnnMatmul,,bench_gemm_ascend.py
+huawei-910b,matmul,f16,"[1024, 1024]",1,aclnn,25.2,80430,CANN 8.5.0,aclnnMatmul,,bench_gemm_ascend.py
+huawei-910b,matmul,f16,"[1024, 1024]",1,aclnn,60.4,80430,CANN 8.5.0,aclnnMatmul,,bench_gemm_ascend.py
+huawei-910b,matmul,f16,"[2048, 2048]",1,aclnn,64.5,266350,CANN 8.5.0,aclnnMatmul,,bench_gemm_ascend.py
+huawei-910b,matmul,f16,"[2048, 2048]",1,aclnn,63.9,266350,CANN 8.5.0,aclnnMatmul,,bench_gemm_ascend.py
+huawei-910b,matmul,f16,"[2048, 2048]",1,aclnn,76.2,266350,CANN 8.5.0,aclnnMatmul,,bench_gemm_ascend.py
+huawei-910b,matmul,f16,"[4096, 4096]",1,aclnn,437.1,314460,CANN 8.5.0,aclnnMatmul,,bench_gemm_ascend.py
+huawei-910b,matmul,f16,"[4096, 4096]",1,aclnn,428.8,314460,CANN 8.5.0,aclnnMatmul,,bench_gemm_ascend.py
+huawei-910b,matmul,f16,"[4096, 4096]",1,aclnn,490.8,314460,CANN 8.5.0,aclnnMatmul,,bench_gemm_ascend.py
+huawei-910b,matmul,f16,"[8192, 8192]",1,aclnn,3613.9,304240,CANN 8.5.0,aclnnMatmul,,bench_gemm_ascend.py
+huawei-910b,matmul,f16,"[8192, 8192]",1,aclnn,3521.3,304240,CANN 8.5.0,aclnnMatmul,,bench_gemm_ascend.py
+huawei-910b,matmul,f16,"[8192, 8192]",1,aclnn,3704.6,304240,CANN 8.5.0,aclnnMatmul,,bench_gemm_ascend.py
+huawei-910b,matmul,f16,"[16384, 16384]",1,aclnn,27467.4,320240,CANN 8.5.0,aclnnMatmul,,bench_gemm_ascend.py
+huawei-910b,matmul,f16,"[1024, 4096] x [4096, 1024]",1,aclnn,67.2,127830,CANN 8.5.0,aclnnMatmul,,bench_gemm_ascend.py
+huawei-910b,matmul,f16,"[1024, 4096] x [4096, 1024]",1,aclnn,65.5,127830,CANN 8.5.0,aclnnMatmul,,bench_gemm_ascend.py
+huawei-910b,matmul,f16,"[1024, 4096] x [4096, 1024]",1,aclnn,81.3,127830,CANN 8.5.0,aclnnMatmul,,bench_gemm_ascend.py
+huawei-910b,matmul,f16,"[4096, 1024] x [1024, 4096]",1,aclnn,132.1,260140,CANN 8.5.0,aclnnMatmul,,bench_gemm_ascend.py
+huawei-910b,matmul,f16,"[4096, 1024] x [1024, 4096]",1,aclnn,122.1,260140,CANN 8.5.0,aclnnMatmul,,bench_gemm_ascend.py
+huawei-910b,matmul,f16,"[4096, 1024] x [1024, 4096]",1,aclnn,187.0,260140,CANN 8.5.0,aclnnMatmul,,bench_gemm_ascend.py
+huawei-910b,matmul,f16,"[2048, 8192] x [8192, 2048]",1,aclnn,245.4,279980,CANN 8.5.0,aclnnMatmul,,bench_gemm_ascend.py
+huawei-910b,matmul,f16,"[2048, 8192] x [8192, 2048]",1,aclnn,241.3,279980,CANN 8.5.0,aclnnMatmul,,bench_gemm_ascend.py
+huawei-910b,matmul,f16,"[2048, 8192] x [8192, 2048]",1,aclnn,282.1,279980,CANN 8.5.0,aclnnMatmul,,bench_gemm_ascend.py
