@@ -144,6 +144,14 @@ def _auto_throughput(kernel_id, shape, median_us):
             flops = 2.0 * N * K * D
             return flops / (median_us * 1e-6) / 1e9
 
+    if kernel_id == "conv1d":
+        # Shape: "B=16,L=4096,C=64,K=3" → FLOPs = 2*B*L*C*C*K
+        m = re.search(r'B=(\d+).*L=(\d+).*C=(\d+).*K=(\d+)', shape)
+        if m:
+            B, L, C, K = int(m.group(1)), int(m.group(2)), int(m.group(3)), int(m.group(4))
+            flops = 2.0 * B * L * C * C * K
+            return flops / (median_us * 1e-6) / 1e9
+
     if kernel_id == "matmul":
         # Shape: "[M, N]" (square) or "[M, K] x [K, N]" (rectangular)
         m = re.match(r'\[(\d+),\s*(\d+)\]\s*x\s*\[(\d+),\s*(\d+)\]', shape)
