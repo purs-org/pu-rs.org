@@ -35,8 +35,13 @@ All benchmarks use f16 input with f16 output (or f32 accumulation where supporte
 | Apple M2 Max | [8192²]×[8192²] | 139,596 | 7.9 | 53 |
 | Apple M2 Max | [2048, 8192]×[8192, 2048] | 8,972 | 7.7 | 51 |
 | Apple M2 Max | [4096, 1024]×[1024, 4096] | 4,345 | 7.9 | 53 |
+| Tesla T4 | [4096²]×[4096²] | 5,698 | 24.1 | 345 |
+| Tesla T4 | [8192²]×[8192²] | 44,099 | 24.9 | 356 |
+| Tesla T4 | [2048, 8192]×[8192, 2048] | 2,567 | 26.8 | 383 |
+| Tesla T4 | [4096, 1024]×[1024, 4096] | 1,549 | 22.2 | 317 |
 
 Peak: **320 TFLOPS** (f16) on Ascend 910B — saturating the theoretical maximum.
+Tesla T4 peaks at **26.8 TFLOPS** (f16) via cuBLAS (torch.matmul).
 Apple M2 Max peaks at **7.9 TFLOPS** (f16) via MPSMatrixMultiplication.
 
 <div id="kernel-results" data-kernel="matmul"></div>
