@@ -56,29 +56,6 @@ pub unsafe fn softmax(input: *const f32, output: *mut f32, len: *const u32) {
 }
 ```
 
-**Buffer API** (f16, vectorized V-pipe — used in the attention pipeline):
-```rust
-#[ascend_std::aiv_kernel]
-pub unsafe fn softmax_rows_f16(
-    input: *const u16, output: *mut u16,
-    row_len: *const u32, num_rows: *const u32,
-) {
-    let cols = *row_len;
-    let buf_in = ascend_std::ascend_buf_alloc(cols);
-    let buf_out = ascend_std::ascend_buf_alloc(cols);
-
-    // Per-row: load → reduce_max → sub → exp → reduce_sum → muls → store
-    ascend_std::ascend_buf_load_f16(buf_in, input, cols);
-    ascend_std::ascend_pipe_barrier();
-    let max_val = ascend_std::ascend_reduce_max_f16(/*...*/);
-    ascend_std::ascend_adds_f16(buf_out, buf_in, -max_val, cols);
-    ascend_std::ascend_exp_f16(buf_out, buf_out, cols);
-    let sum_val = ascend_std::ascend_reduce_sum_f16(/*...*/);
-    ascend_std::ascend_muls_f16(buf_out, buf_out, 1.0 / sum_val, cols);
-    ascend_std::ascend_buf_store_f16(output, buf_out, cols);
-}
-```
-
 **Tile API** (compiles to PTO-MLIR for M-pipe, or to CUDA/SPIR-V/NKI/AIE):
 ```rust
 use ascend_std::tile::*;
