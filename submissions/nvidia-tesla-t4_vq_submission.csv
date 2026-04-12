@@ -1,0 +1,19 @@
+device_id,kernel_id,dtype,input_shape,batch_size,impl_lang,latency_us,driver_version,toolchain,git_sha,submitter
+nvidia-tesla-t4,vq-quantize,f32,"N=256,K=512,D=64",1,cuda,374.4,CUDA 12.8,torch.cdist+argmin,,bench_vq_cuda.ipynb
+nvidia-tesla-t4,vq-quantize,f32,"N=256,K=512,D=64",1,cuda,340.3,CUDA 12.8,torch.cdist+argmin,,bench_vq_cuda.ipynb
+nvidia-tesla-t4,vq-quantize,f32,"N=256,K=512,D=64",1,cuda,448.5,CUDA 12.8,torch.cdist+argmin,,bench_vq_cuda.ipynb
+nvidia-tesla-t4,vq-quantize,f32,"N=1024,K=512,D=64",1,cuda,333.3,CUDA 12.8,torch.cdist+argmin,,bench_vq_cuda.ipynb
+nvidia-tesla-t4,vq-quantize,f32,"N=1024,K=512,D=64",1,cuda,313.3,CUDA 12.8,torch.cdist+argmin,,bench_vq_cuda.ipynb
+nvidia-tesla-t4,vq-quantize,f32,"N=1024,K=512,D=64",1,cuda,375.7,CUDA 12.8,torch.cdist+argmin,,bench_vq_cuda.ipynb
+nvidia-tesla-t4,vq-quantize,f32,"N=1024,K=1024,D=128",1,cuda,493.8,CUDA 12.8,torch.cdist+argmin,,bench_vq_cuda.ipynb
+nvidia-tesla-t4,vq-quantize,f32,"N=1024,K=1024,D=128",1,cuda,463.7,CUDA 12.8,torch.cdist+argmin,,bench_vq_cuda.ipynb
+nvidia-tesla-t4,vq-quantize,f32,"N=1024,K=1024,D=128",1,cuda,561.2,CUDA 12.8,torch.cdist+argmin,,bench_vq_cuda.ipynb
+nvidia-tesla-t4,vq-quantize,f32,"N=4096,K=512,D=64",1,cuda,623.8,CUDA 12.8,torch.cdist+argmin,,bench_vq_cuda.ipynb
+nvidia-tesla-t4,vq-quantize,f32,"N=4096,K=512,D=64",1,cuda,602.2,CUDA 12.8,torch.cdist+argmin,,bench_vq_cuda.ipynb
+nvidia-tesla-t4,vq-quantize,f32,"N=4096,K=512,D=64",1,cuda,828.1,CUDA 12.8,torch.cdist+argmin,,bench_vq_cuda.ipynb
+nvidia-tesla-t4,vq-quantize,f32,"N=4096,K=1024,D=128",1,cuda,1162.9,CUDA 12.8,torch.cdist+argmin,,bench_vq_cuda.ipynb
+nvidia-tesla-t4,vq-quantize,f32,"N=4096,K=1024,D=128",1,cuda,1136.6,CUDA 12.8,torch.cdist+argmin,,bench_vq_cuda.ipynb
+nvidia-tesla-t4,vq-quantize,f32,"N=4096,K=1024,D=128",1,cuda,1407.0,CUDA 12.8,torch.cdist+argmin,,bench_vq_cuda.ipynb
+nvidia-tesla-t4,vq-quantize,f32,"N=8192,K=512,D=64",1,cuda,949.3,CUDA 12.8,torch.cdist+argmin,,bench_vq_cuda.ipynb
+nvidia-tesla-t4,vq-quantize,f32,"N=8192,K=512,D=64",1,cuda,943.9,CUDA 12.8,torch.cdist+argmin,,bench_vq_cuda.ipynb
+nvidia-tesla-t4,vq-quantize,f32,"N=8192,K=512,D=64",1,cuda,989.2,CUDA 12.8,torch.cdist+argmin,,bench_vq_cuda.ipynb

@@ -122,9 +122,12 @@ All benchmarks use f32.
 | Ascend 910B | (4096, 512, 64) | 43 | 6,243 | Large batch |
 | Apple M2 Max | (4096, 1024, 128) | 646 | 1,662 | MPS GEMM + CPU argmin |
 | Apple M2 Max | (8192, 512, 64) | 450 | 1,193 | Large batch |
+| Tesla T4 | (4096, 1024, 128) | 1,163 | 923 | torch.cdist + argmin |
+| Tesla T4 | (1024, 1024, 128) | 494 | 544 | torch.cdist + argmin |
+| Tesla T4 | (4096, 512, 64) | 624 | 430 | torch.cdist + argmin |
 
 Peak: **11.4 TFLOPS** on Ascend 910B (cube engine via L2 distance matmul trick).
-Apple M2 Max peaks at **1.7 TFLOPS** via MPS.
+Apple M2 Max peaks at **1.7 TFLOPS** via MPS. Tesla T4 peaks at **923 GFLOPS** via torch.cdist.
 
 <div id="kernel-results" data-kernel="vq-quantize"></div>
 
