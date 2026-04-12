@@ -1,0 +1,16 @@
+device_id,kernel_id,dtype,input_shape,batch_size,impl_lang,latency_us,throughput_gbps,driver_version,toolchain,git_sha,submitter
+nvidia-tesla-t4,gelu,f32,"[1, 768]",1,cuda,53.6,0.1,CUDA 12.8,F.gelu(tanh),,bench_gelu_cuda.ipynb
+nvidia-tesla-t4,gelu,f32,"[1, 768]",1,cuda,22.5,0.3,CUDA 12.8,F.gelu(tanh),,bench_gelu_cuda.ipynb
+nvidia-tesla-t4,gelu,f32,"[1, 768]",1,cuda,156.9,0.0,CUDA 12.8,F.gelu(tanh),,bench_gelu_cuda.ipynb
+nvidia-tesla-t4,gelu,f32,"[1, 4096]",1,cuda,26.8,1.2,CUDA 12.8,F.gelu(tanh),,bench_gelu_cuda.ipynb
+nvidia-tesla-t4,gelu,f32,"[1, 4096]",1,cuda,21.2,1.5,CUDA 12.8,F.gelu(tanh),,bench_gelu_cuda.ipynb
+nvidia-tesla-t4,gelu,f32,"[1, 4096]",1,cuda,94.2,0.3,CUDA 12.8,F.gelu(tanh),,bench_gelu_cuda.ipynb
+nvidia-tesla-t4,gelu,f32,"[64, 768]",1,cuda,22.5,17.5,CUDA 12.8,F.gelu(tanh),,bench_gelu_cuda.ipynb
+nvidia-tesla-t4,gelu,f32,"[64, 768]",1,cuda,20.7,19.0,CUDA 12.8,F.gelu(tanh),,bench_gelu_cuda.ipynb
+nvidia-tesla-t4,gelu,f32,"[64, 768]",1,cuda,33.8,11.6,CUDA 12.8,F.gelu(tanh),,bench_gelu_cuda.ipynb
+nvidia-tesla-t4,gelu,f32,"[64, 4096]",1,cuda,22.5,93.1,CUDA 12.8,F.gelu(tanh),,bench_gelu_cuda.ipynb
+nvidia-tesla-t4,gelu,f32,"[64, 4096]",1,cuda,20.6,101.6,CUDA 12.8,F.gelu(tanh),,bench_gelu_cuda.ipynb
+nvidia-tesla-t4,gelu,f32,"[64, 4096]",1,cuda,40.9,51.2,CUDA 12.8,F.gelu(tanh),,bench_gelu_cuda.ipynb
+nvidia-tesla-t4,gelu,f32,"[1024, 4096]",1,cuda,153.1,219.2,CUDA 12.8,F.gelu(tanh),,bench_gelu_cuda.ipynb
+nvidia-tesla-t4,gelu,f32,"[1024, 4096]",1,cuda,150.8,222.5,CUDA 12.8,F.gelu(tanh),,bench_gelu_cuda.ipynb
+nvidia-tesla-t4,gelu,f32,"[1024, 4096]",1,cuda,163.8,204.8,CUDA 12.8,F.gelu(tanh),,bench_gelu_cuda.ipynb
