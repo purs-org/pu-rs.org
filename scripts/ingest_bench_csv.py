@@ -68,11 +68,8 @@ def ingest_standard(conn, csv_path):
         if row.get("throughput_gbps"):
             throughput = float(row["throughput_gbps"])
         else:
-            m = __import__("re").match(r'\[?\s*(\d+)\s*[,x]\s*(\d+)\s*\]?', shape)
-            if m:
-                elements = int(m.group(1)) * int(m.group(2))
-                med = statistics.median(latencies)
-                throughput = 2.0 * elements * 4.0 / (med * 1e-6) / 1e9
+            med = statistics.median(latencies)
+            throughput = _auto_throughput(kernel_id, shape, med)
 
         conn.execute("""
             INSERT INTO bench_results
@@ -125,6 +122,40 @@ def ingest_legacy(conn, csv_path):
         ))
 
     print(f"  Ingested {len(groups)} legacy results from {csv_path}")
+
+
+def _auto_throughput(kernel_id, shape, median_us):
+    """Compute throughput (GB/s or GFLOPS) from kernel type and shape."""
+    import re
+
+    if kernel_id == "attention":
+        # Shape: "B=1,H=32,S=1024,D=128" → FLOPs = 4*B*H*S*S*D
+        m = re.search(r'B=(\d+).*H=(\d+).*S=(\d+).*D=(\d+)', shape)
+        if m:
+            B, H, S, D = int(m.group(1)), int(m.group(2)), int(m.group(3)), int(m.group(4))
+            flops = 4.0 * B * H * S * S * D
+            return flops / (median_us * 1e-6) / 1e9  # GFLOPS
+
+    if kernel_id == "matmul":
+        # Shape: "[M, N]" (square) or "[M, K] x [K, N]" (rectangular)
+        m = re.match(r'\[(\d+),\s*(\d+)\]\s*x\s*\[(\d+),\s*(\d+)\]', shape)
+        if m:
+            M, K, K2, N = int(m.group(1)), int(m.group(2)), int(m.group(3)), int(m.group(4))
+            flops = 2.0 * M * K * N
+            return flops / (median_us * 1e-6) / 1e9
+        m = re.match(r'\[(\d+),\s*(\d+)\]', shape)
+        if m:
+            M, N = int(m.group(1)), int(m.group(2))
+            flops = 2.0 * M * M * N  # square: M=K=N
+            return flops / (median_us * 1e-6) / 1e9
+
+    # Default: bandwidth-based (2 * elements * 4 bytes / time)
+    m = re.match(r'\[?\s*(\d+)\s*[,x]\s*(\d+)\s*\]?', shape)
+    if m:
+        elements = int(m.group(1)) * int(m.group(2))
+        return 2.0 * elements * 4.0 / (median_us * 1e-6) / 1e9
+
+    return None
 
 
 def get_or_create_config(conn, kernel_id, dtype, shape, batch):

@@ -5,7 +5,7 @@
     "category": "activation",
     "description": "Gaussian Error Linear Unit. Tests transcendental function throughput.",
     "reference_impl": null,
-    "created_at": "2026-04-12 01:13:37"
+    "created_at": "2026-04-12 04:31:42"
   },
   {
     "kernel_id": "softmax",
@@ -13,7 +13,7 @@
     "category": "activation",
     "description": "Row-wise softmax: 2-pass online algorithm (Milakov & Gimelshein 2018). Fused max+exp+sum in pass 1, normalize in pass 2.",
     "reference_impl": "templates/softmax_batch.metal",
-    "created_at": "2026-04-12 01:13:37"
+    "created_at": "2026-04-12 04:31:42"
   },
   {
     "kernel_id": "attention",
@@ -21,7 +21,7 @@
     "category": "attention",
     "description": "Q @ K^T / sqrt(d) \u2192 softmax \u2192 @ V. The core transformer primitive.",
     "reference_impl": null,
-    "created_at": "2026-04-12 01:13:37"
+    "created_at": "2026-04-12 04:31:42"
   },
   {
     "kernel_id": "conv1d-dilated",
@@ -29,7 +29,7 @@
     "category": "convolution",
     "description": "Fused dilated 1D convolution (kernel=3) + bias + ReLU. Eliminates pad+gather+concat intermediate buffers.",
     "reference_impl": "templates/dilated_conv1d_relu.metal",
-    "created_at": "2026-04-12 01:13:37"
+    "created_at": "2026-04-12 04:31:42"
   },
   {
     "kernel_id": "triple-head-argmax",
@@ -37,7 +37,7 @@
     "category": "decode",
     "description": "Fused 3-head matmul + bias + argmax without materializing (B, vocab) logit tensors.",
     "reference_impl": "templates/triple_head_argmax.metal",
-    "created_at": "2026-04-12 01:13:37"
+    "created_at": "2026-04-12 04:31:42"
   },
   {
     "kernel_id": "vec-add",
@@ -45,7 +45,7 @@
     "category": "elementwise",
     "description": "Element-wise addition baseline. Measures raw memory bandwidth.",
     "reference_impl": null,
-    "created_at": "2026-04-12 01:13:37"
+    "created_at": "2026-04-12 04:31:42"
   },
   {
     "kernel_id": "matmul",
@@ -53,7 +53,7 @@
     "category": "linear_algebra",
     "description": "Dense C = A @ B. Tiled with shared memory, the fundamental ML primitive.",
     "reference_impl": null,
-    "created_at": "2026-04-12 01:13:37"
+    "created_at": "2026-04-12 04:31:42"
   },
   {
     "kernel_id": "l1-smooth-loss",
@@ -61,7 +61,7 @@
     "category": "loss",
     "description": "Masked smooth-L1 loss for reconstruction training. Tests scalar reduction efficiency.",
     "reference_impl": null,
-    "created_at": "2026-04-12 01:13:37"
+    "created_at": "2026-04-12 04:31:42"
   },
   {
     "kernel_id": "layernorm",
@@ -69,7 +69,7 @@
     "category": "normalization",
     "description": "3-pass fused LayerNorm: mean, variance, normalize+affine. Single workgroup per row.",
     "reference_impl": "templates/layernorm_batch.metal",
-    "created_at": "2026-04-12 01:13:37"
+    "created_at": "2026-04-12 04:31:42"
   },
   {
     "kernel_id": "rms-norm",
@@ -77,7 +77,7 @@
     "category": "normalization",
     "description": "Root Mean Square normalization (used in LLaMA, Gemma). Simpler than LayerNorm.",
     "reference_impl": null,
-    "created_at": "2026-04-12 01:13:37"
+    "created_at": "2026-04-12 04:31:42"
   },
   {
     "kernel_id": "vq-quantize",
@@ -85,7 +85,7 @@
     "category": "quantization",
     "description": "Fused L2 distance argmin + atomic scatter-add for codebook EMA update. Used in VQ-VAE training.",
     "reference_impl": "templates/vq_l2dist_argmin.metal",
-    "created_at": "2026-04-12 01:13:37"
+    "created_at": "2026-04-12 04:31:42"
   },
   {
     "kernel_id": "scatter-add",
@@ -93,6 +93,6 @@
     "category": "reduction",
     "description": "Atomic float scatter-add for EMA codebook updates. Tests atomic throughput.",
     "reference_impl": "templates/ema_scatter_add.metal",
-    "created_at": "2026-04-12 01:13:37"
+    "created_at": "2026-04-12 04:31:42"
   }
 ]
