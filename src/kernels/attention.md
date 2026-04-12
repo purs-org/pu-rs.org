@@ -14,71 +14,47 @@ Pipeline:
 3. **Softmax** along last axis — numerically stable (max → sub → exp → sum → div)
 4. **Output** = Weights × V — matmul (S×S) × (S×D) → (S×D)
 
-## ascend-rs Kernel Source
+## ascend-rs Implementation
 
-The attention pipeline in ascend-rs is built from composable Rust kernels compiled to NPU/GPU/Metal via MLIR:
+The attention pipeline in ascend-rs combines tile-API matmul with custom Rust kernels for scale and softmax:
 
-**Scale kernel** — element-wise multiply by 1/√d:
 ```rust
-#[ascend_std::aiv_kernel]
-pub unsafe fn scale_f16(
-    input: *const u16, output: *mut u16,
-    n: *const u32, scale: *const f32,
-) {
-    let count = *n;
-    let scale_val = *scale;
-    let buf_in = ascend_std::ascend_buf_alloc(count);
-    let buf_out = ascend_std::ascend_buf_alloc(count);
+use ascend_rs::prelude::*;
 
-    ascend_std::ascend_buf_load_f16(buf_in, input, count);
-    ascend_std::ascend_pipe_barrier();
-    ascend_std::ascend_muls_f16(buf_out, buf_in, scale_val, count);
-    ascend_std::ascend_pipe_barrier();
-    ascend_std::ascend_buf_store_f16(output, buf_out, count);
-}
+let scale = 1.0f32 / (d_k as f32).sqrt();
+
+// Step 1: scores = Q × K^T  (HGEMM via cube engine)
+acl_blas_hgemm(TransN, TransT, TransN,
+    seq_len, seq_len, d_k,
+    &alpha, &d_q, d_k, &d_k_mat, d_k,
+    &beta, &mut d_scores, seq_len,
+    HighPrecision, &stream)?;
+
+// Step 2: scores *= 1/√d_k  (custom Rust kernel → NPU)
+scale_kernel.launch(1, &stream, &mut [
+    d_scores.as_mut_ptr(),  // in-place
+    d_scores.as_mut_ptr(),  // output (same buffer)
+    d_n_scores.as_mut_ptr(),
+    d_scale.as_mut_ptr(),
+])?;
+
+// Step 3: weights = softmax(scores)  (custom Rust kernel → NPU)
+softmax_kernel.launch(1, &stream, &mut [
+    d_scores.as_mut_ptr(),
+    d_weights.as_mut_ptr(),
+    d_row_len.as_mut_ptr(),
+    d_num_rows.as_mut_ptr(),
+])?;
+
+// Step 4: output = weights × V  (HGEMM via cube engine)
+acl_blas_hgemm(TransN, TransN, TransN,
+    seq_len, d_k, seq_len,
+    &alpha, &d_weights, seq_len, &d_v, d_k,
+    &beta, &mut d_output, d_k,
+    HighPrecision, &stream)?;
 ```
 
-**Softmax kernel** — row-wise numerically stable softmax:
-```rust
-#[ascend_std::aiv_kernel]
-pub unsafe fn softmax_rows_f16(
-    input: *const u16, output: *mut u16,
-    row_len: *const u32, num_rows: *const u32,
-) {
-    let cols = *row_len;
-    let rows = *num_rows;
-    let buf_in = ascend_std::ascend_buf_alloc(cols);
-    let buf_out = ascend_std::ascend_buf_alloc(cols);
-    let buf_work = ascend_std::ascend_buf_alloc(cols);
-    let buf_rwork = ascend_std::ascend_buf_alloc(cols);
-
-    let mut row = 0u32;
-    loop {
-        if row >= rows { break; }
-        let in_ptr = input.wrapping_add((row * cols) as usize);
-        let out_ptr = output.wrapping_add((row * cols) as usize);
-
-        ascend_std::ascend_buf_load_f16(buf_in, in_ptr, cols);
-        ascend_std::ascend_pipe_barrier();
-
-        let max_val = ascend_std::ascend_reduce_max_f16(
-            buf_work, buf_in, buf_rwork, cols);
-        ascend_std::ascend_adds_f16(buf_out, buf_in, -max_val, cols);
-        ascend_std::ascend_pipe_barrier();
-        ascend_std::ascend_exp_f16(buf_out, buf_out, cols);
-        ascend_std::ascend_pipe_barrier();
-        let sum_val = ascend_std::ascend_reduce_sum_f16(
-            buf_work, buf_out, buf_rwork, cols);
-        ascend_std::ascend_muls_f16(buf_out, buf_out, 1.0 / sum_val, cols);
-
-        ascend_std::ascend_pipe_barrier();
-        ascend_std::ascend_buf_store_f16(out_ptr, buf_out, cols);
-        row += 1;
-    }
-}
-```
-
-These Rust kernels compile via `rustc_codegen_mlir` to MLIR, then to AscendC (NPU), CUDA (GPU), GLSL/SPIR-V (Vulkan/Metal), NKI (Trainium), or AIE (AMD). The GEMMs (Q×K^T and Weights×V) use vendor-optimized libraries (aclnnMatmul, cuBLAS, MPSMatrixMultiplication).
+The scale and softmax kernels are written in Rust and compiled via `rustc_codegen_mlir` → MLIR → AscendC (NPU), CUDA (GPU), or GLSL (Vulkan/Metal). The GEMMs use vendor-optimized libraries (aclnnMatmul, cuBLAS, MPSMatrixMultiplication).
 
 ## Benchmark configurations
 
