@@ -8,6 +8,33 @@ Dense matrix multiplication: **C[M×N] = A[M×K] × B[K×N]**.
 
 The fundamental ML primitive — dominates runtime in transformers (linear projections, attention scores, FFN layers). Performance depends on tiling strategy, memory hierarchy utilization, and hardware matrix units (cube engines, tensor cores).
 
+## ascend-rs Kernel Source
+
+Matrix multiplication in ascend-rs uses the tile API, which compiles to hardware-specific matmul units (cube engine on Ascend, tensor cores on CUDA, etc.):
+
+```rust
+use ascend_std::tile::*;
+
+// Load tiles from global memory
+let a: Tile<M, K, f32> = tile_load_f32(&input_a);
+let b: Tile<K, N, f32> = tile_load_f32(&input_b);
+
+// Matrix multiply: (M×K) @ (K×N) → (M×N)
+let c = tile_matmul_f32(a, b);
+
+// Store result
+tile_store_f32(&mut output, c);
+```
+
+This compiles via `rustc_codegen_mlir` → MLIR → target code:
+- **Ascend**: PTO-MLIR `pto.tmatmul` → cube engine (320 TFLOPS f16 on 910B)
+- **CUDA**: `__shared__` tiled GEMM with `__syncthreads()`
+- **Vulkan/Metal**: GLSL compute shader with shared memory tiling
+- **Trainium**: NKI `nki.isa.nc_matmul`
+- **AMD AIE**: AIE2P cascade matmul
+
+For benchmarking, vendor-optimized libraries are used: aclnnMatmul (Ascend), cuBLAS (CUDA), MPSMatrixMultiplication (Metal).
+
 ## Benchmark configurations
 
 | Shape (A × B) | FLOPs | Notes |
