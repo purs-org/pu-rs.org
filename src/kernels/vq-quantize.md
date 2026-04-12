@@ -115,6 +115,17 @@ All benchmarks use f32.
 
 ## Results
 
+| Device | Shape (N, K, D) | Latency (μs) | GFLOPS | Notes |
+|---|---|---:|---:|---|
+| Ascend 910B | (4096, 1024, 128) | 94 | **11,411** | aclnnMatmul L2 trick |
+| Ascend 910B | (1024, 1024, 128) | 31 | 8,604 | Large codebook |
+| Ascend 910B | (4096, 512, 64) | 43 | 6,243 | Large batch |
+| Apple M2 Max | (4096, 1024, 128) | 646 | 1,662 | MPS GEMM + CPU argmin |
+| Apple M2 Max | (8192, 512, 64) | 450 | 1,193 | Large batch |
+
+Peak: **11.4 TFLOPS** on Ascend 910B (cube engine via L2 distance matmul trick).
+Apple M2 Max peaks at **1.7 TFLOPS** via MPS.
+
 <div id="kernel-results" data-kernel="vq-quantize"></div>
 
 *See [Leaderboard](../leaderboard.md) filtered to VQ Quantize for the full filterable view.*

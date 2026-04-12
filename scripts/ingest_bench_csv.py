@@ -136,6 +136,14 @@ def _auto_throughput(kernel_id, shape, median_us):
             flops = 4.0 * B * H * S * S * D
             return flops / (median_us * 1e-6) / 1e9  # GFLOPS
 
+    if kernel_id == "vq-quantize":
+        # Shape: "N=1024,K=512,D=64" → FLOPs = 2*N*K*D (L2 distance matmul)
+        m = re.search(r'N=(\d+).*K=(\d+).*D=(\d+)', shape)
+        if m:
+            N, K, D = int(m.group(1)), int(m.group(2)), int(m.group(3))
+            flops = 2.0 * N * K * D
+            return flops / (median_us * 1e-6) / 1e9
+
     if kernel_id == "matmul":
         # Shape: "[M, N]" (square) or "[M, K] x [K, N]" (rectangular)
         m = re.match(r'\[(\d+),\s*(\d+)\]\s*x\s*\[(\d+),\s*(\d+)\]', shape)

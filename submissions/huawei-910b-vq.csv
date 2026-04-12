@@ -1,0 +1,19 @@
+device_id,kernel_id,dtype,input_shape,batch_size,impl_lang,latency_us,driver_version,toolchain,git_sha,submitter
+huawei-910b,vq-quantize,f32,"N=256,K=512,D=64",1,ascendc,35.3,CANN 8.5,aclnnMatmul+CPU argmin,,bench_vq_ascend.py
+huawei-910b,vq-quantize,f32,"N=256,K=512,D=64",1,ascendc,25.3,CANN 8.5,aclnnMatmul+CPU argmin,,bench_vq_ascend.py
+huawei-910b,vq-quantize,f32,"N=256,K=512,D=64",1,ascendc,100.1,CANN 8.5,aclnnMatmul+CPU argmin,,bench_vq_ascend.py
+huawei-910b,vq-quantize,f32,"N=1024,K=512,D=64",1,ascendc,38.7,CANN 8.5,aclnnMatmul+CPU argmin,,bench_vq_ascend.py
+huawei-910b,vq-quantize,f32,"N=1024,K=512,D=64",1,ascendc,27.2,CANN 8.5,aclnnMatmul+CPU argmin,,bench_vq_ascend.py
+huawei-910b,vq-quantize,f32,"N=1024,K=512,D=64",1,ascendc,178.3,CANN 8.5,aclnnMatmul+CPU argmin,,bench_vq_ascend.py
+huawei-910b,vq-quantize,f32,"N=1024,K=1024,D=128",1,ascendc,31.2,CANN 8.5,aclnnMatmul+CPU argmin,,bench_vq_ascend.py
+huawei-910b,vq-quantize,f32,"N=1024,K=1024,D=128",1,ascendc,20.7,CANN 8.5,aclnnMatmul+CPU argmin,,bench_vq_ascend.py
+huawei-910b,vq-quantize,f32,"N=1024,K=1024,D=128",1,ascendc,85.3,CANN 8.5,aclnnMatmul+CPU argmin,,bench_vq_ascend.py
+huawei-910b,vq-quantize,f32,"N=4096,K=512,D=64",1,ascendc,43.0,CANN 8.5,aclnnMatmul+CPU argmin,,bench_vq_ascend.py
+huawei-910b,vq-quantize,f32,"N=4096,K=512,D=64",1,ascendc,30.8,CANN 8.5,aclnnMatmul+CPU argmin,,bench_vq_ascend.py
+huawei-910b,vq-quantize,f32,"N=4096,K=512,D=64",1,ascendc,121.2,CANN 8.5,aclnnMatmul+CPU argmin,,bench_vq_ascend.py
+huawei-910b,vq-quantize,f32,"N=4096,K=1024,D=128",1,ascendc,94.1,CANN 8.5,aclnnMatmul+CPU argmin,,bench_vq_ascend.py
+huawei-910b,vq-quantize,f32,"N=4096,K=1024,D=128",1,ascendc,63.7,CANN 8.5,aclnnMatmul+CPU argmin,,bench_vq_ascend.py
+huawei-910b,vq-quantize,f32,"N=4096,K=1024,D=128",1,ascendc,153.1,CANN 8.5,aclnnMatmul+CPU argmin,,bench_vq_ascend.py
+huawei-910b,vq-quantize,f32,"N=8192,K=512,D=64",1,ascendc,105.3,CANN 8.5,aclnnMatmul+CPU argmin,,bench_vq_ascend.py
+huawei-910b,vq-quantize,f32,"N=8192,K=512,D=64",1,ascendc,75.8,CANN 8.5,aclnnMatmul+CPU argmin,,bench_vq_ascend.py
+huawei-910b,vq-quantize,f32,"N=8192,K=512,D=64",1,ascendc,146.7,CANN 8.5,aclnnMatmul+CPU argmin,,bench_vq_ascend.py

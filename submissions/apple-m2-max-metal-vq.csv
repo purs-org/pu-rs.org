@@ -1,0 +1,19 @@
+device_id,kernel_id,dtype,input_shape,batch_size,impl_lang,latency_us,driver_version,toolchain,git_sha,submitter
+apple-m2-max-38,vq-quantize,f32,"N=256,K=512,D=64",1,metal,167.96588897705078,Metal (MPS),MPSMatrixMultiplication+CPU argmin,,bench_vq_metal.swift
+apple-m2-max-38,vq-quantize,f32,"N=256,K=512,D=64",1,metal,164.031982421875,Metal (MPS),MPSMatrixMultiplication+CPU argmin,,bench_vq_metal.swift
+apple-m2-max-38,vq-quantize,f32,"N=256,K=512,D=64",1,metal,560.0452423095703,Metal (MPS),MPSMatrixMultiplication+CPU argmin,,bench_vq_metal.swift
+apple-m2-max-38,vq-quantize,f32,"N=1024,K=512,D=64",1,metal,226.9744873046875,Metal (MPS),MPSMatrixMultiplication+CPU argmin,,bench_vq_metal.swift
+apple-m2-max-38,vq-quantize,f32,"N=1024,K=512,D=64",1,metal,204.92076873779297,Metal (MPS),MPSMatrixMultiplication+CPU argmin,,bench_vq_metal.swift
+apple-m2-max-38,vq-quantize,f32,"N=1024,K=512,D=64",1,metal,669.9562072753906,Metal (MPS),MPSMatrixMultiplication+CPU argmin,,bench_vq_metal.swift
+apple-m2-max-38,vq-quantize,f32,"N=1024,K=1024,D=128",1,metal,308.990478515625,Metal (MPS),MPSMatrixMultiplication+CPU argmin,,bench_vq_metal.swift
+apple-m2-max-38,vq-quantize,f32,"N=1024,K=1024,D=128",1,metal,301.9571304321289,Metal (MPS),MPSMatrixMultiplication+CPU argmin,,bench_vq_metal.swift
+apple-m2-max-38,vq-quantize,f32,"N=1024,K=1024,D=128",1,metal,1082.0627212524414,Metal (MPS),MPSMatrixMultiplication+CPU argmin,,bench_vq_metal.swift
+apple-m2-max-38,vq-quantize,f32,"N=4096,K=512,D=64",1,metal,326.0374069213867,Metal (MPS),MPSMatrixMultiplication+CPU argmin,,bench_vq_metal.swift
+apple-m2-max-38,vq-quantize,f32,"N=4096,K=512,D=64",1,metal,308.990478515625,Metal (MPS),MPSMatrixMultiplication+CPU argmin,,bench_vq_metal.swift
+apple-m2-max-38,vq-quantize,f32,"N=4096,K=512,D=64",1,metal,382.0657730102539,Metal (MPS),MPSMatrixMultiplication+CPU argmin,,bench_vq_metal.swift
+apple-m2-max-38,vq-quantize,f32,"N=4096,K=1024,D=128",1,metal,645.9951400756836,Metal (MPS),MPSMatrixMultiplication+CPU argmin,,bench_vq_metal.swift
+apple-m2-max-38,vq-quantize,f32,"N=4096,K=1024,D=128",1,metal,622.9877471923828,Metal (MPS),MPSMatrixMultiplication+CPU argmin,,bench_vq_metal.swift
+apple-m2-max-38,vq-quantize,f32,"N=4096,K=1024,D=128",1,metal,1029.96826171875,Metal (MPS),MPSMatrixMultiplication+CPU argmin,,bench_vq_metal.swift
+apple-m2-max-38,vq-quantize,f32,"N=8192,K=512,D=64",1,metal,449.89585876464844,Metal (MPS),MPSMatrixMultiplication+CPU argmin,,bench_vq_metal.swift
+apple-m2-max-38,vq-quantize,f32,"N=8192,K=512,D=64",1,metal,427.00767517089844,Metal (MPS),MPSMatrixMultiplication+CPU argmin,,bench_vq_metal.swift
+apple-m2-max-38,vq-quantize,f32,"N=8192,K=512,D=64",1,metal,819.9214935302734,Metal (MPS),MPSMatrixMultiplication+CPU argmin,,bench_vq_metal.swift
