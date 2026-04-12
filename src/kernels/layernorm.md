@@ -55,13 +55,6 @@ pub unsafe fn layernorm(input: *const f32, output: *mut f32, len_buf: *const u32
 
 This compiles via `rustc_codegen_mlir` → MLIR → AscendC (NPU), CUDA (GPU), GLSL (Vulkan/Metal), or other targets.
 
-## Why ascend-rs beats MPS by 3x
-
-1. Single-pass kernel vs MPS's separate dispatches
-2. No Python/ATen overhead (Rust metal crate -> Metal API directly)
-3. Fused command buffer (500 dispatches per commit)
-4. No intermediate buffer allocations
-
 ## Benchmark configurations
 
 | Shape | Notes |
