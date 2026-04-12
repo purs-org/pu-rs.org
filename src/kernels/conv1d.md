@@ -31,21 +31,61 @@ For an 18-block VQ-VAE encoder/decoder, the unfused version allocates **54 inter
 | (8, 100, 512) | 410 K | Mid-sized clip |
 | (2, 400, 512) | 410 K | Long sequence |
 
-## Reference implementation
+## ascend-rs Kernel Source
+
+Vectorized dilated conv1d + ReLU using ascend-rs buffer API (f32, benchmarked implementation):
 
 ```rust
-// templates/dilated_conv1d_relu.metal — see ascend-rs
-kernel void dilated_conv1d_relu(
-    device const float* input,    // (B, T, C)
-    device const float* weight,   // (C, 3*C) row-major
-    device const float* bias,     // (C,)
-    device       float* output,   // (B, T, C)
-    constant DilConvParams* params [[buffer(4)]],
-    ...
-);
+#[ascend_std::aiv_kernel]
+pub unsafe fn conv1d_dilated(input: *const f32, output: *mut f32, params: *const u32) {
+    let n = *params;
+    let dilation = *params.wrapping_add(1);
+    let w0 = f32::from_bits(*params.wrapping_add(2));
+    let w1 = f32::from_bits(*params.wrapping_add(3));
+    let w2 = f32::from_bits(*params.wrapping_add(4));
+    let bias = f32::from_bits(*params.wrapping_add(5));
+
+    let aligned_n = ((n + 7) / 8) * 8;
+    let in_buf = ascend_std::ascend_buf_alloc(aligned_n);
+    let tap_left = ascend_std::ascend_buf_alloc(aligned_n);
+    let tap_right = ascend_std::ascend_buf_alloc(aligned_n);
+    let acc = ascend_std::ascend_buf_alloc(aligned_n);
+    let work = ascend_std::ascend_buf_alloc(aligned_n);
+
+    ascend_std::ascend_buf_load_f32(in_buf, input, n);
+    ascend_std::ascend_pipe_barrier();
+
+    // Build shifted tap buffers with zero-padding
+    ascend_std::ascend_buf_fill_f32(tap_left, 0.0, aligned_n);
+    let mut i = dilation;
+    while i < n {
+        let v = ascend_std::ascend_get_value_f32(in_buf, i - dilation);
+        ascend_std::ascend_set_value_f32(tap_left, i, v);
+        i += 1;
+    }
+    ascend_std::ascend_buf_fill_f32(tap_right, 0.0, aligned_n);
+    i = 0;
+    while i + dilation < n {
+        let v = ascend_std::ascend_get_value_f32(in_buf, i + dilation);
+        ascend_std::ascend_set_value_f32(tap_right, i, v);
+        i += 1;
+    }
+
+    // Vector MAC: acc = tap_left*w0 + input*w1 + tap_right*w2 + bias
+    ascend_std::ascend_muls_f32(acc, tap_left, w0, n);
+    ascend_std::ascend_muls_f32(work, in_buf, w1, n);
+    ascend_std::ascend_add_f32(tap_left, acc, work, n);
+    ascend_std::ascend_muls_f32(work, tap_right, w2, n);
+    ascend_std::ascend_add_f32(acc, tap_left, work, n);
+    ascend_std::ascend_adds_f32(acc, acc, bias, n);
+    ascend_std::ascend_maxs_f32(acc, acc, 0.0, n);  // ReLU
+
+    ascend_std::ascend_pipe_barrier();
+    ascend_std::ascend_buf_store_f32(output, acc, n);
+}
 ```
 
-Each threadgroup handles one `(b, t)` output position. Threads stride across output channels, gathering 3 input positions and computing the dot product with the weight row.
+This compiles via `rustc_codegen_mlir` → MLIR → AscendC (NPU), CUDA (GPU), or GLSL (Vulkan/Metal).
 
 ## Results
 
