@@ -1,0 +1,16 @@
+device_id,kernel_id,dtype,input_shape,batch_size,impl_lang,latency_us,throughput_gbps,driver_version,toolchain,git_sha,submitter
+apple-m2-max-38,gelu,f32,"[1, 768]",1,metal,182.98625946044922,0.03357629156482085,Metal GPU,compute shader,,bench_gelu_metal.swift
+apple-m2-max-38,gelu,f32,"[1, 768]",1,metal,156.04496002197266,0.0393732678013751,Metal GPU,compute shader,,bench_gelu_metal.swift
+apple-m2-max-38,gelu,f32,"[1, 768]",1,metal,799.0598678588867,0.0076890358872146805,Metal GPU,compute shader,,bench_gelu_metal.swift
+apple-m2-max-38,gelu,f32,"[1, 4096]",1,metal,156.04496002197266,0.20999076160733385,Metal GPU,compute shader,,bench_gelu_metal.swift
+apple-m2-max-38,gelu,f32,"[1, 4096]",1,metal,149.9652862548828,0.21850390059141495,Metal GPU,compute shader,,bench_gelu_metal.swift
+apple-m2-max-38,gelu,f32,"[1, 4096]",1,metal,172.01900482177734,0.190490580002772,Metal GPU,compute shader,,bench_gelu_metal.swift
+apple-m2-max-38,gelu,f32,"[64, 768]",1,metal,187.99304962158203,2.0916517966569437,Metal GPU,compute shader,,bench_gelu_metal.swift
+apple-m2-max-38,gelu,f32,"[64, 768]",1,metal,164.031982421875,2.3971910489302326,Metal GPU,compute shader,,bench_gelu_metal.swift
+apple-m2-max-38,gelu,f32,"[64, 768]",1,metal,267.98248291015625,1.4673197879572955,Metal GPU,compute shader,,bench_gelu_metal.swift
+apple-m2-max-38,gelu,f32,"[64, 4096]",1,metal,192.99983978271484,10.866081559243979,Metal GPU,compute shader,,bench_gelu_metal.swift
+apple-m2-max-38,gelu,f32,"[64, 4096]",1,metal,186.08570098876953,11.269818093796284,Metal GPU,compute shader,,bench_gelu_metal.swift
+apple-m2-max-38,gelu,f32,"[64, 4096]",1,metal,208.02021026611328,10.081481973877363,Metal GPU,compute shader,,bench_gelu_metal.swift
+apple-m2-max-38,gelu,f32,"[1024, 4096]",1,metal,284.0757369995117,118.11790881689299,Metal GPU,compute shader,,bench_gelu_metal.swift
+apple-m2-max-38,gelu,f32,"[1024, 4096]",1,metal,265.95592498779297,126.16538624413089,Metal GPU,compute shader,,bench_gelu_metal.swift
+apple-m2-max-38,gelu,f32,"[1024, 4096]",1,metal,563.9791488647461,59.49587332713084,Metal GPU,compute shader,,bench_gelu_metal.swift

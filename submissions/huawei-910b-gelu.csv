@@ -1,0 +1,16 @@
+device_id,kernel_id,dtype,input_shape,batch_size,impl_lang,latency_us,throughput_gbps,driver_version,toolchain,git_sha,submitter
+huawei-910b,gelu,f32,"[1, 768]",1,ascendc,25.7,0.2,CANN 8.5,aclnnGelu,,bench_elementwise_ascend.py
+huawei-910b,gelu,f32,"[1, 768]",1,ascendc,18.5,0.3,CANN 8.5,aclnnGelu,,bench_elementwise_ascend.py
+huawei-910b,gelu,f32,"[1, 768]",1,ascendc,76.0,0.1,CANN 8.5,aclnnGelu,,bench_elementwise_ascend.py
+huawei-910b,gelu,f32,"[1, 4096]",1,ascendc,24.5,1.3,CANN 8.5,aclnnGelu,,bench_elementwise_ascend.py
+huawei-910b,gelu,f32,"[1, 4096]",1,ascendc,16.8,2.0,CANN 8.5,aclnnGelu,,bench_elementwise_ascend.py
+huawei-910b,gelu,f32,"[1, 4096]",1,ascendc,32.6,1.0,CANN 8.5,aclnnGelu,,bench_elementwise_ascend.py
+huawei-910b,gelu,f32,"[64, 768]",1,ascendc,26.6,14.8,CANN 8.5,aclnnGelu,,bench_elementwise_ascend.py
+huawei-910b,gelu,f32,"[64, 768]",1,ascendc,18.4,21.3,CANN 8.5,aclnnGelu,,bench_elementwise_ascend.py
+huawei-910b,gelu,f32,"[64, 768]",1,ascendc,52.2,7.5,CANN 8.5,aclnnGelu,,bench_elementwise_ascend.py
+huawei-910b,gelu,f32,"[64, 4096]",1,ascendc,25.5,82.3,CANN 8.5,aclnnGelu,,bench_elementwise_ascend.py
+huawei-910b,gelu,f32,"[64, 4096]",1,ascendc,18.7,112.0,CANN 8.5,aclnnGelu,,bench_elementwise_ascend.py
+huawei-910b,gelu,f32,"[64, 4096]",1,ascendc,32.2,65.1,CANN 8.5,aclnnGelu,,bench_elementwise_ascend.py
+huawei-910b,gelu,f32,"[1024, 4096]",1,ascendc,39.1,857.9,CANN 8.5,aclnnGelu,,bench_elementwise_ascend.py
+huawei-910b,gelu,f32,"[1024, 4096]",1,ascendc,30.8,1088.0,CANN 8.5,aclnnGelu,,bench_elementwise_ascend.py
+huawei-910b,gelu,f32,"[1024, 4096]",1,ascendc,71.5,469.3,CANN 8.5,aclnnGelu,,bench_elementwise_ascend.py

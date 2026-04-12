@@ -1,0 +1,16 @@
+device_id,kernel_id,dtype,input_shape,batch_size,impl_lang,latency_us,throughput_gbps,driver_version,toolchain,git_sha,submitter
+apple-m2-max-38,rms-norm,f32,"[1, 768]",1,metal,640.0346755981445,0.014399219841311232,Metal GPU,compute shader,,bench_rms_norm_metal.swift
+apple-m2-max-38,rms-norm,f32,"[1, 768]",1,metal,614.0470504760742,0.015008621884682586,Metal GPU,compute shader,,bench_rms_norm_metal.swift
+apple-m2-max-38,rms-norm,f32,"[1, 768]",1,metal,687.0031356811523,0.013414785932326912,Metal GPU,compute shader,,bench_rms_norm_metal.swift
+apple-m2-max-38,rms-norm,f32,"[1, 4096]",1,metal,1034.0213775634766,0.04753480060133733,Metal GPU,compute shader,,bench_rms_norm_metal.swift
+apple-m2-max-38,rms-norm,f32,"[1, 4096]",1,metal,1008.9874267578125,0.04871418483175804,Metal GPU,compute shader,,bench_rms_norm_metal.swift
+apple-m2-max-38,rms-norm,f32,"[1, 4096]",1,metal,2674.9372482299805,0.01837501049137662,Metal GPU,compute shader,,bench_rms_norm_metal.swift
+apple-m2-max-38,rms-norm,f32,"[64, 768]",1,metal,422.0008850097656,1.39768427259661,Metal GPU,compute shader,,bench_rms_norm_metal.swift
+apple-m2-max-38,rms-norm,f32,"[64, 768]",1,metal,407.09972381591797,1.4488440190313323,Metal GPU,compute shader,,bench_rms_norm_metal.swift
+apple-m2-max-38,rms-norm,f32,"[64, 768]",1,metal,444.8890686035156,1.3257776862250805,Metal GPU,compute shader,,bench_rms_norm_metal.swift
+apple-m2-max-38,rms-norm,f32,"[64, 4096]",1,metal,1347.0649719238281,2.335245935099469,Metal GPU,compute shader,,bench_rms_norm_metal.swift
+apple-m2-max-38,rms-norm,f32,"[64, 4096]",1,metal,1335.9785079956055,2.3546247047937894,Metal GPU,compute shader,,bench_rms_norm_metal.swift
+apple-m2-max-38,rms-norm,f32,"[64, 4096]",1,metal,1361.0124588012695,2.311314624386792,Metal GPU,compute shader,,bench_rms_norm_metal.swift
+apple-m2-max-38,rms-norm,f32,"[1024, 4096]",1,metal,3402.9483795166016,14.790599911230434,Metal GPU,compute shader,,bench_rms_norm_metal.swift
+apple-m2-max-38,rms-norm,f32,"[1024, 4096]",1,metal,3355.9799194335938,14.997601060883206,Metal GPU,compute shader,,bench_rms_norm_metal.swift
+apple-m2-max-38,rms-norm,f32,"[1024, 4096]",1,metal,3567.934036254883,14.106664385766255,Metal GPU,compute shader,,bench_rms_norm_metal.swift

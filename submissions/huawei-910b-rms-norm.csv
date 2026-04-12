@@ -1,0 +1,16 @@
+device_id,kernel_id,dtype,input_shape,batch_size,impl_lang,latency_us,throughput_gbps,driver_version,toolchain,git_sha,submitter
+huawei-910b,rms-norm,f32,"[1, 768]",1,ascendc,38.5,0.2,CANN 8.5,aclnnRmsNorm,,bench_elementwise_ascend.py
+huawei-910b,rms-norm,f32,"[1, 768]",1,ascendc,29.7,0.3,CANN 8.5,aclnnRmsNorm,,bench_elementwise_ascend.py
+huawei-910b,rms-norm,f32,"[1, 768]",1,ascendc,67.3,0.1,CANN 8.5,aclnnRmsNorm,,bench_elementwise_ascend.py
+huawei-910b,rms-norm,f32,"[1, 4096]",1,ascendc,35.5,1.4,CANN 8.5,aclnnRmsNorm,,bench_elementwise_ascend.py
+huawei-910b,rms-norm,f32,"[1, 4096]",1,ascendc,26.9,1.8,CANN 8.5,aclnnRmsNorm,,bench_elementwise_ascend.py
+huawei-910b,rms-norm,f32,"[1, 4096]",1,ascendc,42.8,1.1,CANN 8.5,aclnnRmsNorm,,bench_elementwise_ascend.py
+huawei-910b,rms-norm,f32,"[64, 768]",1,ascendc,42.4,13.9,CANN 8.5,aclnnRmsNorm,,bench_elementwise_ascend.py
+huawei-910b,rms-norm,f32,"[64, 768]",1,ascendc,37.1,15.9,CANN 8.5,aclnnRmsNorm,,bench_elementwise_ascend.py
+huawei-910b,rms-norm,f32,"[64, 768]",1,ascendc,44.6,13.2,CANN 8.5,aclnnRmsNorm,,bench_elementwise_ascend.py
+huawei-910b,rms-norm,f32,"[64, 4096]",1,ascendc,42.5,74.0,CANN 8.5,aclnnRmsNorm,,bench_elementwise_ascend.py
+huawei-910b,rms-norm,f32,"[64, 4096]",1,ascendc,30.7,102.5,CANN 8.5,aclnnRmsNorm,,bench_elementwise_ascend.py
+huawei-910b,rms-norm,f32,"[64, 4096]",1,ascendc,45.6,69.0,CANN 8.5,aclnnRmsNorm,,bench_elementwise_ascend.py
+huawei-910b,rms-norm,f32,"[1024, 4096]",1,ascendc,58.2,865.2,CANN 8.5,aclnnRmsNorm,,bench_elementwise_ascend.py
+huawei-910b,rms-norm,f32,"[1024, 4096]",1,ascendc,53.1,947.5,CANN 8.5,aclnnRmsNorm,,bench_elementwise_ascend.py
+huawei-910b,rms-norm,f32,"[1024, 4096]",1,ascendc,72.8,691.0,CANN 8.5,aclnnRmsNorm,,bench_elementwise_ascend.py
