@@ -19,7 +19,44 @@ This is 33% less memory traffic than the naive 3-pass algorithm (max, exp+sum, n
 
 Softmax in ascend-rs uses the buffer API for element-wise backends and the tile API for matrix-oriented backends:
 
-**Buffer API** (V-pipe, vector engine):
+**Scalar kernel** (f32, benchmarked implementation):
+```rust
+#[ascend_std::aiv_kernel]
+pub unsafe fn softmax(input: *const f32, output: *mut f32, len: *const u32) {
+    let n = *len as usize;
+
+    // Step 1: Find max for numerical stability
+    let mut max_val = *input;
+    let mut i = 1usize;
+    loop {
+        if i >= n { break; }
+        let val = *input.wrapping_add(i);
+        if val > max_val { max_val = val; }
+        i += 1;
+    }
+
+    // Step 2: exp(x - max) and accumulate sum
+    let mut sum: f32 = 0.0;
+    i = 0;
+    loop {
+        if i >= n { break; }
+        let exp_val = (*input.wrapping_add(i) - max_val).exp();
+        *output.wrapping_add(i) = exp_val;
+        sum += exp_val;
+        i += 1;
+    }
+
+    // Step 3: Normalize
+    i = 0;
+    loop {
+        if i >= n { break; }
+        *output.wrapping_add(i) = *output.wrapping_add(i) / sum;
+        i += 1;
+    }
+}
+```
+
+**Buffer API** (f16, vectorized V-pipe — used in the attention pipeline):
 ```rust
 #[ascend_std::aiv_kernel]
 pub unsafe fn softmax_rows_f16(
@@ -27,33 +64,18 @@ pub unsafe fn softmax_rows_f16(
     row_len: *const u32, num_rows: *const u32,
 ) {
     let cols = *row_len;
-    let rows = *num_rows;
     let buf_in = ascend_std::ascend_buf_alloc(cols);
     let buf_out = ascend_std::ascend_buf_alloc(cols);
-    let buf_work = ascend_std::ascend_buf_alloc(cols);
-    let buf_rwork = ascend_std::ascend_buf_alloc(cols);
 
-    let mut row = 0u32;
-    loop {
-        if row >= rows { break; }
-        let in_ptr = input.wrapping_add((row * cols) as usize);
-        let out_ptr = output.wrapping_add((row * cols) as usize);
-
-        ascend_std::ascend_buf_load_f16(buf_in, in_ptr, cols);
-        ascend_std::ascend_pipe_barrier();
-        let max_val = ascend_std::ascend_reduce_max_f16(
-            buf_work, buf_in, buf_rwork, cols);
-        ascend_std::ascend_adds_f16(buf_out, buf_in, -max_val, cols);
-        ascend_std::ascend_pipe_barrier();
-        ascend_std::ascend_exp_f16(buf_out, buf_out, cols);
-        ascend_std::ascend_pipe_barrier();
-        let sum_val = ascend_std::ascend_reduce_sum_f16(
-            buf_work, buf_out, buf_rwork, cols);
-        ascend_std::ascend_muls_f16(buf_out, buf_out, 1.0 / sum_val, cols);
-        ascend_std::ascend_pipe_barrier();
-        ascend_std::ascend_buf_store_f16(out_ptr, buf_out, cols);
-        row += 1;
-    }
+    // Per-row: load → reduce_max → sub → exp → reduce_sum → muls → store
+    ascend_std::ascend_buf_load_f16(buf_in, input, cols);
+    ascend_std::ascend_pipe_barrier();
+    let max_val = ascend_std::ascend_reduce_max_f16(/*...*/);
+    ascend_std::ascend_adds_f16(buf_out, buf_in, -max_val, cols);
+    ascend_std::ascend_exp_f16(buf_out, buf_out, cols);
+    let sum_val = ascend_std::ascend_reduce_sum_f16(/*...*/);
+    ascend_std::ascend_muls_f16(buf_out, buf_out, 1.0 / sum_val, cols);
+    ascend_std::ascend_buf_store_f16(output, buf_out, cols);
 }
 ```
 
