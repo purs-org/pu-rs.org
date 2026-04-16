@@ -23,7 +23,7 @@ SiLU using the tile API (single source, compiles to all backends):
 
 ```rust
 #[ascend_std::aiv_kernel]
-pub unsafe fn silu_tile(input: *const f32, output: *mut f32) {
+pub fn silu_tile(input: *const f32, output: *mut f32) {
     const R: usize = 1;
     const C: usize = 4096;
 

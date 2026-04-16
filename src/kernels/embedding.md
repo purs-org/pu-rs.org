@@ -19,7 +19,7 @@ Embedding using the tile API:
 
 ```rust
 #[ascend_std::aiv_kernel]
-pub unsafe fn embedding_tile(
+pub fn embedding_tile(
     weight_ptr: *const f32,
     indices_ptr: *const u32,
     output: *mut f32,

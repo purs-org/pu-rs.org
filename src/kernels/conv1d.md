@@ -37,7 +37,7 @@ Vectorized dilated conv1d + ReLU using ascend-rs buffer API (f32, benchmarked im
 
 ```rust
 #[ascend_std::aiv_kernel]
-pub unsafe fn conv1d_dilated(input: *const f32, output: *mut f32, params: *const u32) {
+pub fn conv1d_dilated(input: *const f32, output: *mut f32, params: *const u32) {
     let n = *params;
     let dilation = *params.wrapping_add(1);
     let w0 = f32::from_bits(*params.wrapping_add(2));

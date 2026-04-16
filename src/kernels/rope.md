@@ -21,7 +21,7 @@ RoPE using the tile API:
 
 ```rust
 #[ascend_std::aiv_kernel]
-pub unsafe fn rope_tile(input: *const f32, output: *mut f32) {
+pub fn rope_tile(input: *const f32, output: *mut f32) {
     const S: usize = 1;
     const D: usize = 128;
 

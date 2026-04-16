@@ -22,7 +22,7 @@ Softmax in ascend-rs uses the buffer API for element-wise backends and the tile 
 **Scalar kernel** (f32, benchmarked implementation):
 ```rust
 #[ascend_std::aiv_kernel]
-pub unsafe fn softmax(input: *const f32, output: *mut f32, len: *const u32) {
+pub fn softmax(input: *const f32, output: *mut f32, len: *const u32) {
     let n = *len as usize;
 
     // Step 1: Find max for numerical stability

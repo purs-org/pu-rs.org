@@ -21,7 +21,7 @@ RMS Norm using ascend-rs buffer API (f32):
 ///
 /// params: [n: u32]
 #[ascend_std::aiv_kernel]
-pub unsafe fn rms_norm(
+pub fn rms_norm(
     input: *const f32,
     gamma: *const f32,
     output: *mut f32,

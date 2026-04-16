@@ -24,7 +24,7 @@ VQ quantize kernel using ascend-rs buffer API (f32):
 ///
 /// params: [n_vectors: u32, n_codes: u32, dim: u32]
 #[ascend_std::aiv_kernel]
-pub unsafe fn vq_quantize(
+pub fn vq_quantize(
     input: *const f32,      // (N, D) input vectors
     codebook: *const f32,   // (K, D) codebook
     output: *mut f32,       // (N, D) quantized output

@@ -27,7 +27,7 @@ GELU using ascend-rs buffer API (f32, tanh approximation):
 ///
 /// params: [n: u32]
 #[ascend_std::aiv_kernel]
-pub unsafe fn gelu(
+pub fn gelu(
     input: *const f32,
     output: *mut f32,
     params: *const u32,
@@ -54,7 +54,7 @@ pub unsafe fn gelu(
 
 ```rust
 #[ascend_std::aiv_kernel]
-pub unsafe fn gelu_vec(
+pub fn gelu_vec(
     input: *const f32,
     output: *mut f32,
     params: *const u32,

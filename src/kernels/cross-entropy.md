@@ -25,7 +25,7 @@ Cross-entropy using the tile API:
 
 ```rust
 #[ascend_std::aiv_kernel]
-pub unsafe fn cross_entropy_tile(
+pub fn cross_entropy_tile(
     logits_ptr: *const f32,
     targets_ptr: *const u32,
     loss_ptr: *mut f32,

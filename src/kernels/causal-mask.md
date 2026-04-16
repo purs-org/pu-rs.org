@@ -27,7 +27,7 @@ Causal mask using the tile API:
 
 ```rust
 #[ascend_std::aiv_kernel]
-pub unsafe fn causal_mask_tile(input: *const f32, output: *mut f32) {
+pub fn causal_mask_tile(input: *const f32, output: *mut f32) {
     const S: usize = 64;
 
     let scores: Tile<S, S, f32> = tile_load_f32::<S, S>(input);

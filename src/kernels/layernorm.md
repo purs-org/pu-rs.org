@@ -18,7 +18,7 @@ LayerNorm in ascend-rs using vectorized AscendC intrinsics (f32, benchmarked imp
 
 ```rust
 #[ascend_std::aiv_kernel]
-pub unsafe fn layernorm(input: *const f32, output: *mut f32, len_buf: *const u32) {
+pub fn layernorm(input: *const f32, output: *mut f32, len_buf: *const u32) {
     let n = *len_buf;
     let eps = 1.0e-5f32;
 
