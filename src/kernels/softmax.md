@@ -56,16 +56,25 @@ pub fn softmax(input: *const f32, output: *mut f32, len: *const u32) {
 }
 ```
 
-**Tile API** (compiles to PTO-MLIR for M-pipe, or to CUDA/SPIR-V/NKI/AIE):
-```rust
-use ascend_std::tile::*;
+**Tile API — safe entry form** (compiles to PTO-MLIR for M-pipe, or to CUDA/SPIR-V/NKI/AIE):
 
-let src: Tile<1, 1024, f32> = tile_load_f32(&input);
-let result = tile_softmax_f32(src);
-tile_store_f32(&mut output, result);
+```rust
+use ascend_std::tile::{GmView, GmViewMut, safe, tile_load_view_f32, tile_store_view_f32};
+
+#[ascend_std::aiv_kernel]
+pub fn tile_softmax(
+    input:  GmView<'_, 1, 1024, f32>,
+    output: GmViewMut<'_, 1, 1024, f32>,
+) {
+    let x = tile_load_view_f32(&input);
+    let y = safe::tile_softmax_f32(x);
+    tile_store_view_f32(&output, y);
+}
 ```
 
-These Rust kernels compile via `rustc_codegen_mlir` → MLIR → target-specific code (AscendC, CUDA, GLSL, NKI, AIE).
+The kernel body is **pure safe Rust** — no `unsafe` blocks. Shape (rows, cols, dtype) is committed at the type level via const generics, so any host-side mismatch becomes a compile-time error. The `#[aiv_kernel]` attribute rewrites the emitted signature back to raw `*const f32` / `*mut f32` so the launcher/compiler toolchain (bisheng / ACL / nvcc) sees the same C ABI. `#[repr(transparent)]` on `GmView`/`GmViewMut` makes this rewrite free at the LLVM IR level — the two forms emit as literal symbol aliases.
+
+Kernels compile via `rustc_codegen_mlir` → MLIR → target-specific code (AscendC, CUDA, GLSL, NKI, AIE).
 
 ## Benchmark configurations
 

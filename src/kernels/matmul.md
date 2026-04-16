@@ -10,21 +10,27 @@ The fundamental ML primitive — dominates runtime in transformers (linear proje
 
 ## ascend-rs Kernel Source
 
-Matrix multiplication in ascend-rs uses the tile API, which compiles to hardware-specific matmul units (cube engine on Ascend, tensor cores on CUDA, etc.):
+Matrix multiplication in ascend-rs uses the tile API, which compiles to hardware-specific matmul units (cube engine on Ascend, tensor cores on CUDA, etc.).
+
+**Safe entry form** — kernel body is pure safe Rust, shape committed at the type level:
 
 ```rust
-use ascend_std::tile::*;
+use ascend_std::tile::{GmView, GmViewMut, safe, tile_load_view_f32, tile_store_view_f32};
 
-// Load tiles from global memory
-let a: Tile<M, K, f32> = tile_load_f32(&input_a);
-let b: Tile<K, N, f32> = tile_load_f32(&input_b);
-
-// Matrix multiply: (M×K) @ (K×N) → (M×N)
-let c = tile_matmul_f32(a, b);
-
-// Store result
-tile_store_f32(&mut output, c);
+#[ascend_std::aiv_kernel]
+pub fn tile_matmul(
+    a:      GmView<'_, M, K, f32>,
+    b:      GmView<'_, K, N, f32>,
+    output: GmViewMut<'_, M, N, f32>,
+) {
+    let at = tile_load_view_f32(&a);
+    let bt = tile_load_view_f32(&b);
+    let c  = safe::tile_matmul_f32(at, bt);
+    tile_store_view_f32(&output, c);
+}
 ```
+
+No `unsafe` blocks in the body. A mismatched `K` between the two operands is a compile-time error. The `#[aiv_kernel]` attribute rewrites the emitted signature to raw `*const f32` / `*mut f32` so the launcher toolchain sees an unchanged C ABI — `#[repr(transparent)]` makes the rewrite free at the LLVM IR level.
 
 This compiles via `rustc_codegen_mlir` → MLIR → target code:
 - **Ascend**: PTO-MLIR `pto.tmatmul` → cube engine (320 TFLOPS f16 on 910B)
