@@ -1,0 +1,13 @@
+device_id,kernel_id,dtype,input_shape,batch_size,impl_lang,latency_us,throughput_gbps,driver_version,toolchain,git_sha,submitter
+google-tpu-v5e,conv1d,f32,"B=1,L=1024,C=64,K=3",1,jax,125.4,200.7,JAX 0.7.2,jax.lax.conv1d,,bench_all_tpu.ipynb
+google-tpu-v5e,conv1d,f32,"B=1,L=1024,C=64,K=3",1,jax,111.4,225.9,JAX 0.7.2,jax.lax.conv1d,,bench_all_tpu.ipynb
+google-tpu-v5e,conv1d,f32,"B=1,L=1024,C=64,K=3",1,jax,185.4,135.7,JAX 0.7.2,jax.lax.conv1d,,bench_all_tpu.ipynb
+google-tpu-v5e,conv1d,f32,"B=1,L=4096,C=64,K=3",1,jax,117.1,859.9,JAX 0.7.2,jax.lax.conv1d,,bench_all_tpu.ipynb
+google-tpu-v5e,conv1d,f32,"B=1,L=4096,C=64,K=3",1,jax,113.3,888.6,JAX 0.7.2,jax.lax.conv1d,,bench_all_tpu.ipynb
+google-tpu-v5e,conv1d,f32,"B=1,L=4096,C=64,K=3",1,jax,190.3,529.1,JAX 0.7.2,jax.lax.conv1d,,bench_all_tpu.ipynb
+google-tpu-v5e,conv1d,f32,"B=16,L=1024,C=64,K=3",1,jax,127.1,3168.5,JAX 0.7.2,jax.lax.conv1d,,bench_all_tpu.ipynb
+google-tpu-v5e,conv1d,f32,"B=16,L=1024,C=64,K=3",1,jax,123.6,3256.9,JAX 0.7.2,jax.lax.conv1d,,bench_all_tpu.ipynb
+google-tpu-v5e,conv1d,f32,"B=16,L=1024,C=64,K=3",1,jax,144.5,2787.1,JAX 0.7.2,jax.lax.conv1d,,bench_all_tpu.ipynb
+google-tpu-v5e,conv1d,f32,"B=16,L=4096,C=64,K=3",1,jax,186.8,8620.0,JAX 0.7.2,jax.lax.conv1d,,bench_all_tpu.ipynb
+google-tpu-v5e,conv1d,f32,"B=16,L=4096,C=64,K=3",1,jax,182.9,8803.6,JAX 0.7.2,jax.lax.conv1d,,bench_all_tpu.ipynb
+google-tpu-v5e,conv1d,f32,"B=16,L=4096,C=64,K=3",1,jax,281.8,5716.1,JAX 0.7.2,jax.lax.conv1d,,bench_all_tpu.ipynb

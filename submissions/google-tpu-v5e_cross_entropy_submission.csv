@@ -1,0 +1,10 @@
+device_id,kernel_id,dtype,input_shape,batch_size,impl_lang,latency_us,throughput_gbps,driver_version,toolchain,git_sha,submitter
+google-tpu-v5e,cross-entropy,f32,"[32, 32000]",1,jax,116.7,35.1,JAX 0.7.2,jax cross_entropy,,bench_all_tpu.ipynb
+google-tpu-v5e,cross-entropy,f32,"[32, 32000]",1,jax,114.6,35.7,JAX 0.7.2,jax cross_entropy,,bench_all_tpu.ipynb
+google-tpu-v5e,cross-entropy,f32,"[32, 32000]",1,jax,144.8,28.3,JAX 0.7.2,jax cross_entropy,,bench_all_tpu.ipynb
+google-tpu-v5e,cross-entropy,f32,"[128, 32000]",1,jax,176.8,92.7,JAX 0.7.2,jax cross_entropy,,bench_all_tpu.ipynb
+google-tpu-v5e,cross-entropy,f32,"[128, 32000]",1,jax,161.6,101.4,JAX 0.7.2,jax cross_entropy,,bench_all_tpu.ipynb
+google-tpu-v5e,cross-entropy,f32,"[128, 32000]",1,jax,284.0,57.7,JAX 0.7.2,jax cross_entropy,,bench_all_tpu.ipynb
+google-tpu-v5e,cross-entropy,f32,"[32, 50257]",1,jax,136.0,47.3,JAX 0.7.2,jax cross_entropy,,bench_all_tpu.ipynb
+google-tpu-v5e,cross-entropy,f32,"[32, 50257]",1,jax,130.3,49.4,JAX 0.7.2,jax cross_entropy,,bench_all_tpu.ipynb
+google-tpu-v5e,cross-entropy,f32,"[32, 50257]",1,jax,169.6,37.9,JAX 0.7.2,jax cross_entropy,,bench_all_tpu.ipynb

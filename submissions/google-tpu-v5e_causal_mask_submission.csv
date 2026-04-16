@@ -1,0 +1,13 @@
+device_id,kernel_id,dtype,input_shape,batch_size,impl_lang,latency_us,throughput_gbps,driver_version,toolchain,git_sha,submitter
+google-tpu-v5e,causal-mask,f32,"[64]",1,jax,105.5,0.3,JAX 0.7.2,jax causal_mask,,bench_all_tpu.ipynb
+google-tpu-v5e,causal-mask,f32,"[64]",1,jax,102.2,0.3,JAX 0.7.2,jax causal_mask,,bench_all_tpu.ipynb
+google-tpu-v5e,causal-mask,f32,"[64]",1,jax,134.2,0.2,JAX 0.7.2,jax causal_mask,,bench_all_tpu.ipynb
+google-tpu-v5e,causal-mask,f32,"[128]",1,jax,114.9,1.1,JAX 0.7.2,jax causal_mask,,bench_all_tpu.ipynb
+google-tpu-v5e,causal-mask,f32,"[128]",1,jax,106.2,1.2,JAX 0.7.2,jax causal_mask,,bench_all_tpu.ipynb
+google-tpu-v5e,causal-mask,f32,"[128]",1,jax,145.2,0.9,JAX 0.7.2,jax causal_mask,,bench_all_tpu.ipynb
+google-tpu-v5e,causal-mask,f32,"[256]",1,jax,115.0,4.6,JAX 0.7.2,jax causal_mask,,bench_all_tpu.ipynb
+google-tpu-v5e,causal-mask,f32,"[256]",1,jax,108.6,4.8,JAX 0.7.2,jax causal_mask,,bench_all_tpu.ipynb
+google-tpu-v5e,causal-mask,f32,"[256]",1,jax,195.3,2.7,JAX 0.7.2,jax causal_mask,,bench_all_tpu.ipynb
+google-tpu-v5e,causal-mask,f32,"[512]",1,jax,109.7,19.1,JAX 0.7.2,jax causal_mask,,bench_all_tpu.ipynb
+google-tpu-v5e,causal-mask,f32,"[512]",1,jax,106.5,19.7,JAX 0.7.2,jax causal_mask,,bench_all_tpu.ipynb
+google-tpu-v5e,causal-mask,f32,"[512]",1,jax,132.9,15.8,JAX 0.7.2,jax causal_mask,,bench_all_tpu.ipynb

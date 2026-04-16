@@ -1,0 +1,10 @@
+device_id,kernel_id,dtype,input_shape,batch_size,impl_lang,latency_us,throughput_gbps,driver_version,toolchain,git_sha,submitter
+google-tpu-v5e,softmax,f32,"[1, 1024]",1,jax,112.6,0.1,JAX 0.7.2,jax.nn.softmax,,bench_all_tpu.ipynb
+google-tpu-v5e,softmax,f32,"[1, 1024]",1,jax,108.8,0.1,JAX 0.7.2,jax.nn.softmax,,bench_all_tpu.ipynb
+google-tpu-v5e,softmax,f32,"[1, 1024]",1,jax,147.5,0.1,JAX 0.7.2,jax.nn.softmax,,bench_all_tpu.ipynb
+google-tpu-v5e,softmax,f32,"[64, 1024]",1,jax,109.5,4.8,JAX 0.7.2,jax.nn.softmax,,bench_all_tpu.ipynb
+google-tpu-v5e,softmax,f32,"[64, 1024]",1,jax,104.6,5.0,JAX 0.7.2,jax.nn.softmax,,bench_all_tpu.ipynb
+google-tpu-v5e,softmax,f32,"[64, 1024]",1,jax,138.6,3.8,JAX 0.7.2,jax.nn.softmax,,bench_all_tpu.ipynb
+google-tpu-v5e,softmax,f32,"[64, 4096]",1,jax,121.2,17.3,JAX 0.7.2,jax.nn.softmax,,bench_all_tpu.ipynb
+google-tpu-v5e,softmax,f32,"[64, 4096]",1,jax,118.6,17.7,JAX 0.7.2,jax.nn.softmax,,bench_all_tpu.ipynb
+google-tpu-v5e,softmax,f32,"[64, 4096]",1,jax,154.7,13.6,JAX 0.7.2,jax.nn.softmax,,bench_all_tpu.ipynb

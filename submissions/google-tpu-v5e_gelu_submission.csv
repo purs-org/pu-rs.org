@@ -1,0 +1,16 @@
+device_id,kernel_id,dtype,input_shape,batch_size,impl_lang,latency_us,throughput_gbps,driver_version,toolchain,git_sha,submitter
+google-tpu-v5e,gelu,f32,"[1, 768]",1,jax,161.7,0.0,JAX 0.7.2,jax.nn.gelu,,bench_all_tpu.ipynb
+google-tpu-v5e,gelu,f32,"[1, 768]",1,jax,152.3,0.0,JAX 0.7.2,jax.nn.gelu,,bench_all_tpu.ipynb
+google-tpu-v5e,gelu,f32,"[1, 768]",1,jax,323.3,0.0,JAX 0.7.2,jax.nn.gelu,,bench_all_tpu.ipynb
+google-tpu-v5e,gelu,f32,"[1, 4096]",1,jax,108.2,0.3,JAX 0.7.2,jax.nn.gelu,,bench_all_tpu.ipynb
+google-tpu-v5e,gelu,f32,"[1, 4096]",1,jax,103.8,0.3,JAX 0.7.2,jax.nn.gelu,,bench_all_tpu.ipynb
+google-tpu-v5e,gelu,f32,"[1, 4096]",1,jax,139.8,0.2,JAX 0.7.2,jax.nn.gelu,,bench_all_tpu.ipynb
+google-tpu-v5e,gelu,f32,"[64, 768]",1,jax,110.3,3.6,JAX 0.7.2,jax.nn.gelu,,bench_all_tpu.ipynb
+google-tpu-v5e,gelu,f32,"[64, 768]",1,jax,107.5,3.7,JAX 0.7.2,jax.nn.gelu,,bench_all_tpu.ipynb
+google-tpu-v5e,gelu,f32,"[64, 768]",1,jax,189.4,2.1,JAX 0.7.2,jax.nn.gelu,,bench_all_tpu.ipynb
+google-tpu-v5e,gelu,f32,"[64, 4096]",1,jax,110.1,19.0,JAX 0.7.2,jax.nn.gelu,,bench_all_tpu.ipynb
+google-tpu-v5e,gelu,f32,"[64, 4096]",1,jax,107.1,19.6,JAX 0.7.2,jax.nn.gelu,,bench_all_tpu.ipynb
+google-tpu-v5e,gelu,f32,"[64, 4096]",1,jax,186.9,11.2,JAX 0.7.2,jax.nn.gelu,,bench_all_tpu.ipynb
+google-tpu-v5e,gelu,f32,"[1024, 4096]",1,jax,154.6,217.0,JAX 0.7.2,jax.nn.gelu,,bench_all_tpu.ipynb
+google-tpu-v5e,gelu,f32,"[1024, 4096]",1,jax,151.0,222.2,JAX 0.7.2,jax.nn.gelu,,bench_all_tpu.ipynb
+google-tpu-v5e,gelu,f32,"[1024, 4096]",1,jax,198.3,169.2,JAX 0.7.2,jax.nn.gelu,,bench_all_tpu.ipynb

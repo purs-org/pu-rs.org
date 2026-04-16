@@ -1,0 +1,10 @@
+device_id,kernel_id,dtype,input_shape,batch_size,impl_lang,latency_us,throughput_gbps,driver_version,toolchain,git_sha,submitter
+google-tpu-v5e,embedding,f32,"[32, 32000, 128]",1,jax,123.2,0.1,JAX 0.7.2,jax embedding,,bench_all_tpu.ipynb
+google-tpu-v5e,embedding,f32,"[32, 32000, 128]",1,jax,115.6,0.1,JAX 0.7.2,jax embedding,,bench_all_tpu.ipynb
+google-tpu-v5e,embedding,f32,"[32, 32000, 128]",1,jax,182.5,0.1,JAX 0.7.2,jax embedding,,bench_all_tpu.ipynb
+google-tpu-v5e,embedding,f32,"[128, 32000, 128]",1,jax,110.1,0.6,JAX 0.7.2,jax embedding,,bench_all_tpu.ipynb
+google-tpu-v5e,embedding,f32,"[128, 32000, 128]",1,jax,107.4,0.6,JAX 0.7.2,jax embedding,,bench_all_tpu.ipynb
+google-tpu-v5e,embedding,f32,"[128, 32000, 128]",1,jax,160.3,0.4,JAX 0.7.2,jax embedding,,bench_all_tpu.ipynb
+google-tpu-v5e,embedding,f32,"[32, 32000, 4096]",1,jax,109.3,4.8,JAX 0.7.2,jax embedding,,bench_all_tpu.ipynb
+google-tpu-v5e,embedding,f32,"[32, 32000, 4096]",1,jax,105.1,5.0,JAX 0.7.2,jax embedding,,bench_all_tpu.ipynb
+google-tpu-v5e,embedding,f32,"[32, 32000, 4096]",1,jax,180.1,2.9,JAX 0.7.2,jax embedding,,bench_all_tpu.ipynb

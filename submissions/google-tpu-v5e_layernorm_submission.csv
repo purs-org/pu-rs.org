@@ -1,0 +1,10 @@
+device_id,kernel_id,dtype,input_shape,batch_size,impl_lang,latency_us,throughput_gbps,driver_version,toolchain,git_sha,submitter
+google-tpu-v5e,layernorm,f32,"[1, 768]",1,jax,122.5,0.1,JAX 0.7.2,jax layernorm,,bench_all_tpu.ipynb
+google-tpu-v5e,layernorm,f32,"[1, 768]",1,jax,119.1,0.1,JAX 0.7.2,jax layernorm,,bench_all_tpu.ipynb
+google-tpu-v5e,layernorm,f32,"[1, 768]",1,jax,169.6,0.0,JAX 0.7.2,jax layernorm,,bench_all_tpu.ipynb
+google-tpu-v5e,layernorm,f32,"[64, 768]",1,jax,133.1,3.0,JAX 0.7.2,jax layernorm,,bench_all_tpu.ipynb
+google-tpu-v5e,layernorm,f32,"[64, 768]",1,jax,127.7,3.1,JAX 0.7.2,jax layernorm,,bench_all_tpu.ipynb
+google-tpu-v5e,layernorm,f32,"[64, 768]",1,jax,184.9,2.1,JAX 0.7.2,jax layernorm,,bench_all_tpu.ipynb
+google-tpu-v5e,layernorm,f32,"[1024, 768]",1,jax,121.0,52.0,JAX 0.7.2,jax layernorm,,bench_all_tpu.ipynb
+google-tpu-v5e,layernorm,f32,"[1024, 768]",1,jax,110.6,56.9,JAX 0.7.2,jax layernorm,,bench_all_tpu.ipynb
+google-tpu-v5e,layernorm,f32,"[1024, 768]",1,jax,192.3,32.7,JAX 0.7.2,jax layernorm,,bench_all_tpu.ipynb

@@ -1,0 +1,16 @@
+device_id,kernel_id,dtype,input_shape,batch_size,impl_lang,latency_us,throughput_gbps,driver_version,toolchain,git_sha,submitter
+google-tpu-v5e,vq-quantize,f32,"N=256,K=512,D=64",1,jax,110.8,151.4,JAX 0.7.2,jax vq_quantize,,bench_all_tpu.ipynb
+google-tpu-v5e,vq-quantize,f32,"N=256,K=512,D=64",1,jax,108.6,154.5,JAX 0.7.2,jax vq_quantize,,bench_all_tpu.ipynb
+google-tpu-v5e,vq-quantize,f32,"N=256,K=512,D=64",1,jax,151.2,111.0,JAX 0.7.2,jax vq_quantize,,bench_all_tpu.ipynb
+google-tpu-v5e,vq-quantize,f32,"N=1024,K=512,D=64",1,jax,111.6,601.5,JAX 0.7.2,jax vq_quantize,,bench_all_tpu.ipynb
+google-tpu-v5e,vq-quantize,f32,"N=1024,K=512,D=64",1,jax,108.7,617.3,JAX 0.7.2,jax vq_quantize,,bench_all_tpu.ipynb
+google-tpu-v5e,vq-quantize,f32,"N=1024,K=512,D=64",1,jax,140.9,476.2,JAX 0.7.2,jax vq_quantize,,bench_all_tpu.ipynb
+google-tpu-v5e,vq-quantize,f32,"N=1024,K=1024,D=128",1,jax,115.1,2332.0,JAX 0.7.2,jax vq_quantize,,bench_all_tpu.ipynb
+google-tpu-v5e,vq-quantize,f32,"N=1024,K=1024,D=128",1,jax,110.0,2441.4,JAX 0.7.2,jax vq_quantize,,bench_all_tpu.ipynb
+google-tpu-v5e,vq-quantize,f32,"N=1024,K=1024,D=128",1,jax,150.3,1785.6,JAX 0.7.2,jax vq_quantize,,bench_all_tpu.ipynb
+google-tpu-v5e,vq-quantize,f32,"N=4096,K=512,D=64",1,jax,124.4,2157.1,JAX 0.7.2,jax vq_quantize,,bench_all_tpu.ipynb
+google-tpu-v5e,vq-quantize,f32,"N=4096,K=512,D=64",1,jax,120.9,2220.9,JAX 0.7.2,jax vq_quantize,,bench_all_tpu.ipynb
+google-tpu-v5e,vq-quantize,f32,"N=4096,K=512,D=64",1,jax,197.0,1362.5,JAX 0.7.2,jax vq_quantize,,bench_all_tpu.ipynb
+google-tpu-v5e,vq-quantize,f32,"N=4096,K=1024,D=128",1,jax,130.5,8225.1,JAX 0.7.2,jax vq_quantize,,bench_all_tpu.ipynb
+google-tpu-v5e,vq-quantize,f32,"N=4096,K=1024,D=128",1,jax,127.7,8405.0,JAX 0.7.2,jax vq_quantize,,bench_all_tpu.ipynb
+google-tpu-v5e,vq-quantize,f32,"N=4096,K=1024,D=128",1,jax,207.4,5176.2,JAX 0.7.2,jax vq_quantize,,bench_all_tpu.ipynb

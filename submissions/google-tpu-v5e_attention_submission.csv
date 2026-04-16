@@ -1,0 +1,16 @@
+device_id,kernel_id,dtype,input_shape,batch_size,impl_lang,latency_us,throughput_gbps,driver_version,toolchain,git_sha,submitter
+google-tpu-v5e,attention,f32,"B=1,H=8,S=256,D=64",1,jax,113.4,1183.5,JAX 0.7.2,jax attention,,bench_all_tpu.ipynb
+google-tpu-v5e,attention,f32,"B=1,H=8,S=256,D=64",1,jax,110.3,1216.3,JAX 0.7.2,jax attention,,bench_all_tpu.ipynb
+google-tpu-v5e,attention,f32,"B=1,H=8,S=256,D=64",1,jax,144.7,927.7,JAX 0.7.2,jax attention,,bench_all_tpu.ipynb
+google-tpu-v5e,attention,f32,"B=1,H=8,S=512,D=64",1,jax,117.4,4573.4,JAX 0.7.2,jax attention,,bench_all_tpu.ipynb
+google-tpu-v5e,attention,f32,"B=1,H=8,S=512,D=64",1,jax,112.1,4788.8,JAX 0.7.2,jax attention,,bench_all_tpu.ipynb
+google-tpu-v5e,attention,f32,"B=1,H=8,S=512,D=64",1,jax,191.0,2811.6,JAX 0.7.2,jax attention,,bench_all_tpu.ipynb
+google-tpu-v5e,attention,f32,"B=1,H=32,S=512,D=128",1,jax,145.2,29580.8,JAX 0.7.2,jax attention,,bench_all_tpu.ipynb
+google-tpu-v5e,attention,f32,"B=1,H=32,S=512,D=128",1,jax,142.3,30188.6,JAX 0.7.2,jax attention,,bench_all_tpu.ipynb
+google-tpu-v5e,attention,f32,"B=1,H=32,S=512,D=128",1,jax,266.9,16093.3,JAX 0.7.2,jax attention,,bench_all_tpu.ipynb
+google-tpu-v5e,attention,f32,"B=1,H=32,S=1024,D=128",1,jax,862.2,19926.7,JAX 0.7.2,jax attention,,bench_all_tpu.ipynb
+google-tpu-v5e,attention,f32,"B=1,H=32,S=1024,D=128",1,jax,836.8,20529.5,JAX 0.7.2,jax attention,,bench_all_tpu.ipynb
+google-tpu-v5e,attention,f32,"B=1,H=32,S=1024,D=128",1,jax,983.7,17464.0,JAX 0.7.2,jax attention,,bench_all_tpu.ipynb
+google-tpu-v5e,attention,f32,"B=1,H=32,S=2048,D=128",1,jax,2632.5,26104.2,JAX 0.7.2,jax attention,,bench_all_tpu.ipynb
+google-tpu-v5e,attention,f32,"B=1,H=32,S=2048,D=128",1,jax,2593.3,26498.5,JAX 0.7.2,jax attention,,bench_all_tpu.ipynb
+google-tpu-v5e,attention,f32,"B=1,H=32,S=2048,D=128",1,jax,2829.7,24285.1,JAX 0.7.2,jax attention,,bench_all_tpu.ipynb

@@ -1,0 +1,16 @@
+device_id,kernel_id,dtype,input_shape,batch_size,impl_lang,latency_us,throughput_gbps,driver_version,toolchain,git_sha,submitter
+google-tpu-v5e,rms-norm,f32,"[1, 768]",1,jax,107.8,0.1,JAX 0.7.2,jax rms_norm,,bench_all_tpu.ipynb
+google-tpu-v5e,rms-norm,f32,"[1, 768]",1,jax,104.2,0.1,JAX 0.7.2,jax rms_norm,,bench_all_tpu.ipynb
+google-tpu-v5e,rms-norm,f32,"[1, 768]",1,jax,169.5,0.1,JAX 0.7.2,jax rms_norm,,bench_all_tpu.ipynb
+google-tpu-v5e,rms-norm,f32,"[1, 4096]",1,jax,106.3,0.5,JAX 0.7.2,jax rms_norm,,bench_all_tpu.ipynb
+google-tpu-v5e,rms-norm,f32,"[1, 4096]",1,jax,104.1,0.5,JAX 0.7.2,jax rms_norm,,bench_all_tpu.ipynb
+google-tpu-v5e,rms-norm,f32,"[1, 4096]",1,jax,127.9,0.4,JAX 0.7.2,jax rms_norm,,bench_all_tpu.ipynb
+google-tpu-v5e,rms-norm,f32,"[64, 768]",1,jax,107.7,5.5,JAX 0.7.2,jax rms_norm,,bench_all_tpu.ipynb
+google-tpu-v5e,rms-norm,f32,"[64, 768]",1,jax,103.9,5.7,JAX 0.7.2,jax rms_norm,,bench_all_tpu.ipynb
+google-tpu-v5e,rms-norm,f32,"[64, 768]",1,jax,292.3,2.0,JAX 0.7.2,jax rms_norm,,bench_all_tpu.ipynb
+google-tpu-v5e,rms-norm,f32,"[64, 4096]",1,jax,127.9,24.6,JAX 0.7.2,jax rms_norm,,bench_all_tpu.ipynb
+google-tpu-v5e,rms-norm,f32,"[64, 4096]",1,jax,123.5,25.5,JAX 0.7.2,jax rms_norm,,bench_all_tpu.ipynb
+google-tpu-v5e,rms-norm,f32,"[64, 4096]",1,jax,160.8,19.6,JAX 0.7.2,jax rms_norm,,bench_all_tpu.ipynb
+google-tpu-v5e,rms-norm,f32,"[1024, 4096]",1,jax,204.3,246.3,JAX 0.7.2,jax rms_norm,,bench_all_tpu.ipynb
+google-tpu-v5e,rms-norm,f32,"[1024, 4096]",1,jax,192.3,261.8,JAX 0.7.2,jax rms_norm,,bench_all_tpu.ipynb
+google-tpu-v5e,rms-norm,f32,"[1024, 4096]",1,jax,482.6,104.3,JAX 0.7.2,jax rms_norm,,bench_all_tpu.ipynb

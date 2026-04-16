@@ -1,0 +1,10 @@
+device_id,kernel_id,dtype,input_shape,batch_size,impl_lang,latency_us,throughput_gbps,driver_version,toolchain,git_sha,submitter
+google-tpu-v5e,rope,f32,"[1, 64, 128]",1,jax,109.9,1.2,JAX 0.7.2,jax rope,,bench_all_tpu.ipynb
+google-tpu-v5e,rope,f32,"[1, 64, 128]",1,jax,106.8,1.2,JAX 0.7.2,jax rope,,bench_all_tpu.ipynb
+google-tpu-v5e,rope,f32,"[1, 64, 128]",1,jax,139.1,0.9,JAX 0.7.2,jax rope,,bench_all_tpu.ipynb
+google-tpu-v5e,rope,f32,"[32, 64, 128]",1,jax,110.3,38.0,JAX 0.7.2,jax rope,,bench_all_tpu.ipynb
+google-tpu-v5e,rope,f32,"[32, 64, 128]",1,jax,107.2,39.1,JAX 0.7.2,jax rope,,bench_all_tpu.ipynb
+google-tpu-v5e,rope,f32,"[32, 64, 128]",1,jax,135.3,31.0,JAX 0.7.2,jax rope,,bench_all_tpu.ipynb
+google-tpu-v5e,rope,f32,"[1, 128, 128]",1,jax,114.1,2.3,JAX 0.7.2,jax rope,,bench_all_tpu.ipynb
+google-tpu-v5e,rope,f32,"[1, 128, 128]",1,jax,109.1,2.4,JAX 0.7.2,jax rope,,bench_all_tpu.ipynb
+google-tpu-v5e,rope,f32,"[1, 128, 128]",1,jax,160.9,1.6,JAX 0.7.2,jax rope,,bench_all_tpu.ipynb
