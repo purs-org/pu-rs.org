@@ -23,14 +23,6 @@ For an 18-block VQ-VAE encoder/decoder, the unfused version allocates **54 inter
 - Keeps activations in registers/L1 cache between stages
 - One command buffer dispatch instead of five
 
-## Benchmark configurations
-
-| Shape (B, T, C) | Elements | Notes |
-|---|---|---|
-| (2, 50, 512)  | 51 K  | Single VQ-VAE block, small batch |
-| (8, 100, 512) | 410 K | Mid-sized clip |
-| (2, 400, 512) | 410 K | Long sequence |
-
 ## ascend-rs Kernel Source
 
 Vectorized dilated conv1d + ReLU using ascend-rs buffer API (f32, benchmarked implementation):
@@ -86,6 +78,14 @@ pub fn conv1d_dilated(input: *const f32, output: *mut f32, params: *const u32) {
 ```
 
 This compiles via `rustc_codegen_mlir` → MLIR → AscendC (NPU), CUDA (GPU), or GLSL (Vulkan/Metal).
+
+## Benchmark configurations
+
+| Shape (B, T, C) | Elements | Notes |
+|---|---|---|
+| (2, 50, 512)  | 51 K  | Single VQ-VAE block, small batch |
+| (8, 100, 512) | 410 K | Mid-sized clip |
+| (2, 400, 512) | 410 K | Long sequence |
 
 ## Results
 

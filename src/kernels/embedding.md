@@ -15,24 +15,26 @@ This is the first operation in any transformer: tokens (integers) become vectors
 
 ## ascend-rs Kernel Source
 
-Embedding using the tile API:
+Embedding using the tile API — safe entry form (compiles to PTO-MLIR for M-pipe, or to CUDA/SPIR-V/NKI/AIE):
 
 ```rust
-#[ascend_std::aiv_kernel]
-pub fn embedding_tile(
-    weight_ptr: *const f32,
-    indices_ptr: *const u32,
-    output: *mut f32,
-) {
-    const V: usize = 32000;
-    const D: usize = 128;
-    const N: usize = 32;
+use ascend_std::tile::{GmView, GmViewMut, safe, tile_load_view_f32, tile_store_view_f32};
 
-    let w: Tile<V, D, f32> = tile_load_f32::<V, D>(weight_ptr);
-    let emb: Tile<N, D, f32> = tile_embedding_f32::<V, D, N>(w, indices_ptr);
-    tile_store_f32::<N, D>(output, emb);
+#[ascend_std::aiv_kernel]
+pub fn tile_embedding(
+    weight:  GmView<'_, 32000, 128, f32>,  // (V, D) codebook
+    indices: *const u32,                   // (N,) token ids — integer gather source
+    output:  GmViewMut<'_, 32, 128, f32>,  // (N, D) gathered rows
+) {
+    let w = tile_load_view_f32(&weight);
+    let emb = safe::tile_embedding_f32(w, indices);
+    tile_store_view_f32(&output, emb);
 }
 ```
+
+The kernel body is **pure safe Rust** — weight table and output shapes are committed at the type level via const generics (`V`, `D`, `N`), so any host-side mismatch becomes a compile-time error. The indices pointer remains a raw `*const u32` since gather indices are not a tile. The `#[aiv_kernel]` attribute rewrites the emitted signature back to raw `*const f32` / `*mut f32` for the tile params so the launcher toolchain sees the same C ABI; `#[repr(transparent)]` on `GmView`/`GmViewMut` makes this rewrite free at the LLVM IR level.
+
+Compiles via `rustc_codegen_mlir` → MLIR → target-specific code (AscendC, CUDA, GLSL, NKI, AIE).
 
 ## Benchmark configurations
 

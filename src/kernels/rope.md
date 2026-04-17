@@ -17,19 +17,25 @@ Used in every modern LLM (LLaMA, Mistral, GPT-NeoX, Qwen, etc.) to encode token 
 
 ## ascend-rs Kernel Source
 
-RoPE using the tile API:
+RoPE using the tile API — safe entry form (compiles to PTO-MLIR for M-pipe, or to CUDA/SPIR-V/NKI/AIE):
 
 ```rust
-#[ascend_std::aiv_kernel]
-pub fn rope_tile(input: *const f32, output: *mut f32) {
-    const S: usize = 1;
-    const D: usize = 128;
+use ascend_std::tile::{GmView, GmViewMut, safe, tile_load_view_f32, tile_store_view_f32};
 
-    let x: Tile<S, D, f32> = tile_load_f32::<S, D>(input);
-    let y: Tile<S, D, f32> = tile_rope_f32::<S, D>(x, 0);
-    tile_store_f32::<S, D>(output, y);
+#[ascend_std::aiv_kernel]
+pub fn tile_rope(
+    input:  GmView<'_, 1, 128, f32>,
+    output: GmViewMut<'_, 1, 128, f32>,
+) {
+    let x = tile_load_view_f32(&input);
+    let y = safe::tile_rope_f32(x, 0);  // base position = 0
+    tile_store_view_f32(&output, y);
 }
 ```
+
+The kernel body is **pure safe Rust** — shape (rows, cols, dtype) is committed at the type level via const generics, so any host-side mismatch becomes a compile-time error. The `#[aiv_kernel]` attribute rewrites the emitted signature back to raw `*const f32` / `*mut f32` so the launcher toolchain sees the same C ABI; `#[repr(transparent)]` on `GmView`/`GmViewMut` makes this rewrite free at the LLVM IR level.
+
+Compiles via `rustc_codegen_mlir` → MLIR → target-specific code (AscendC, CUDA, GLSL, NKI, AIE).
 
 ## Benchmark configurations
 

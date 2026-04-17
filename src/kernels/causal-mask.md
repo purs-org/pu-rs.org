@@ -23,18 +23,25 @@ This is memory-bandwidth bound (simple conditional copy), but critical for corre
 
 ## ascend-rs Kernel Source
 
-Causal mask using the tile API:
+Causal mask using the tile API — safe entry form (compiles to PTO-MLIR for M-pipe, or to CUDA/SPIR-V/NKI/AIE):
 
 ```rust
-#[ascend_std::aiv_kernel]
-pub fn causal_mask_tile(input: *const f32, output: *mut f32) {
-    const S: usize = 64;
+use ascend_std::tile::{GmView, GmViewMut, safe, tile_load_view_f32, tile_store_view_f32};
 
-    let scores: Tile<S, S, f32> = tile_load_f32::<S, S>(input);
-    let masked: Tile<S, S, f32> = tile_causal_mask_f32::<S>(scores);
-    tile_store_f32::<S, S>(output, masked);
+#[ascend_std::aiv_kernel]
+pub fn tile_causal_mask(
+    input:  GmView<'_, 64, 64, f32>,
+    output: GmViewMut<'_, 64, 64, f32>,
+) {
+    let scores = tile_load_view_f32(&input);
+    let masked = safe::tile_causal_mask_f32(scores);
+    tile_store_view_f32(&output, masked);
 }
 ```
+
+The kernel body is **pure safe Rust** — shape (rows, cols, dtype) is committed at the type level via const generics, so any host-side mismatch becomes a compile-time error. Square-shape enforcement (rows == cols) is also enforced at the type level. The `#[aiv_kernel]` attribute rewrites the emitted signature back to raw `*const f32` / `*mut f32` so the launcher toolchain sees the same C ABI; `#[repr(transparent)]` on `GmView`/`GmViewMut` makes this rewrite free at the LLVM IR level.
+
+Compiles via `rustc_codegen_mlir` → MLIR → target-specific code (AscendC, CUDA, GLSL, NKI, AIE).
 
 ## Benchmark configurations
 
@@ -47,6 +54,6 @@ pub fn causal_mask_tile(input: *const f32, output: *mut f32) {
 
 ## Results
 
-<div id="kernel-results" data-kernel="causal_mask"></div>
+<div id="kernel-results" data-kernel="causal-mask"></div>
 
 *See [Leaderboard](../leaderboard.md) filtered to Causal Mask for the full filterable view.*

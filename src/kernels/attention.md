@@ -14,7 +14,7 @@ Pipeline:
 3. **Softmax** along last axis — numerically stable (max → sub → exp → sum → div)
 4. **Output** = Weights × V — matmul (S×S) × (S×D) → (S×D)
 
-## ascend-rs Implementation
+## ascend-rs Kernel Source
 
 The attention pipeline in ascend-rs combines tile-API matmul with custom Rust kernels for scale and softmax:
 

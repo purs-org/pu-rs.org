@@ -19,21 +19,25 @@ Like GELU, SiLU is memory-bandwidth bound. The compute-to-byte ratio is low (a f
 
 ## ascend-rs Kernel Source
 
-SiLU using the tile API (single source, compiles to all backends):
+SiLU using the tile API — safe entry form (compiles to PTO-MLIR for M-pipe, or to CUDA/SPIR-V/NKI/AIE):
 
 ```rust
-#[ascend_std::aiv_kernel]
-pub fn silu_tile(input: *const f32, output: *mut f32) {
-    const R: usize = 1;
-    const C: usize = 4096;
+use ascend_std::tile::{GmView, GmViewMut, safe, tile_load_view_f32, tile_store_view_f32};
 
-    let x: Tile<R, C, f32> = tile_load_f32::<R, C>(input);
-    let y: Tile<R, C, f32> = tile_silu_f32::<R, C>(x);
-    tile_store_f32::<R, C>(output, y);
+#[ascend_std::aiv_kernel]
+pub fn tile_silu(
+    input:  GmView<'_, 1, 4096, f32>,
+    output: GmViewMut<'_, 1, 4096, f32>,
+) {
+    let x = tile_load_view_f32(&input);
+    let y = safe::tile_silu_f32(x);
+    tile_store_view_f32(&output, y);
 }
 ```
 
-Decomposes to: neg -> exp -> add_scalar(1) -> reciprocal -> mul with original x.
+The kernel body is **pure safe Rust** — shape (rows, cols, dtype) is committed at the type level via const generics, so any host-side mismatch becomes a compile-time error. The `#[aiv_kernel]` attribute rewrites the emitted signature back to raw `*const f32` / `*mut f32` so the launcher toolchain sees the same C ABI; `#[repr(transparent)]` on `GmView`/`GmViewMut` makes this rewrite free at the LLVM IR level.
+
+`safe::tile_silu_f32` decomposes to: neg → exp → add_scalar(1) → reciprocal → mul with original `x`. Compiles via `rustc_codegen_mlir` → MLIR → target-specific code (AscendC, CUDA, GLSL, NKI, AIE).
 
 ## Benchmark configurations
 
