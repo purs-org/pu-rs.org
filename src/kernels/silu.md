@@ -19,7 +19,7 @@ Like GELU, SiLU is memory-bandwidth bound. The compute-to-byte ratio is low (a f
 
 ## ascend-rs Kernel Source
 
-SiLU using the tile API — safe entry form (compiles to PTO-MLIR for M-pipe, or to CUDA/SPIR-V/NKI/AIE):
+SiLU using the tile API — safe entry form (lowered by `rustc_codegen_mlir` to all 9 backends: Ascend AIV, CUDA, Apple Metal, Vulkan SPIR-V, AWS NKI, AMD AIE, Cambricon BANG, Intel Gaudi, Google TPU):
 
 ```rust
 use ascend_std::tile::{GmView, GmViewMut, safe, tile_load_view_f32, tile_store_view_f32};
@@ -37,7 +37,7 @@ pub fn tile_silu(
 
 The kernel body is **pure safe Rust** — shape (rows, cols, dtype) is committed at the type level via const generics, so any host-side mismatch becomes a compile-time error. The `#[aiv_kernel]` attribute rewrites the emitted signature back to raw `*const f32` / `*mut f32` so the launcher toolchain sees the same C ABI; `#[repr(transparent)]` on `GmView`/`GmViewMut` makes this rewrite free at the LLVM IR level.
 
-`safe::tile_silu_f32` decomposes to: neg → exp → add_scalar(1) → reciprocal → mul with original `x`. Compiles via `rustc_codegen_mlir` → MLIR → target-specific code (AscendC, CUDA, GLSL, NKI, AIE).
+`safe::tile_silu_f32` decomposes to: neg → exp → add_scalar(1) → reciprocal → mul with original `x`. SiLU is one of the four "hot path" tile ops (alongside matmul, softmax, rms-norm) that is lowered on every backend currently targeted.
 
 ## Benchmark configurations
 

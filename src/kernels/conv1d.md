@@ -77,7 +77,7 @@ pub fn conv1d_dilated(input: *const f32, output: *mut f32, params: *const u32) {
 }
 ```
 
-This compiles via `rustc_codegen_mlir` → MLIR → AscendC (NPU), CUDA (GPU), or GLSL (Vulkan/Metal).
+This buffer-API kernel runs on the Ascend AIV backend via `rustc_codegen_mlir`. **No tile-API `safe::tile_conv1d_f32` currently exists** — tile-API lowerings on all 9 backends (Ascend AIV / CUDA / Apple Metal / Vulkan SPIR-V / AWS NKI / AMD AIE / Cambricon BANG / Intel Gaudi / Google TPU) are **future work**. On non-Ascend backends the fused pad+gather+matmul+ReLU is currently expressed as a buffer-API composition rather than a single tile op.
 
 ## Benchmark configurations
 

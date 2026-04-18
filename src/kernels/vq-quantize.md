@@ -100,7 +100,7 @@ pub fn vq_quantize(
 }
 ```
 
-This compiles via `rustc_codegen_mlir` → MLIR → AscendC (NPU), CUDA (GPU), or GLSL (Vulkan/Metal). The fused kernel avoids materializing the N×K distance matrix and K-element index array.
+This buffer-API kernel runs on the Ascend AIV backend via `rustc_codegen_mlir`, and avoids materializing the N×K distance matrix and K-element index array. **No tile-API `safe::tile_vq_quantize_f32` currently exists** — tile-API lowerings on all 9 backends (Ascend AIV / CUDA / Apple Metal / Vulkan SPIR-V / AWS NKI / AMD AIE / Cambricon BANG / Intel Gaudi / Google TPU) are **future work**. Cross-backend VQ today uses vendor kernels (aclnnMatmul, MPS GEMM, torch.cdist) with a separate argmin pass rather than the fused Rust kernel shown above.
 
 ## Benchmark configurations
 

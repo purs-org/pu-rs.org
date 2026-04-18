@@ -56,7 +56,7 @@ pub fn softmax(input: *const f32, output: *mut f32, len: *const u32) {
 }
 ```
 
-**Tile API — safe entry form** (compiles to PTO-MLIR for M-pipe, or to CUDA/SPIR-V/NKI/AIE):
+**Tile API — safe entry form** (lowered by `rustc_codegen_mlir` to all 9 backends: Ascend AIV, CUDA, Apple Metal, Vulkan SPIR-V, AWS NKI, AMD AIE, Cambricon BANG, Intel Gaudi, Google TPU):
 
 ```rust
 use ascend_std::tile::{GmView, GmViewMut, safe, tile_load_view_f32, tile_store_view_f32};
@@ -74,7 +74,7 @@ pub fn tile_softmax(
 
 The kernel body is **pure safe Rust** — no `unsafe` blocks. Shape (rows, cols, dtype) is committed at the type level via const generics, so any host-side mismatch becomes a compile-time error. The `#[aiv_kernel]` attribute rewrites the emitted signature back to raw `*const f32` / `*mut f32` so the launcher/compiler toolchain (bisheng / ACL / nvcc) sees the same C ABI. `#[repr(transparent)]` on `GmView`/`GmViewMut` makes this rewrite free at the LLVM IR level — the two forms emit as literal symbol aliases.
 
-Kernels compile via `rustc_codegen_mlir` → MLIR → target-specific code (AscendC, CUDA, GLSL, NKI, AIE).
+Kernels compile via `rustc_codegen_mlir` → MLIR → target-specific code. Softmax is one of the four "hot path" tile ops (alongside matmul, rms-norm, silu) that is lowered on every backend currently targeted.
 
 ## Benchmark configurations
 

@@ -15,7 +15,7 @@ This is the first operation in any transformer: tokens (integers) become vectors
 
 ## ascend-rs Kernel Source
 
-Embedding using the tile API — safe entry form (compiles to PTO-MLIR for M-pipe, or to CUDA/SPIR-V/NKI/AIE):
+Embedding using the tile API — safe entry form with one `unsafe` block (the indices pointer is an integer gather source, not a tile, so `safe::tile_embedding_f32` is declared `pub unsafe fn`):
 
 ```rust
 use ascend_std::tile::{GmView, GmViewMut, safe, tile_load_view_f32, tile_store_view_f32};
@@ -27,14 +27,16 @@ pub fn tile_embedding(
     output:  GmViewMut<'_, 32, 128, f32>,  // (N, D) gathered rows
 ) {
     let w = tile_load_view_f32(&weight);
-    let emb = safe::tile_embedding_f32(w, indices);
+    // SAFETY: `indices` is a valid *const u32 of length COUNT=32, guaranteed by
+    // the launcher. The unsafe wrapper is the only non-safe surface.
+    let emb = unsafe { safe::tile_embedding_f32(w, indices) };
     tile_store_view_f32(&output, emb);
 }
 ```
 
-The kernel body is **pure safe Rust** — weight table and output shapes are committed at the type level via const generics (`V`, `D`, `N`), so any host-side mismatch becomes a compile-time error. The indices pointer remains a raw `*const u32` since gather indices are not a tile. The `#[aiv_kernel]` attribute rewrites the emitted signature back to raw `*const f32` / `*mut f32` for the tile params so the launcher toolchain sees the same C ABI; `#[repr(transparent)]` on `GmView`/`GmViewMut` makes this rewrite free at the LLVM IR level.
+Weight table and output shapes are committed at the type level via const generics (`V`, `D`, `N`), so any host-side mismatch becomes a compile-time error. The `#[aiv_kernel]` attribute rewrites the emitted signature back to raw `*const f32` / `*mut f32` for the tile params so the launcher toolchain sees the same C ABI; `#[repr(transparent)]` on `GmView`/`GmViewMut` makes this rewrite free at the LLVM IR level.
 
-Compiles via `rustc_codegen_mlir` → MLIR → target-specific code (AscendC, CUDA, GLSL, NKI, AIE).
+**Backend status** (lowered by `rustc_codegen_mlir`): Cambricon BANG, Intel Gaudi, Apple Metal, Vulkan SPIR-V. Ascend AIV / CUDA / AWS NKI / AMD AIE / Google TPU lowerings are **TODO**.
 
 ## Benchmark configurations
 

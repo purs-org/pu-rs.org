@@ -58,7 +58,7 @@ pub fn rms_norm(
 }
 ```
 
-This compiles via `rustc_codegen_mlir` → MLIR → AscendC (NPU), CUDA (GPU), GLSL (Vulkan/Metal), or other targets.
+This buffer-API kernel runs on the Ascend AIV backend. A tile-API `safe::tile_rms_norm_f32` variant is additionally lowered by `rustc_codegen_mlir` to all 9 backends (Ascend AIV, CUDA, Apple Metal, Vulkan SPIR-V, AWS NKI, AMD AIE, Cambricon BANG, Intel Gaudi, Google TPU) — RMS Norm is one of the four "hot path" tile ops (alongside matmul, softmax, silu) that is lowered on every backend currently targeted.
 
 ## Benchmark configurations
 

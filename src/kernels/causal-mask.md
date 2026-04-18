@@ -23,7 +23,7 @@ This is memory-bandwidth bound (simple conditional copy), but critical for corre
 
 ## ascend-rs Kernel Source
 
-Causal mask using the tile API — safe entry form (compiles to PTO-MLIR for M-pipe, or to CUDA/SPIR-V/NKI/AIE):
+Causal mask using the tile API — safe entry form:
 
 ```rust
 use ascend_std::tile::{GmView, GmViewMut, safe, tile_load_view_f32, tile_store_view_f32};
@@ -41,7 +41,7 @@ pub fn tile_causal_mask(
 
 The kernel body is **pure safe Rust** — shape (rows, cols, dtype) is committed at the type level via const generics, so any host-side mismatch becomes a compile-time error. Square-shape enforcement (rows == cols) is also enforced at the type level. The `#[aiv_kernel]` attribute rewrites the emitted signature back to raw `*const f32` / `*mut f32` so the launcher toolchain sees the same C ABI; `#[repr(transparent)]` on `GmView`/`GmViewMut` makes this rewrite free at the LLVM IR level.
 
-Compiles via `rustc_codegen_mlir` → MLIR → target-specific code (AscendC, CUDA, GLSL, NKI, AIE).
+**Backend status** (lowered by `rustc_codegen_mlir`): Cambricon BANG, Intel Gaudi, Apple Metal, Vulkan SPIR-V (4/9). Ascend AIV / CUDA / AWS NKI / AMD AIE / Google TPU lowerings are **TODO** — on those backends causal masking is currently applied as a buffer-API element-wise compare-and-select rather than a single fused tile op.
 
 ## Benchmark configurations
 

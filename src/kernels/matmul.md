@@ -32,12 +32,15 @@ pub fn tile_matmul(
 
 No `unsafe` blocks in the body. A mismatched `K` between the two operands is a compile-time error. The `#[aiv_kernel]` attribute rewrites the emitted signature to raw `*const f32` / `*mut f32` so the launcher toolchain sees an unchanged C ABI — `#[repr(transparent)]` makes the rewrite free at the LLVM IR level.
 
-This compiles via `rustc_codegen_mlir` → MLIR → target code:
-- **Ascend**: PTO-MLIR `pto.tmatmul` → cube engine (320 TFLOPS f16 on 910B)
+This compiles via `rustc_codegen_mlir` → MLIR → target code on **all 9 backends**:
+- **Ascend AIV**: PTO-MLIR `pto.tmatmul` → cube engine (320 TFLOPS f16 on 910B)
 - **CUDA**: `__shared__` tiled GEMM with `__syncthreads()`
-- **Vulkan/Metal**: GLSL compute shader with shared memory tiling
-- **Trainium**: NKI `nki.isa.nc_matmul`
+- **Apple Metal / Vulkan SPIR-V**: compute shader with shared-memory tiling
+- **AWS NKI** (Trainium): `nki.isa.nc_matmul`
 - **AMD AIE**: AIE2P cascade matmul
+- **Cambricon BANG**: `__bang_matmul` on MLU tensor units
+- **Intel Gaudi**: HPU matmul intrinsic
+- **Google TPU**: XLA `dot_general` via OpenXLA
 
 For benchmarking, vendor-optimized libraries are used: aclnnMatmul (Ascend), cuBLAS (CUDA), MPSMatrixMultiplication (Metal).
 

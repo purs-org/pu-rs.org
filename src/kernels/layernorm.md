@@ -53,7 +53,7 @@ pub fn layernorm(input: *const f32, output: *mut f32, len_buf: *const u32) {
 }
 ```
 
-This compiles via `rustc_codegen_mlir` → MLIR → AscendC (NPU), CUDA (GPU), GLSL (Vulkan/Metal), or other targets.
+This buffer-API kernel is the primary implementation and runs on the Ascend AIV backend. A tile-API `safe::tile_layernorm_f32` variant is additionally lowered by `rustc_codegen_mlir` to **Apple Metal** (1/9) — the other 8 backend lowerings (Ascend AIV / CUDA / Vulkan SPIR-V / AWS NKI / AMD AIE / Cambricon BANG / Intel Gaudi / Google TPU) are **future work**. On non-Metal backends, LayerNorm is currently composed at the buffer API as shown above (mean → sub → mul² → mean → sqrt → mul) rather than emitted as a single tile op.
 
 ## Benchmark configurations
 

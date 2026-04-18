@@ -54,7 +54,9 @@ acl_blas_hgemm(TransN, TransN, TransN,
     HighPrecision, &stream)?;
 ```
 
-The scale and softmax kernels are written in Rust and compiled via `rustc_codegen_mlir` → MLIR → AscendC (NPU), CUDA (GPU), or GLSL (Vulkan/Metal). The GEMMs use vendor-optimized libraries (aclnnMatmul, cuBLAS, MPSMatrixMultiplication).
+The scale and softmax kernels are written in Rust and compiled via `rustc_codegen_mlir` → MLIR → backend code. The GEMMs use vendor-optimized libraries (aclnnMatmul, cuBLAS, MPSMatrixMultiplication).
+
+**Backend status** for the fused `safe::tile_attention_f32` tile op: Ascend AIV, Cambricon BANG, Intel Gaudi, Apple Metal, Vulkan SPIR-V (5/9). CUDA / AWS NKI / AMD AIE / Google TPU lowerings are **TODO** — on those backends the pipeline still runs as separate matmul + softmax + matmul dispatches using the individually-lowered tile ops.
 
 ## Benchmark configurations
 

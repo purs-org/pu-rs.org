@@ -87,7 +87,7 @@ pub fn gelu_vec(
 }
 ```
 
-These Rust kernels compile via `rustc_codegen_mlir` → MLIR → AscendC (NPU), CUDA (GPU), GLSL (Vulkan/Metal), or other targets.
+These buffer-API kernels run on the Ascend AIV backend via `rustc_codegen_mlir`. **No tile-API `safe::tile_gelu_f32` currently exists** — tile-API lowerings on all 9 backends (Ascend AIV / CUDA / Apple Metal / Vulkan SPIR-V / AWS NKI / AMD AIE / Cambricon BANG / Intel Gaudi / Google TPU) are **future work**. Cross-backend execution today goes through the buffer-API scalar loop or the element-wise intrinsic composition shown above.
 
 ## Benchmark configurations
 
