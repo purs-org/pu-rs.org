@@ -1,0 +1,10 @@
+device_id,kernel_id,dtype,input_shape,batch_size,impl_lang,latency_us,throughput_gbps,driver_version,toolchain,git_sha,submitter
+nvidia-a100-80,layernorm,f32,"[1, 768]",1,cuda,42.0,0.1,CUDA 12.1,nn.LayerNorm,,bench_all_cuda.ipynb
+nvidia-a100-80,layernorm,f32,"[1, 768]",1,cuda,39.9,0.2,CUDA 12.1,nn.LayerNorm,,bench_all_cuda.ipynb
+nvidia-a100-80,layernorm,f32,"[1, 768]",1,cuda,231.4,0.0,CUDA 12.1,nn.LayerNorm,,bench_all_cuda.ipynb
+nvidia-a100-80,layernorm,f32,"[64, 768]",1,cuda,42.0,9.4,CUDA 12.1,nn.LayerNorm,,bench_all_cuda.ipynb
+nvidia-a100-80,layernorm,f32,"[64, 768]",1,cuda,39.9,9.8,CUDA 12.1,nn.LayerNorm,,bench_all_cuda.ipynb
+nvidia-a100-80,layernorm,f32,"[64, 768]",1,cuda,74.8,5.3,CUDA 12.1,nn.LayerNorm,,bench_all_cuda.ipynb
+nvidia-a100-80,layernorm,f32,"[1024, 768]",1,cuda,42.0,149.9,CUDA 12.1,nn.LayerNorm,,bench_all_cuda.ipynb
+nvidia-a100-80,layernorm,f32,"[1024, 768]",1,cuda,39.9,157.5,CUDA 12.1,nn.LayerNorm,,bench_all_cuda.ipynb
+nvidia-a100-80,layernorm,f32,"[1024, 768]",1,cuda,55.3,113.8,CUDA 12.1,nn.LayerNorm,,bench_all_cuda.ipynb

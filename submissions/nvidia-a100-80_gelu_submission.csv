@@ -1,0 +1,16 @@
+device_id,kernel_id,dtype,input_shape,batch_size,impl_lang,latency_us,throughput_gbps,driver_version,toolchain,git_sha,submitter
+nvidia-a100-80,gelu,f32,"[1, 768]",1,cuda,20.5,0.3,CUDA 12.1,F.gelu(tanh),,bench_all_cuda.ipynb
+nvidia-a100-80,gelu,f32,"[1, 768]",1,cuda,18.4,0.3,CUDA 12.1,F.gelu(tanh),,bench_all_cuda.ipynb
+nvidia-a100-80,gelu,f32,"[1, 768]",1,cuda,33.8,0.2,CUDA 12.1,F.gelu(tanh),,bench_all_cuda.ipynb
+nvidia-a100-80,gelu,f32,"[1, 4096]",1,cuda,20.5,1.6,CUDA 12.1,F.gelu(tanh),,bench_all_cuda.ipynb
+nvidia-a100-80,gelu,f32,"[1, 4096]",1,cuda,19.5,1.7,CUDA 12.1,F.gelu(tanh),,bench_all_cuda.ipynb
+nvidia-a100-80,gelu,f32,"[1, 4096]",1,cuda,31.7,1.0,CUDA 12.1,F.gelu(tanh),,bench_all_cuda.ipynb
+nvidia-a100-80,gelu,f32,"[64, 768]",1,cuda,20.5,19.2,CUDA 12.1,F.gelu(tanh),,bench_all_cuda.ipynb
+nvidia-a100-80,gelu,f32,"[64, 768]",1,cuda,14.3,27.4,CUDA 12.1,F.gelu(tanh),,bench_all_cuda.ipynb
+nvidia-a100-80,gelu,f32,"[64, 768]",1,cuda,215.0,1.8,CUDA 12.1,F.gelu(tanh),,bench_all_cuda.ipynb
+nvidia-a100-80,gelu,f32,"[64, 4096]",1,cuda,19.5,107.8,CUDA 12.1,F.gelu(tanh),,bench_all_cuda.ipynb
+nvidia-a100-80,gelu,f32,"[64, 4096]",1,cuda,18.4,113.8,CUDA 12.1,F.gelu(tanh),,bench_all_cuda.ipynb
+nvidia-a100-80,gelu,f32,"[64, 4096]",1,cuda,23.6,89.0,CUDA 12.1,F.gelu(tanh),,bench_all_cuda.ipynb
+nvidia-a100-80,gelu,f32,"[1024, 4096]",1,cuda,37.9,885.6,CUDA 12.1,F.gelu(tanh),,bench_all_cuda.ipynb
+nvidia-a100-80,gelu,f32,"[1024, 4096]",1,cuda,36.9,910.2,CUDA 12.1,F.gelu(tanh),,bench_all_cuda.ipynb
+nvidia-a100-80,gelu,f32,"[1024, 4096]",1,cuda,216.1,155.3,CUDA 12.1,F.gelu(tanh),,bench_all_cuda.ipynb

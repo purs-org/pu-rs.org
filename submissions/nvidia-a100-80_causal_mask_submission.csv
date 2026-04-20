@@ -1,0 +1,16 @@
+device_id,kernel_id,dtype,input_shape,batch_size,impl_lang,latency_us,throughput_gbps,driver_version,toolchain,git_sha,submitter
+nvidia-a100-80,causal-mask,f32,"[64]",1,cuda,30.7,1.1,CUDA 12.1,torch masked_fill,,bench_all_cuda.ipynb
+nvidia-a100-80,causal-mask,f32,"[64]",1,cuda,28.7,1.1,CUDA 12.1,torch masked_fill,,bench_all_cuda.ipynb
+nvidia-a100-80,causal-mask,f32,"[64]",1,cuda,221.2,0.1,CUDA 12.1,torch masked_fill,,bench_all_cuda.ipynb
+nvidia-a100-80,causal-mask,f32,"[128]",1,cuda,29.7,4.4,CUDA 12.1,torch masked_fill,,bench_all_cuda.ipynb
+nvidia-a100-80,causal-mask,f32,"[128]",1,cuda,28.7,4.6,CUDA 12.1,torch masked_fill,,bench_all_cuda.ipynb
+nvidia-a100-80,causal-mask,f32,"[128]",1,cuda,44.0,3.0,CUDA 12.1,torch masked_fill,,bench_all_cuda.ipynb
+nvidia-a100-80,causal-mask,f32,"[256]",1,cuda,31.7,16.5,CUDA 12.1,torch masked_fill,,bench_all_cuda.ipynb
+nvidia-a100-80,causal-mask,f32,"[256]",1,cuda,29.7,17.7,CUDA 12.1,torch masked_fill,,bench_all_cuda.ipynb
+nvidia-a100-80,causal-mask,f32,"[256]",1,cuda,43.0,12.2,CUDA 12.1,torch masked_fill,,bench_all_cuda.ipynb
+nvidia-a100-80,causal-mask,f32,"[512]",1,cuda,30.7,68.3,CUDA 12.1,torch masked_fill,,bench_all_cuda.ipynb
+nvidia-a100-80,causal-mask,f32,"[512]",1,cuda,29.7,70.6,CUDA 12.1,torch masked_fill,,bench_all_cuda.ipynb
+nvidia-a100-80,causal-mask,f32,"[512]",1,cuda,229.4,9.1,CUDA 12.1,torch masked_fill,,bench_all_cuda.ipynb
+nvidia-a100-80,causal-mask,f32,"[1024]",1,cuda,29.7,282.5,CUDA 12.1,torch masked_fill,,bench_all_cuda.ipynb
+nvidia-a100-80,causal-mask,f32,"[1024]",1,cuda,29.7,282.5,CUDA 12.1,torch masked_fill,,bench_all_cuda.ipynb
+nvidia-a100-80,causal-mask,f32,"[1024]",1,cuda,39.9,210.1,CUDA 12.1,torch masked_fill,,bench_all_cuda.ipynb

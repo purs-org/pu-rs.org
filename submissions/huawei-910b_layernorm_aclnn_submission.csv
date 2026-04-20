@@ -1,0 +1,13 @@
+device_id,kernel_id,dtype,input_shape,batch_size,impl_lang,latency_us,throughput_gbps,driver_version,toolchain,git_sha,submitter
+huawei-910b,layernorm,f32,"[1, 1024]",1,aclnn,37.3,0.2,CANN 8.5,aclnnLayerNorm,,bench_layernorm_ascend.py
+huawei-910b,layernorm,f32,"[1, 4096]",1,aclnn,33.9,1.0,CANN 8.5,aclnnLayerNorm,,bench_layernorm_ascend.py
+huawei-910b,layernorm,f32,"[16, 1024]",1,aclnn,34.1,3.8,CANN 8.5,aclnnLayerNorm,,bench_layernorm_ascend.py
+huawei-910b,layernorm,f32,"[16, 4096]",1,aclnn,32.5,16.1,CANN 8.5,aclnnLayerNorm,,bench_layernorm_ascend.py
+huawei-910b,layernorm,f32,"[64, 1024]",1,aclnn,33.8,15.5,CANN 8.5,aclnnLayerNorm,,bench_layernorm_ascend.py
+huawei-910b,layernorm,f32,"[64, 4096]",1,aclnn,34.8,60.2,CANN 8.5,aclnnLayerNorm,,bench_layernorm_ascend.py
+huawei-910b,layernorm,f32,"[256, 1024]",1,aclnn,33.3,62.9,CANN 8.5,aclnnLayerNorm,,bench_layernorm_ascend.py
+huawei-910b,layernorm,f32,"[256, 4096]",1,aclnn,29.6,283.0,CANN 8.5,aclnnLayerNorm,,bench_layernorm_ascend.py
+huawei-910b,layernorm,f32,"[1024, 1024]",1,aclnn,30.7,272.9,CANN 8.5,aclnnLayerNorm,,bench_layernorm_ascend.py
+huawei-910b,layernorm,f32,"[1024, 4096]",1,aclnn,53.6,626.5,CANN 8.5,aclnnLayerNorm,,bench_layernorm_ascend.py
+huawei-910b,layernorm,f32,"[4096, 1024]",1,aclnn,58.9,569.2,CANN 8.5,aclnnLayerNorm,,bench_layernorm_ascend.py
+huawei-910b,layernorm,f32,"[4096, 4096]",1,aclnn,155.0,866.0,CANN 8.5,aclnnLayerNorm,,bench_layernorm_ascend.py

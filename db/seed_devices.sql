@@ -30,4 +30,6 @@ INSERT OR IGNORE INTO xpu_devices VALUES
     ('cambricon-mlu590', 'Cambricon', 'MLU590', 'MLUarch05', 'GPU',
      300, 48, 1024, NULL, '2024-01-01', NULL, NULL, datetime('now')),
     ('intel-gaudi3', 'Intel', 'Gaudi 3', 'Gaudi 3', 'NPU',
-     900, 128, 3670, 64, '2024-09-24', NULL, 'HBM2e', datetime('now'));
+     900, 128, 3670, 64, '2024-09-24', NULL, 'HBM2e', datetime('now')),
+    ('nvidia-h20', 'NVIDIA', 'H20', 'Hopper', 'GPU',
+     148, 96, 4000, 132, '2024-03-18', NULL, 'HBM3', datetime('now'));

@@ -1,0 +1,16 @@
+device_id,kernel_id,dtype,input_shape,batch_size,impl_lang,latency_us,throughput_gbps,driver_version,toolchain,git_sha,submitter
+nvidia-a100-80,matmul,f32,"[256, 256]",1,cuda,36.9,910.2,CUDA 12.1,torch.mm,,bench_all_cuda.ipynb
+nvidia-a100-80,matmul,f32,"[256, 256]",1,cuda,35.8,936.2,CUDA 12.1,torch.mm,,bench_all_cuda.ipynb
+nvidia-a100-80,matmul,f32,"[256, 256]",1,cuda,233.5,143.7,CUDA 12.1,torch.mm,,bench_all_cuda.ipynb
+nvidia-a100-80,matmul,f32,"[512, 512]",1,cuda,65.5,4096.0,CUDA 12.1,torch.mm,,bench_all_cuda.ipynb
+nvidia-a100-80,matmul,f32,"[512, 512]",1,cuda,63.5,4228.1,CUDA 12.1,torch.mm,,bench_all_cuda.ipynb
+nvidia-a100-80,matmul,f32,"[512, 512]",1,cuda,100.4,2674.9,CUDA 12.1,torch.mm,,bench_all_cuda.ipynb
+nvidia-a100-80,matmul,f32,"[1024, 1024]",1,cuda,251.9,8525.0,CUDA 12.1,torch.mm,,bench_all_cuda.ipynb
+nvidia-a100-80,matmul,f32,"[1024, 1024]",1,cuda,239.6,8962.2,CUDA 12.1,torch.mm,,bench_all_cuda.ipynb
+nvidia-a100-80,matmul,f32,"[1024, 1024]",1,cuda,444.4,4832.1,CUDA 12.1,torch.mm,,bench_all_cuda.ipynb
+nvidia-a100-80,matmul,f32,"[2048, 2048]",1,cuda,1785.9,9620.0,CUDA 12.1,torch.mm,,bench_all_cuda.ipynb
+nvidia-a100-80,matmul,f32,"[2048, 2048]",1,cuda,1784.8,9625.5,CUDA 12.1,torch.mm,,bench_all_cuda.ipynb
+nvidia-a100-80,matmul,f32,"[2048, 2048]",1,cuda,2149.4,7993.0,CUDA 12.1,torch.mm,,bench_all_cuda.ipynb
+nvidia-a100-80,matmul,f32,"[4096, 4096]",1,cuda,7876.1,17450.1,CUDA 12.1,torch.mm,,bench_all_cuda.ipynb
+nvidia-a100-80,matmul,f32,"[4096, 4096]",1,cuda,7641.1,17986.8,CUDA 12.1,torch.mm,,bench_all_cuda.ipynb
+nvidia-a100-80,matmul,f32,"[4096, 4096]",1,cuda,13285.4,10345.1,CUDA 12.1,torch.mm,,bench_all_cuda.ipynb

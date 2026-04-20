@@ -1,0 +1,16 @@
+device_id,kernel_id,dtype,input_shape,batch_size,impl_lang,latency_us,throughput_gbps,driver_version,toolchain,git_sha,submitter
+nvidia-a100-80,attention,f32,"B=1,H=8,S=256,D=64",1,cuda,138.2,970.9,CUDA 12.1,torch attention,,bench_all_cuda.ipynb
+nvidia-a100-80,attention,f32,"B=1,H=8,S=256,D=64",1,cuda,136.2,985.5,CUDA 12.1,torch attention,,bench_all_cuda.ipynb
+nvidia-a100-80,attention,f32,"B=1,H=8,S=256,D=64",1,cuda,320.5,418.8,CUDA 12.1,torch attention,,bench_all_cuda.ipynb
+nvidia-a100-80,attention,f32,"B=1,H=8,S=512,D=64",1,cuda,195.6,2745.0,CUDA 12.1,torch attention,,bench_all_cuda.ipynb
+nvidia-a100-80,attention,f32,"B=1,H=8,S=512,D=64",1,cuda,178.2,3013.1,CUDA 12.1,torch attention,,bench_all_cuda.ipynb
+nvidia-a100-80,attention,f32,"B=1,H=8,S=512,D=64",1,cuda,385.0,1394.4,CUDA 12.1,torch attention,,bench_all_cuda.ipynb
+nvidia-a100-80,attention,f32,"B=1,H=32,S=512,D=128",1,cuda,497.7,8630.3,CUDA 12.1,torch attention,,bench_all_cuda.ipynb
+nvidia-a100-80,attention,f32,"B=1,H=32,S=512,D=128",1,cuda,494.6,8683.9,CUDA 12.1,torch attention,,bench_all_cuda.ipynb
+nvidia-a100-80,attention,f32,"B=1,H=32,S=512,D=128",1,cuda,506.9,8473.3,CUDA 12.1,torch attention,,bench_all_cuda.ipynb
+nvidia-a100-80,attention,f32,"B=1,H=32,S=1024,D=128",1,cuda,1534.0,11199.7,CUDA 12.1,torch attention,,bench_all_cuda.ipynb
+nvidia-a100-80,attention,f32,"B=1,H=32,S=1024,D=128",1,cuda,1521.7,11290.2,CUDA 12.1,torch attention,,bench_all_cuda.ipynb
+nvidia-a100-80,attention,f32,"B=1,H=32,S=1024,D=128",1,cuda,1794.0,9576.0,CUDA 12.1,torch attention,,bench_all_cuda.ipynb
+nvidia-a100-80,attention,f32,"B=1,H=32,S=2048,D=128",1,cuda,5933.1,11582.5,CUDA 12.1,torch attention,,bench_all_cuda.ipynb
+nvidia-a100-80,attention,f32,"B=1,H=32,S=2048,D=128",1,cuda,5874.7,11697.6,CUDA 12.1,torch attention,,bench_all_cuda.ipynb
+nvidia-a100-80,attention,f32,"B=1,H=32,S=2048,D=128",1,cuda,6174.7,11129.2,CUDA 12.1,torch attention,,bench_all_cuda.ipynb

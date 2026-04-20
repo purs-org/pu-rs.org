@@ -1,0 +1,13 @@
+device_id,kernel_id,dtype,input_shape,batch_size,impl_lang,latency_us,throughput_gbps,driver_version,toolchain,git_sha,submitter
+nvidia-a100-80,conv1d-dilated,f32,"B=1,L=1024,C=64,K=3",1,cuda,77.8,323.4,CUDA 12.1,nn.Conv1d,,bench_all_cuda.ipynb
+nvidia-a100-80,conv1d-dilated,f32,"B=1,L=1024,C=64,K=3",1,cuda,76.8,327.7,CUDA 12.1,nn.Conv1d,,bench_all_cuda.ipynb
+nvidia-a100-80,conv1d-dilated,f32,"B=1,L=1024,C=64,K=3",1,cuda,268.3,93.8,CUDA 12.1,nn.Conv1d,,bench_all_cuda.ipynb
+nvidia-a100-80,conv1d-dilated,f32,"B=1,L=4096,C=64,K=3",1,cuda,77.8,1293.5,CUDA 12.1,nn.Conv1d,,bench_all_cuda.ipynb
+nvidia-a100-80,conv1d-dilated,f32,"B=1,L=4096,C=64,K=3",1,cuda,75.8,1328.4,CUDA 12.1,nn.Conv1d,,bench_all_cuda.ipynb
+nvidia-a100-80,conv1d-dilated,f32,"B=1,L=4096,C=64,K=3",1,cuda,309.2,325.5,CUDA 12.1,nn.Conv1d,,bench_all_cuda.ipynb
+nvidia-a100-80,conv1d-dilated,f32,"B=16,L=1024,C=64,K=3",1,cuda,77.8,5173.9,CUDA 12.1,nn.Conv1d,,bench_all_cuda.ipynb
+nvidia-a100-80,conv1d-dilated,f32,"B=16,L=1024,C=64,K=3",1,cuda,75.8,5313.7,CUDA 12.1,nn.Conv1d,,bench_all_cuda.ipynb
+nvidia-a100-80,conv1d-dilated,f32,"B=16,L=1024,C=64,K=3",1,cuda,260.1,1548.1,CUDA 12.1,nn.Conv1d,,bench_all_cuda.ipynb
+nvidia-a100-80,conv1d-dilated,f32,"B=16,L=4096,C=64,K=3",1,cuda,111.6,14429.9,CUDA 12.1,nn.Conv1d,,bench_all_cuda.ipynb
+nvidia-a100-80,conv1d-dilated,f32,"B=16,L=4096,C=64,K=3",1,cuda,109.6,14699.7,CUDA 12.1,nn.Conv1d,,bench_all_cuda.ipynb
+nvidia-a100-80,conv1d-dilated,f32,"B=16,L=4096,C=64,K=3",1,cuda,295.9,5442.4,CUDA 12.1,nn.Conv1d,,bench_all_cuda.ipynb

@@ -1,0 +1,13 @@
+device_id,kernel_id,dtype,input_shape,batch_size,impl_lang,latency_us,throughput_gbps,driver_version,toolchain,git_sha,submitter
+huawei-910b,softmax,f32,"[1, 1024]",1,aclnn,24.3,0.3,CANN 8.5,aclnnSoftmax,,bench_softmax_ascend.py
+huawei-910b,softmax,f32,"[1, 4096]",1,aclnn,20.9,1.6,CANN 8.5,aclnnSoftmax,,bench_softmax_ascend.py
+huawei-910b,softmax,f32,"[16, 1024]",1,aclnn,22.6,5.8,CANN 8.5,aclnnSoftmax,,bench_softmax_ascend.py
+huawei-910b,softmax,f32,"[16, 4096]",1,aclnn,22.8,23.0,CANN 8.5,aclnnSoftmax,,bench_softmax_ascend.py
+huawei-910b,softmax,f32,"[64, 1024]",1,aclnn,19.8,26.5,CANN 8.5,aclnnSoftmax,,bench_softmax_ascend.py
+huawei-910b,softmax,f32,"[64, 4096]",1,aclnn,19.2,108.9,CANN 8.5,aclnnSoftmax,,bench_softmax_ascend.py
+huawei-910b,softmax,f32,"[256, 1024]",1,aclnn,19.5,107.5,CANN 8.5,aclnnSoftmax,,bench_softmax_ascend.py
+huawei-910b,softmax,f32,"[256, 4096]",1,aclnn,26.5,316.3,CANN 8.5,aclnnSoftmax,,bench_softmax_ascend.py
+huawei-910b,softmax,f32,"[1024, 1024]",1,aclnn,29.7,282.3,CANN 8.5,aclnnSoftmax,,bench_softmax_ascend.py
+huawei-910b,softmax,f32,"[1024, 4096]",1,aclnn,40.8,822.0,CANN 8.5,aclnnSoftmax,,bench_softmax_ascend.py
+huawei-910b,softmax,f32,"[4096, 1024]",1,aclnn,45.0,746.3,CANN 8.5,aclnnSoftmax,,bench_softmax_ascend.py
+huawei-910b,softmax,f32,"[4096, 4096]",1,aclnn,99.8,1345.5,CANN 8.5,aclnnSoftmax,,bench_softmax_ascend.py

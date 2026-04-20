@@ -1,0 +1,10 @@
+device_id,kernel_id,dtype,input_shape,batch_size,impl_lang,latency_us,throughput_gbps,driver_version,toolchain,git_sha,submitter
+nvidia-a100-80,embedding,f32,"N=32,V=32000,D=128",1,cuda,25.6,0.7,CUDA 12.1,F.embedding,,bench_all_cuda.ipynb
+nvidia-a100-80,embedding,f32,"N=32,V=32000,D=128",1,cuda,23.6,0.7,CUDA 12.1,F.embedding,,bench_all_cuda.ipynb
+nvidia-a100-80,embedding,f32,"N=32,V=32000,D=128",1,cuda,213.0,0.1,CUDA 12.1,F.embedding,,bench_all_cuda.ipynb
+nvidia-a100-80,embedding,f32,"N=32,V=32000,D=4096",1,cuda,25.6,20.5,CUDA 12.1,F.embedding,,bench_all_cuda.ipynb
+nvidia-a100-80,embedding,f32,"N=32,V=32000,D=4096",1,cuda,24.6,21.3,CUDA 12.1,F.embedding,,bench_all_cuda.ipynb
+nvidia-a100-80,embedding,f32,"N=32,V=32000,D=4096",1,cuda,34.8,15.1,CUDA 12.1,F.embedding,,bench_all_cuda.ipynb
+nvidia-a100-80,embedding,f32,"N=128,V=32000,D=128",1,cuda,24.6,2.7,CUDA 12.1,F.embedding,,bench_all_cuda.ipynb
+nvidia-a100-80,embedding,f32,"N=128,V=32000,D=128",1,cuda,23.6,2.8,CUDA 12.1,F.embedding,,bench_all_cuda.ipynb
+nvidia-a100-80,embedding,f32,"N=128,V=32000,D=128",1,cuda,64.5,1.0,CUDA 12.1,F.embedding,,bench_all_cuda.ipynb

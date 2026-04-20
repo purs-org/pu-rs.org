@@ -1,0 +1,13 @@
+device_id,kernel_id,dtype,input_shape,batch_size,impl_lang,latency_us,throughput_gbps,driver_version,toolchain,git_sha,submitter
+google-tpu-v5e,softmax,f32,"[8, 1024]",1,pallas,127.6,0.5,JAX,ascend-rs mlir_to_tpu,,bench_tpu_head2head.ipynb
+google-tpu-v5e,softmax,f32,"[64, 1024]",1,pallas,139.3,3.8,JAX,ascend-rs mlir_to_tpu,,bench_tpu_head2head.ipynb
+google-tpu-v5e,softmax,f32,"[64, 4096]",1,pallas,136.7,15.4,JAX,ascend-rs mlir_to_tpu,,bench_tpu_head2head.ipynb
+google-tpu-v5e,matmul,f32,"[128, 128]",1,pallas,147.5,56.9,JAX,ascend-rs mlir_to_tpu,,bench_tpu_head2head.ipynb
+google-tpu-v5e,matmul,f32,"[256, 256]",1,pallas,127.4,263.2,JAX,ascend-rs mlir_to_tpu,,bench_tpu_head2head.ipynb
+google-tpu-v5e,matmul,f32,"[512, 512]",1,pallas,125.6,2137.0,JAX,ascend-rs mlir_to_tpu,,bench_tpu_head2head.ipynb
+google-tpu-v5e,exp,f32,"[8, 1024]",1,pallas,130.1,0.5,JAX,ascend-rs mlir_to_tpu,,bench_tpu_head2head.ipynb
+google-tpu-v5e,exp,f32,"[64, 1024]",1,pallas,130.3,4.0,JAX,ascend-rs mlir_to_tpu,,bench_tpu_head2head.ipynb
+google-tpu-v5e,exp,f32,"[64, 4096]",1,pallas,115.1,18.2,JAX,ascend-rs mlir_to_tpu,,bench_tpu_head2head.ipynb
+google-tpu-v5e,add,f32,"[8, 1024]",1,pallas,129.1,0.5,JAX,ascend-rs mlir_to_tpu,,bench_tpu_head2head.ipynb
+google-tpu-v5e,add,f32,"[64, 1024]",1,pallas,124.4,4.2,JAX,ascend-rs mlir_to_tpu,,bench_tpu_head2head.ipynb
+google-tpu-v5e,add,f32,"[64, 4096]",1,pallas,145.2,14.5,JAX,ascend-rs mlir_to_tpu,,bench_tpu_head2head.ipynb
