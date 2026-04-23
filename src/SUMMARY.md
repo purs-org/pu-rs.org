@@ -7,6 +7,7 @@
 # Benchmark
 
 - [Leaderboard](leaderboard.md)
+- [DeepSeek Decode (End-to-End)](deepseek-decode.md)
 - [Cost Effectiveness](cost.md)
 - [Methodology](methodology.md)
 

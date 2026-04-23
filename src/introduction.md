@@ -44,6 +44,14 @@ We benchmark the **kernel primitives** that compose every AI model:
 
 All results tagged with git SHA, driver version, toolchain, and number of runs. Median latency reported. [Full methodology](methodology.md).
 
+## End-to-end complement
+
+Per-kernel latency is only half the story — a chip can win on softmax and
+still lose on a real model. The [DeepSeek decode page](deepseek-decode.md)
+reports end-to-end throughput across five accelerators (Ascend 910B2, TPU
+v2-8, Apple M2 Max, NVIDIA T4, AWS Trainium1) from the *same* 13-kernel Rust
+source emitted through the ascend-rs MLIR backends.
+
 ---
 
 *Built with [ascend-rs](https://ascend-rs.org) kernel infrastructure. Data updated weekly.*
