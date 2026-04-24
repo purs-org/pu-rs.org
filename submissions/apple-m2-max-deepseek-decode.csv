@@ -1,0 +1,10 @@
+device_id,kernel_id,dtype,input_shape,batch_size,impl_lang,latency_us,throughput_gbps,driver_version,toolchain,git_sha,submitter
+apple-m2-max-38,deepseek_decode_step,bf16,"[1, 1536]",1,msl,10905.1,,macOS 14.5 Metal 3.1,mlir_to_msl emitted MSL,4493f7ab,ch10-deepseek-benchmark.md
+apple-m2-max-38,deepseek_decode_step,bf16,"[1, 1536]",1,msl,11363.6,,macOS 14.5 Metal 3.1,MLX 0.29.1 hand-tuned,4493f7ab,ch10-deepseek-benchmark.md
+apple-m2-max-38,qkvo_matvecs,bf16,"[1, 1536]",1,msl,4300,,macOS 14.5 Metal 3.1,mlir_to_msl per-token 28 layers,4493f7ab,ch10-deepseek-benchmark.md
+apple-m2-max-38,mlp_gate_up_silu,bf16,"[1, 1536]",1,msl,3100,,macOS 14.5 Metal 3.1,mlir_to_msl per-token 28 layers,4493f7ab,ch10-deepseek-benchmark.md
+apple-m2-max-38,down_proj_residual,bf16,"[1, 8960]",1,msl,2100,,macOS 14.5 Metal 3.1,mlir_to_msl per-token 28 layers,4493f7ab,ch10-deepseek-benchmark.md
+apple-m2-max-38,attention_decode_gqa,bf16,"[12, 128]",1,msl,800,,macOS 14.5 Metal 3.1,attention_decode_v4 TG-mem Q cache float4,4493f7ab,ch10-deepseek-benchmark.md
+apple-m2-max-38,rms_norm_1536,bf16,"[1, 1536]",1,msl,400,,macOS 14.5 Metal 3.1,mlir_to_msl per-token 28 layers,4493f7ab,ch10-deepseek-benchmark.md
+apple-m2-max-38,rope_qk_decode,bf16,"[12, 128]",1,msl,200,,macOS 14.5 Metal 3.1,mlir_to_msl per-token 28 layers,4493f7ab,ch10-deepseek-benchmark.md
+apple-m2-max-38,argmax_greedy,bf16,"[1, 151936]",1,msl,100,,macOS 14.5 Metal 3.1,mlir_to_msl per-token,4493f7ab,ch10-deepseek-benchmark.md

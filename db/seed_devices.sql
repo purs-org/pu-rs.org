@@ -32,4 +32,8 @@ INSERT OR IGNORE INTO xpu_devices VALUES
     ('intel-gaudi3', 'Intel', 'Gaudi 3', 'Gaudi 3', 'NPU',
      900, 128, 3670, 64, '2024-09-24', NULL, 'HBM2e', datetime('now')),
     ('nvidia-h20', 'NVIDIA', 'H20', 'Hopper', 'GPU',
-     148, 96, 4000, 132, '2024-03-18', NULL, 'HBM3', datetime('now'));
+     148, 96, 4000, 132, '2024-03-18', NULL, 'HBM3', datetime('now')),
+    ('aws-trn1-2xlarge', 'AWS', 'Trainium1 (trn1.2xlarge)', 'Trainium1', 'NPU',
+     NULL, 32, 128, 2, '2022-10-10', NULL, '1 Trainium chip, Neuron Core v1', datetime('now')),
+    ('google-tpu-v2-8', 'Google', 'TPU v2-8', 'TPU v2', 'TPU',
+     NULL, 64, 600, 8, '2018-02-12', NULL, 'Cloud/Colab free tier', datetime('now'));

@@ -1,0 +1,4 @@
+device_id,kernel_id,dtype,input_shape,batch_size,impl_lang,latency_us,throughput_gbps,driver_version,toolchain,git_sha,submitter
+aws-trn1-2xlarge,deepseek_decode_step,bf16,"[1, 1536]",1,nki,81967.2,,Neuron SDK,mlir_to_nki + torch_neuronx.trace halves,4493f7ab,ch10-deepseek-benchmark.md
+aws-trn1-2xlarge,deepseek_decode_step,bf16,"[1, 1536]",1,nki,400000.0,,Neuron SDK,mlir_to_nki + torch_neuronx.trace one NEFF,4493f7ab,ch10-deepseek-benchmark.md
+aws-trn1-2xlarge,deepseek_decode_step,bf16,"[1, 1536]",1,nki,1000000000.0,,Neuron SDK,mlir_to_nki eager @nki.jit (~0.001 tok/s),4493f7ab,ch10-deepseek-benchmark.md

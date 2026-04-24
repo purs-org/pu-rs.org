@@ -1,0 +1,14 @@
+device_id,kernel_id,dtype,input_shape,batch_size,impl_lang,latency_us,throughput_gbps,driver_version,toolchain,git_sha,submitter
+huawei-910b,deepseek_decode_step,f16,"[1, 1536]",1,ascendc,5921.8,,CANN 8.5.0,mlir_to_cpp + mlir_to_pto,4493f7ab,ch10-deepseek-benchmark.md
+huawei-910b,deepseek_decode_step,f16,"[1, 1536]",1,ascendc,14641.3,,CANN 8.5.0,aclnn-only baseline,4493f7ab,ch10-deepseek-benchmark.md
+huawei-910b,deepseek_decode_step,f16,"[1, 1536]",1,cpu,270270.3,,host CPU,float reference,4493f7ab,ch10-deepseek-benchmark.md
+huawei-910b,rms_norm_1536,f32,"[1, 1536]",1,ascendc,4.4,,CANN 8.5.0,residual_add_rms_norm_cpp fused,4493f7ab,ch10-deepseek-benchmark.md
+huawei-910b,rms_norm_1536,f32,"[1, 1536]",1,ascendc,27.0,,CANN 8.5.0,aclnnAddRmsNorm fused,4493f7ab,ch10-deepseek-benchmark.md
+huawei-910b,attention_decode_gqa,f16,"[12, 128]",1,ascendc,38.0,,CANN 8.5.0,aclnnIncreFlashAttention cached exec,4493f7ab,ch10-deepseek-benchmark.md
+huawei-910b,attention_decode_gqa,f16,"[12, 128]",1,ascendc,61.0,,CANN 8.5.0,aclnnIncreFlashAttention plain,4493f7ab,ch10-deepseek-benchmark.md
+huawei-910b,attention_1head_cpp,f16,"[1, 128]",1,ascendc,26.52,,CANN 8.5.0,mlir_to_cpp vectorized matvec,4493f7ab,ch10-deepseek-benchmark.md
+huawei-910b,q_proj_matvec,f16,"[1, 1536]",1,ascendc,11.3,,CANN 8.5.0,mlir_to_pto fused QKV,4493f7ab,ch10-deepseek-benchmark.md
+huawei-910b,kv_proj_matvec,f16,"[1, 1536]",1,ascendc,7.6,,CANN 8.5.0,mlir_to_pto fused KV,4493f7ab,ch10-deepseek-benchmark.md
+huawei-910b,mlp_gate_up_silu,f16,"[1, 1536]",1,ascendc,56.4,,CANN 8.5.0,mlir_to_pto fused gate+up,4493f7ab,ch10-deepseek-benchmark.md
+huawei-910b,down_proj_residual,f16,"[1, 8960]",1,ascendc,29.0,,CANN 8.5.0,mlir_to_pto f16,4493f7ab,ch10-deepseek-benchmark.md
+huawei-910b,argmax_greedy,f16,"[1, 151936]",1,ascendc,973.0,,CANN 8.5.0,mlir_to_pto lm_head chunked f16,4493f7ab,ch10-deepseek-benchmark.md

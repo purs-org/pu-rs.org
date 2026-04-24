@@ -1,0 +1,3 @@
+device_id,kernel_id,dtype,input_shape,batch_size,impl_lang,latency_us,throughput_gbps,driver_version,toolchain,git_sha,submitter
+google-tpu-v2-8,deepseek_decode_step,f32,"[1, 1536]",1,pallas,6138.7,,TPU v2-8 8-core,mlir_to_tpu emitted Pallas,4493f7ab,ch10-deepseek-benchmark.md
+google-tpu-v2-8,deepseek_decode_step,f32,"[1, 1536]",1,jax,6024.1,,TPU v2-8 8-core,native JAX baseline,4493f7ab,ch10-deepseek-benchmark.md
