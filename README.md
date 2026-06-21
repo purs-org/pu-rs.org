@@ -28,10 +28,12 @@ latency and multi-core throughput saturation.
 
 | Device | Type | Backend | Benchmark script |
 |---|---|---|---|
-| Huawei Ascend 910B | NPU | CANN / ascend-rs | `scripts/bench_ascend.sh` |
-| NVIDIA Tesla T4 | GPU | CUDA | `submissions/nvidia-tesla-t4-all.csv` |
-| Apple M2 Max (38-core) | GPU | Metal | `scripts/bench_metal.py` |
-| Apple M4 | GPU | Metal | `scripts/bench_metal.py` |
+| Huawei Ascend 910B | NPU | CANN / tile-rs (`mlir_to_cpp`/`pto`) | `scripts/bench_ascend.sh` |
+| NVIDIA Tesla T4 | GPU | CUDA (`mlir_to_cuda`) | `submissions/nvidia-tesla-t4-all.csv` |
+| NVIDIA H20 | GPU | CUDA (`mlir_to_cuda`) | `submissions/nvidia-h20_*.csv` |
+| Google TPU v5e | TPU | Pallas (`mlir_to_tpu`) | `submissions/google-tpu-v5e_*.csv` |
+| Apple M2 Max (38-core) | GPU | Metal (`mlir_to_msl`) | `scripts/bench_metal.py` |
+| Apple M4 | GPU | Metal (`mlir_to_msl`) | `scripts/bench_metal.py` |
 
 ## Quick start
 
@@ -39,8 +41,8 @@ latency and multi-core throughput saturation.
 
 ```bash
 # Ascend NPU (Huawei 910B/910C)
-# Requires: CANN SDK + ascend-rs repo
-bash scripts/bench_ascend.sh --device huawei-910b --ascend-rs ~/ascend-rs
+# Requires: CANN SDK + the tile-rs-ascend backend repo
+bash scripts/bench_ascend.sh --device huawei-910b --ascend-rs ~/tile-rs-ascend
 
 # Apple Metal (M-series)
 # Requires: ascend_metal_kernels Python module
@@ -83,7 +85,7 @@ Example output:
 
 ```csv
 device_id,kernel_id,dtype,input_shape,batch_size,impl_lang,latency_us,throughput_gbps,driver_version,toolchain
-huawei-910b,layernorm,f32,"[4096, 4096]",4096,rust,335.71,399.80,CANN 8.5.0,ascend-rs (tile)
+huawei-910b,layernorm,f32,"[4096, 4096]",4096,rust,335.71,399.80,CANN 8.5.0,tile-rs (mlir_to_cpp)
 ```
 
 See [Submit Results](https://pu-rs.org/submit.html) for full column reference.

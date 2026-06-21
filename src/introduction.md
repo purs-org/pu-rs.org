@@ -50,8 +50,10 @@ Per-kernel latency is only half the story — a chip can win on softmax and
 still lose on a real model. The [DeepSeek decode page](deepseek-decode.md)
 reports end-to-end throughput across five accelerators (Ascend 910B2, TPU
 v2-8, Apple M2 Max, NVIDIA T4, AWS Trainium1) from the *same* 13-kernel Rust
-source emitted through the ascend-rs MLIR backends.
+source emitted through the tile-rs MLIR backends.
 
 ---
 
-*Built with [ascend-rs](https://ascend-rs.org) kernel infrastructure. Data updated weekly.*
+*Built with [tile-rs](https://ascend-rs.org) kernel infrastructure (the generic
+multi-backend codegen framework; the Huawei Ascend NPU support is the
+`tile-rs-ascend` backend). Data updated weekly.*

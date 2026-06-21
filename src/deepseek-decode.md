@@ -4,7 +4,7 @@ Per-kernel latency (the rest of this site) is the microbenchmark view. This
 page reports the complementary **end-to-end decode throughput** for a full
 DeepSeek-R1-Distill-Qwen-1.5B decode step, measured on five production
 accelerators from the *same* 13-kernel Rust source emitted through
-[ascend-rs](https://ascend-rs.org/)'s per-vendor MLIR backends.
+[tile-rs](https://ascend-rs.org/)'s per-vendor MLIR backends.
 
 ## Headline
 
@@ -35,7 +35,7 @@ example — strong per-op latency, 9.5% bandwidth utilisation end-to-end).
 - **Ascend 910B2** — the `+pto` half of the joint path contributes the four
   decode matmul shapes (1.75×–2.98× vs aclnn). RMSNorm stays on CPU; every
   other op is on-NPU. See the main
-  [ascend-rs blog ch10](https://ascend-rs.org/ch10-deepseek-benchmark.html)
+  [tile-rs blog ch10](https://ascend-rs.org/ch10-deepseek-benchmark.html)
   for the per-kernel breakdown.
 - **TPU v2-8** — Colab-visible Pallas on a 4-chip v2 pod; the emitted kernel
   set is `rms_norm`, `matvec_f16`, and an attention fusion.
@@ -54,11 +54,11 @@ example — strong per-op latency, 9.5% bandwidth utilisation end-to-end).
 ## Reproduction
 
 Each number is reproducible with the commands documented in the per-device
-sections of [ascend-rs ch10](https://ascend-rs.org/ch10-deepseek-benchmark.html).
+sections of [tile-rs ch10](https://ascend-rs.org/ch10-deepseek-benchmark.html).
 The source kernels live at
-[`crates/ascend_std/src/tile.rs`](https://github.com/yijunyu/ascend-rs/blob/main/crates/ascend_std/src/tile.rs)
+[`crates/tile_std/src/tile.rs`](https://github.com/yijunyu/tile-rs/blob/main/crates/tile_std/src/tile.rs)
 in the public repo; the per-vendor emitters live in
-`crates/rustc_codegen_mlir/src/mlir_to_*.rs`.
+`crates/rustc_codegen_tile/src/mlir_to_*.rs`.
 
 ---
 

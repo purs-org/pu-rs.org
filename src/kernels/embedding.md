@@ -13,14 +13,14 @@ For each token index t[i] in [0..V):
 
 This is the first operation in any transformer: tokens (integers) become vectors. It is purely bandwidth-bound with random access patterns, making it a key memory subsystem benchmark.
 
-## ascend-rs Kernel Source
+## tile-rs Kernel Source
 
 Embedding using the tile API — safe entry form with one `unsafe` block (the indices pointer is an integer gather source, not a tile, so `safe::tile_embedding_f32` is declared `pub unsafe fn`):
 
 ```rust
-use ascend_std::tile::{GmView, GmViewMut, safe, tile_load_view_f32, tile_store_view_f32};
+use tile_std::tile::{GmView, GmViewMut, safe, tile_load_view_f32, tile_store_view_f32};
 
-#[ascend_std::aiv_kernel]
+#[tile_std::tile_kernel]
 pub fn tile_embedding(
     weight:  GmView<'_, 32000, 128, f32>,  // (V, D) codebook
     indices: *const u32,                   // (N,) token ids — integer gather source
@@ -34,9 +34,9 @@ pub fn tile_embedding(
 }
 ```
 
-Weight table and output shapes are committed at the type level via const generics (`V`, `D`, `N`), so any host-side mismatch becomes a compile-time error. The `#[aiv_kernel]` attribute rewrites the emitted signature back to raw `*const f32` / `*mut f32` for the tile params so the launcher toolchain sees the same C ABI; `#[repr(transparent)]` on `GmView`/`GmViewMut` makes this rewrite free at the LLVM IR level.
+Weight table and output shapes are committed at the type level via const generics (`V`, `D`, `N`), so any host-side mismatch becomes a compile-time error. The `#[tile_kernel]` attribute rewrites the emitted signature back to raw `*const f32` / `*mut f32` for the tile params so the launcher toolchain sees the same C ABI; `#[repr(transparent)]` on `GmView`/`GmViewMut` makes this rewrite free at the LLVM IR level.
 
-**Backend status** (lowered by `rustc_codegen_mlir`): Cambricon BANG, Intel Gaudi, Apple Metal, Vulkan SPIR-V. Ascend AIV / CUDA / AWS NKI / AMD AIE / Google TPU lowerings are **TODO**.
+**Backend status** (lowered by `rustc_codegen_tile`): Cambricon BANG, Intel Gaudi, Apple Metal, Vulkan SPIR-V. Ascend AIV / CUDA / AWS NKI / AMD AIE / Google TPU lowerings are **TODO**.
 
 ## Benchmark configurations
 

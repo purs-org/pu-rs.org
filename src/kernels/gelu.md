@@ -18,15 +18,15 @@ GELU(x) ≈ 0.5 · x · (1 + tanh(√(2/π) · (x + 0.044715 · x³)))
 
 GELU is memory-bandwidth bound — the compute-to-byte ratio is low (a few FLOPs per 4-byte element), so peak throughput is measured in GB/s rather than TFLOPS.
 
-## ascend-rs Kernel Source
+## tile-rs Kernel Source
 
-GELU using ascend-rs buffer API (f32, tanh approximation):
+GELU using tile-rs buffer API (f32, tanh approximation):
 
 ```rust
 /// GELU activation: y = 0.5 * x * (1 + tanh(sqrt(2/pi) * (x + 0.044715 * x^3)))
 ///
 /// params: [n: u32]
-#[ascend_std::aiv_kernel]
+#[tile_std::tile_kernel]
 pub fn gelu(
     input: *const f32,
     output: *mut f32,
@@ -53,41 +53,41 @@ pub fn gelu(
 **Vectorized version** using buffer intrinsics:
 
 ```rust
-#[ascend_std::aiv_kernel]
+#[tile_std::tile_kernel]
 pub fn gelu_vec(
     input: *const f32,
     output: *mut f32,
     params: *const u32,
 ) {
     let n = *params;
-    let in_buf = ascend_std::ascend_buf_alloc(n);
-    let work = ascend_std::ascend_buf_alloc(n);
-    let work2 = ascend_std::ascend_buf_alloc(n);
+    let in_buf = tile_std::__tile_buf_alloc(n);
+    let work = tile_std::__tile_buf_alloc(n);
+    let work2 = tile_std::__tile_buf_alloc(n);
 
-    ascend_std::ascend_buf_load_f32(in_buf, input, n);
-    ascend_std::ascend_pipe_barrier();
+    tile_std::__tile_buf_load_f32(in_buf, input, n);
+    tile_std::__tile_pipe_barrier();
 
     // x³
-    ascend_std::ascend_mul_f32(work, in_buf, in_buf, n);
-    ascend_std::ascend_pipe_barrier();
-    ascend_std::ascend_mul_f32(work, work, in_buf, n);
-    ascend_std::ascend_pipe_barrier();
+    tile_std::__tile_mul_f32(work, in_buf, in_buf, n);
+    tile_std::__tile_pipe_barrier();
+    tile_std::__tile_mul_f32(work, work, in_buf, n);
+    tile_std::__tile_pipe_barrier();
     // 0.044715 * x³
-    ascend_std::ascend_muls_f32(work, work, 0.044715, n);
-    ascend_std::ascend_pipe_barrier();
+    tile_std::__tile_muls_f32(work, work, 0.044715, n);
+    tile_std::__tile_pipe_barrier();
     // x + 0.044715 * x³
-    ascend_std::ascend_add_f32(work, in_buf, work, n);
-    ascend_std::ascend_pipe_barrier();
+    tile_std::__tile_add_f32(work, in_buf, work, n);
+    tile_std::__tile_pipe_barrier();
     // sqrt(2/pi) * (x + 0.044715 * x³)
-    ascend_std::ascend_muls_f32(work, work, 0.7978845608, n);
-    ascend_std::ascend_pipe_barrier();
+    tile_std::__tile_muls_f32(work, work, 0.7978845608, n);
+    tile_std::__tile_pipe_barrier();
 
     // Store result
-    ascend_std::ascend_buf_store_f32(output, work, n);
+    tile_std::__tile_buf_store_f32(output, work, n);
 }
 ```
 
-These buffer-API kernels run on the Ascend AIV backend via `rustc_codegen_mlir`. **No tile-API `safe::tile_gelu_f32` currently exists** — tile-API lowerings on all 9 backends (Ascend AIV / CUDA / Apple Metal / Vulkan SPIR-V / AWS NKI / AMD AIE / Cambricon BANG / Intel Gaudi / Google TPU) are **future work**. Cross-backend execution today goes through the buffer-API scalar loop or the element-wise intrinsic composition shown above.
+These buffer-API kernels run on the Ascend AIV backend via `rustc_codegen_tile`. **No tile-API `safe::tile_gelu_f32` currently exists** — tile-API lowerings on all 9 backends (Ascend AIV / CUDA / Apple Metal / Vulkan SPIR-V / AWS NKI / AMD AIE / Cambricon BANG / Intel Gaudi / Google TPU) are **future work**. Cross-backend execution today goes through the buffer-API scalar loop or the element-wise intrinsic composition shown above.
 
 ## Benchmark configurations
 

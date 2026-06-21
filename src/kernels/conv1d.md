@@ -23,12 +23,12 @@ For an 18-block VQ-VAE encoder/decoder, the unfused version allocates **54 inter
 - Keeps activations in registers/L1 cache between stages
 - One command buffer dispatch instead of five
 
-## ascend-rs Kernel Source
+## tile-rs Kernel Source
 
-Vectorized dilated conv1d + ReLU using ascend-rs buffer API (f32, benchmarked implementation):
+Vectorized dilated conv1d + ReLU using tile-rs buffer API (f32, benchmarked implementation):
 
 ```rust
-#[ascend_std::aiv_kernel]
+#[tile_std::tile_kernel]
 pub fn conv1d_dilated(input: *const f32, output: *mut f32, params: *const u32) {
     let n = *params;
     let dilation = *params.wrapping_add(1);
@@ -38,46 +38,46 @@ pub fn conv1d_dilated(input: *const f32, output: *mut f32, params: *const u32) {
     let bias = f32::from_bits(*params.wrapping_add(5));
 
     let aligned_n = ((n + 7) / 8) * 8;
-    let in_buf = ascend_std::ascend_buf_alloc(aligned_n);
-    let tap_left = ascend_std::ascend_buf_alloc(aligned_n);
-    let tap_right = ascend_std::ascend_buf_alloc(aligned_n);
-    let acc = ascend_std::ascend_buf_alloc(aligned_n);
-    let work = ascend_std::ascend_buf_alloc(aligned_n);
+    let in_buf = tile_std::__tile_buf_alloc(aligned_n);
+    let tap_left = tile_std::__tile_buf_alloc(aligned_n);
+    let tap_right = tile_std::__tile_buf_alloc(aligned_n);
+    let acc = tile_std::__tile_buf_alloc(aligned_n);
+    let work = tile_std::__tile_buf_alloc(aligned_n);
 
-    ascend_std::ascend_buf_load_f32(in_buf, input, n);
-    ascend_std::ascend_pipe_barrier();
+    tile_std::__tile_buf_load_f32(in_buf, input, n);
+    tile_std::__tile_pipe_barrier();
 
     // Build shifted tap buffers with zero-padding
-    ascend_std::ascend_buf_fill_f32(tap_left, 0.0, aligned_n);
+    tile_std::__tile_buf_fill_f32(tap_left, 0.0, aligned_n);
     let mut i = dilation;
     while i < n {
-        let v = ascend_std::ascend_get_value_f32(in_buf, i - dilation);
-        ascend_std::ascend_set_value_f32(tap_left, i, v);
+        let v = tile_std::__tile_get_value_f32(in_buf, i - dilation);
+        tile_std::__tile_set_value_f32(tap_left, i, v);
         i += 1;
     }
-    ascend_std::ascend_buf_fill_f32(tap_right, 0.0, aligned_n);
+    tile_std::__tile_buf_fill_f32(tap_right, 0.0, aligned_n);
     i = 0;
     while i + dilation < n {
-        let v = ascend_std::ascend_get_value_f32(in_buf, i + dilation);
-        ascend_std::ascend_set_value_f32(tap_right, i, v);
+        let v = tile_std::__tile_get_value_f32(in_buf, i + dilation);
+        tile_std::__tile_set_value_f32(tap_right, i, v);
         i += 1;
     }
 
     // Vector MAC: acc = tap_left*w0 + input*w1 + tap_right*w2 + bias
-    ascend_std::ascend_muls_f32(acc, tap_left, w0, n);
-    ascend_std::ascend_muls_f32(work, in_buf, w1, n);
-    ascend_std::ascend_add_f32(tap_left, acc, work, n);
-    ascend_std::ascend_muls_f32(work, tap_right, w2, n);
-    ascend_std::ascend_add_f32(acc, tap_left, work, n);
-    ascend_std::ascend_adds_f32(acc, acc, bias, n);
-    ascend_std::ascend_maxs_f32(acc, acc, 0.0, n);  // ReLU
+    tile_std::__tile_muls_f32(acc, tap_left, w0, n);
+    tile_std::__tile_muls_f32(work, in_buf, w1, n);
+    tile_std::__tile_add_f32(tap_left, acc, work, n);
+    tile_std::__tile_muls_f32(work, tap_right, w2, n);
+    tile_std::__tile_add_f32(acc, tap_left, work, n);
+    tile_std::__tile_adds_f32(acc, acc, bias, n);
+    tile_std::__tile_maxs_f32(acc, acc, 0.0, n);  // ReLU
 
-    ascend_std::ascend_pipe_barrier();
-    ascend_std::ascend_buf_store_f32(output, acc, n);
+    tile_std::__tile_pipe_barrier();
+    tile_std::__tile_buf_store_f32(output, acc, n);
 }
 ```
 
-This buffer-API kernel runs on the Ascend AIV backend via `rustc_codegen_mlir`. **No tile-API `safe::tile_conv1d_f32` currently exists** — tile-API lowerings on all 9 backends (Ascend AIV / CUDA / Apple Metal / Vulkan SPIR-V / AWS NKI / AMD AIE / Cambricon BANG / Intel Gaudi / Google TPU) are **future work**. On non-Ascend backends the fused pad+gather+matmul+ReLU is currently expressed as a buffer-API composition rather than a single tile op.
+This buffer-API kernel runs on the Ascend AIV backend via `rustc_codegen_tile`. **No tile-API `safe::tile_conv1d_f32` currently exists** — tile-API lowerings on all 9 backends (Ascend AIV / CUDA / Apple Metal / Vulkan SPIR-V / AWS NKI / AMD AIE / Cambricon BANG / Intel Gaudi / Google TPU) are **future work**. On non-Ascend backends the fused pad+gather+matmul+ReLU is currently expressed as a buffer-API composition rather than a single tile op.
 
 ## Benchmark configurations
 

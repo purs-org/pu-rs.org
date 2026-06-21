@@ -31,14 +31,14 @@ All benchmark scripts live in this repo under `scripts/`.
 ```bash
 # Metal (Apple Silicon)
 # Requires: ascend_metal_kernels Python module
-#   (build: cd ascend-rs/crates/ascend_metal_py && maturin develop --release)
+#   (build: cd tile-rs-ascend/crates/ascend_metal_py && maturin develop --release)
 ASCEND_METAL_KERNELS=1 python3 scripts/bench_metal.py --device apple-m2-max-38
 ASCEND_METAL_KERNELS=1 python3 scripts/bench_metal.py --device apple-m4-max-40 -o submissions/m4-max.csv
 
 # Ascend NPU (Huawei 910B/910C)
-# Requires: CANN SDK + ascend-rs repo cloned locally
+# Requires: CANN SDK + the tile-rs-ascend backend repo cloned locally
 bash scripts/bench_ascend.sh --device huawei-910b
-bash scripts/bench_ascend.sh --device huawei-910c --only softmax --ascend-rs ~/ascend-rs
+bash scripts/bench_ascend.sh --device huawei-910c --only softmax --ascend-rs ~/tile-rs-ascend
 ```
 
 ### Supported backends
@@ -46,6 +46,6 @@ bash scripts/bench_ascend.sh --device huawei-910c --only softmax --ascend-rs ~/a
 | Backend | Script | Prerequisites |
 |---|---|---|
 | Apple Metal | `scripts/bench_metal.py` | `ascend_metal_kernels` Python module ([build instructions](https://ascend-rs.org)) |
-| Huawei Ascend | `scripts/bench_ascend.sh` | CANN SDK + [ascend-rs](https://ascend-rs.org) repo |
-| NVIDIA CUDA | `scripts/bench_cuda.py` | Planned |
+| Huawei Ascend | `scripts/bench_ascend.sh` | CANN SDK + [tile-rs-ascend](https://ascend-rs.org) backend repo |
+| NVIDIA CUDA | `scripts/bench_cuda.py` | `mlir_to_cuda` codegen (T4 / H20 results published) |
 | AMD ROCm | `scripts/bench_rocm.py` | Planned |

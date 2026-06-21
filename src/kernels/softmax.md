@@ -15,13 +15,13 @@ sum_new = sum_old * exp(max_old - max_new) + exp(x - max_new)
 
 This is 33% less memory traffic than the naive 3-pass algorithm (max, exp+sum, normalize).
 
-## ascend-rs Kernel Source
+## tile-rs Kernel Source
 
 Softmax in ascend-rs uses the buffer API for element-wise backends and the tile API for matrix-oriented backends:
 
 **Scalar kernel** (f32, benchmarked implementation):
 ```rust
-#[ascend_std::aiv_kernel]
+#[tile_std::tile_kernel]
 pub fn softmax(input: *const f32, output: *mut f32, len: *const u32) {
     let n = *len as usize;
 
@@ -56,12 +56,12 @@ pub fn softmax(input: *const f32, output: *mut f32, len: *const u32) {
 }
 ```
 
-**Tile API — safe entry form** (lowered by `rustc_codegen_mlir` to all 9 backends: Ascend AIV, CUDA, Apple Metal, Vulkan SPIR-V, AWS NKI, AMD AIE, Cambricon BANG, Intel Gaudi, Google TPU):
+**Tile API — safe entry form** (lowered by `rustc_codegen_tile` to all 9 backends: Ascend AIV, CUDA, Apple Metal, Vulkan SPIR-V, AWS NKI, AMD AIE, Cambricon BANG, Intel Gaudi, Google TPU):
 
 ```rust
-use ascend_std::tile::{GmView, GmViewMut, safe, tile_load_view_f32, tile_store_view_f32};
+use tile_std::tile::{GmView, GmViewMut, safe, tile_load_view_f32, tile_store_view_f32};
 
-#[ascend_std::aiv_kernel]
+#[tile_std::tile_kernel]
 pub fn tile_softmax(
     input:  GmView<'_, 1, 1024, f32>,
     output: GmViewMut<'_, 1, 1024, f32>,
@@ -72,9 +72,9 @@ pub fn tile_softmax(
 }
 ```
 
-The kernel body is **pure safe Rust** — no `unsafe` blocks. Shape (rows, cols, dtype) is committed at the type level via const generics, so any host-side mismatch becomes a compile-time error. The `#[aiv_kernel]` attribute rewrites the emitted signature back to raw `*const f32` / `*mut f32` so the launcher/compiler toolchain (bisheng / ACL / nvcc) sees the same C ABI. `#[repr(transparent)]` on `GmView`/`GmViewMut` makes this rewrite free at the LLVM IR level — the two forms emit as literal symbol aliases.
+The kernel body is **pure safe Rust** — no `unsafe` blocks. Shape (rows, cols, dtype) is committed at the type level via const generics, so any host-side mismatch becomes a compile-time error. The `#[tile_kernel]` attribute rewrites the emitted signature back to raw `*const f32` / `*mut f32` so the launcher/compiler toolchain (bisheng / ACL / nvcc) sees the same C ABI. `#[repr(transparent)]` on `GmView`/`GmViewMut` makes this rewrite free at the LLVM IR level — the two forms emit as literal symbol aliases.
 
-Kernels compile via `rustc_codegen_mlir` → MLIR → target-specific code. Softmax is one of the four "hot path" tile ops (alongside matmul, rms-norm, silu) that is lowered on every backend currently targeted.
+Kernels compile via `rustc_codegen_tile` → MLIR → target-specific code. Softmax is one of the four "hot path" tile ops (alongside matmul, rms-norm, silu) that is lowered on every backend currently targeted.
 
 ## Benchmark configurations
 

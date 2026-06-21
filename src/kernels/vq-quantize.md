@@ -14,16 +14,16 @@ Pipeline:
 
 Fusing all 4 steps into one kernel eliminates 3 intermediate buffers (distance matrix, index array, scatter workspace).
 
-## ascend-rs Kernel Source
+## tile-rs Kernel Source
 
-VQ quantize kernel using ascend-rs buffer API (f32):
+VQ quantize kernel using tile-rs buffer API (f32):
 
 ```rust
 /// VQ Quantize: for each input vector, find nearest codebook entry (L2),
 /// output the quantized vector, and scatter-add for EMA codebook update.
 ///
 /// params: [n_vectors: u32, n_codes: u32, dim: u32]
-#[ascend_std::aiv_kernel]
+#[tile_std::tile_kernel]
 pub fn vq_quantize(
     input: *const f32,      // (N, D) input vectors
     codebook: *const f32,   // (K, D) codebook
@@ -36,18 +36,18 @@ pub fn vq_quantize(
     let k = *params.wrapping_add(1);      // codebook size
     let d = *params.wrapping_add(2);      // vector dimension
 
-    let buf_x = ascend_std::ascend_buf_alloc(d);     // current input vector
-    let buf_c = ascend_std::ascend_buf_alloc(d);     // current codebook entry
-    let buf_diff = ascend_std::ascend_buf_alloc(d);  // x - c
-    let buf_work = ascend_std::ascend_buf_alloc(d);
-    let buf_rwork = ascend_std::ascend_buf_alloc(d);
+    let buf_x = tile_std::__tile_buf_alloc(d);     // current input vector
+    let buf_c = tile_std::__tile_buf_alloc(d);     // current codebook entry
+    let buf_diff = tile_std::__tile_buf_alloc(d);  // x - c
+    let buf_work = tile_std::__tile_buf_alloc(d);
+    let buf_rwork = tile_std::__tile_buf_alloc(d);
 
     let mut i: u32 = 0;
     while i < n {
         // Load input vector x[i]
         let x_ptr = input.wrapping_add((i * d) as usize);
-        ascend_std::ascend_buf_load_f32(buf_x, x_ptr, d);
-        ascend_std::ascend_pipe_barrier();
+        tile_std::__tile_buf_load_f32(buf_x, x_ptr, d);
+        tile_std::__tile_pipe_barrier();
 
         // Find nearest codebook entry (L2 argmin)
         let mut best_k: u32 = 0;
@@ -56,17 +56,17 @@ pub fn vq_quantize(
         let mut j: u32 = 0;
         while j < k {
             let c_ptr = codebook.wrapping_add((j * d) as usize);
-            ascend_std::ascend_buf_load_f32(buf_c, c_ptr, d);
-            ascend_std::ascend_pipe_barrier();
+            tile_std::__tile_buf_load_f32(buf_c, c_ptr, d);
+            tile_std::__tile_pipe_barrier();
 
             // diff = x - c
-            ascend_std::ascend_sub_f32(buf_diff, buf_x, buf_c, d);
-            ascend_std::ascend_pipe_barrier();
+            tile_std::__tile_sub_f32(buf_diff, buf_x, buf_c, d);
+            tile_std::__tile_pipe_barrier();
             // diff² = diff * diff
-            ascend_std::ascend_mul_f32(buf_diff, buf_diff, buf_diff, d);
-            ascend_std::ascend_pipe_barrier();
+            tile_std::__tile_mul_f32(buf_diff, buf_diff, buf_diff, d);
+            tile_std::__tile_pipe_barrier();
             // dist = sum(diff²)
-            let dist = ascend_std::ascend_reduce_sum_f32(
+            let dist = tile_std::__tile_reduce_sum_f32(
                 buf_work, buf_diff, buf_rwork, d);
 
             if dist < best_dist {
@@ -78,19 +78,19 @@ pub fn vq_quantize(
 
         // Output: quantized = codebook[best_k]
         let best_ptr = codebook.wrapping_add((best_k * d) as usize);
-        ascend_std::ascend_buf_load_f32(buf_c, best_ptr, d);
-        ascend_std::ascend_pipe_barrier();
+        tile_std::__tile_buf_load_f32(buf_c, best_ptr, d);
+        tile_std::__tile_pipe_barrier();
         let out_ptr = output.wrapping_add((i * d) as usize);
-        ascend_std::ascend_buf_store_f32(out_ptr, buf_c, d);
+        tile_std::__tile_buf_store_f32(out_ptr, buf_c, d);
 
         // EMA scatter-add: cb_sum[best_k] += x[i], cb_count[best_k] += 1
         let sum_ptr = cb_sum.wrapping_add((best_k * d) as usize);
-        let sum_buf = ascend_std::ascend_buf_alloc(d);
-        ascend_std::ascend_buf_load_f32(sum_buf, sum_ptr, d);
-        ascend_std::ascend_pipe_barrier();
-        ascend_std::ascend_add_f32(sum_buf, sum_buf, buf_x, d);
-        ascend_std::ascend_pipe_barrier();
-        ascend_std::ascend_buf_store_f32(sum_ptr, sum_buf, d);
+        let sum_buf = tile_std::__tile_buf_alloc(d);
+        tile_std::__tile_buf_load_f32(sum_buf, sum_ptr, d);
+        tile_std::__tile_pipe_barrier();
+        tile_std::__tile_add_f32(sum_buf, sum_buf, buf_x, d);
+        tile_std::__tile_pipe_barrier();
+        tile_std::__tile_buf_store_f32(sum_ptr, sum_buf, d);
 
         let count_val = *cb_count.wrapping_add(best_k as usize);
         *cb_count.wrapping_add(best_k as usize) = count_val + 1;
@@ -100,7 +100,7 @@ pub fn vq_quantize(
 }
 ```
 
-This buffer-API kernel runs on the Ascend AIV backend via `rustc_codegen_mlir`, and avoids materializing the N×K distance matrix and K-element index array. **No tile-API `safe::tile_vq_quantize_f32` currently exists** — tile-API lowerings on all 9 backends (Ascend AIV / CUDA / Apple Metal / Vulkan SPIR-V / AWS NKI / AMD AIE / Cambricon BANG / Intel Gaudi / Google TPU) are **future work**. Cross-backend VQ today uses vendor kernels (aclnnMatmul, MPS GEMM, torch.cdist) with a separate argmin pass rather than the fused Rust kernel shown above.
+This buffer-API kernel runs on the Ascend AIV backend via `rustc_codegen_tile`, and avoids materializing the N×K distance matrix and K-element index array. **No tile-API `safe::tile_vq_quantize_f32` currently exists** — tile-API lowerings on all 9 backends (Ascend AIV / CUDA / Apple Metal / Vulkan SPIR-V / AWS NKI / AMD AIE / Cambricon BANG / Intel Gaudi / Google TPU) are **future work**. Cross-backend VQ today uses vendor kernels (aclnnMatmul, MPS GEMM, torch.cdist) with a separate argmin pass rather than the fused Rust kernel shown above.
 
 ## Benchmark configurations
 

@@ -11,16 +11,16 @@ RMSNorm (Zhang & Sennrich 2019) is a simplified LayerNorm used in LLaMA, Gemma, 
 
 Compared to LayerNorm, RMSNorm saves one reduction pass (no mean computation) and one elementwise subtraction, yielding ~15% faster inference at equal accuracy.
 
-## ascend-rs Kernel Source
+## tile-rs Kernel Source
 
-RMS Norm using ascend-rs buffer API (f32):
+RMS Norm using tile-rs buffer API (f32):
 
 ```rust
 /// RMS Norm: y[i] = (x[i] / rms) * gamma[i]
 /// where rms = sqrt(mean(x²) + eps)
 ///
 /// params: [n: u32]
-#[ascend_std::aiv_kernel]
+#[tile_std::tile_kernel]
 pub fn rms_norm(
     input: *const f32,
     gamma: *const f32,
@@ -30,35 +30,35 @@ pub fn rms_norm(
     let n = *params;
     let eps = 1.0e-5f32;
 
-    let in_buf = ascend_std::ascend_buf_alloc(n);
-    let gamma_buf = ascend_std::ascend_buf_alloc(n);
-    let work = ascend_std::ascend_buf_alloc(n);
-    let rwork = ascend_std::ascend_buf_alloc(n);
+    let in_buf = tile_std::__tile_buf_alloc(n);
+    let gamma_buf = tile_std::__tile_buf_alloc(n);
+    let work = tile_std::__tile_buf_alloc(n);
+    let rwork = tile_std::__tile_buf_alloc(n);
 
     // Load input and gamma
-    ascend_std::ascend_buf_load_f32(in_buf, input, n);
-    ascend_std::ascend_buf_load_f32(gamma_buf, gamma, n);
-    ascend_std::ascend_pipe_barrier();
+    tile_std::__tile_buf_load_f32(in_buf, input, n);
+    tile_std::__tile_buf_load_f32(gamma_buf, gamma, n);
+    tile_std::__tile_pipe_barrier();
 
     // Step 1: x² → work
-    ascend_std::ascend_mul_f32(work, in_buf, in_buf, n);
-    ascend_std::ascend_pipe_barrier();
+    tile_std::__tile_mul_f32(work, in_buf, in_buf, n);
+    tile_std::__tile_pipe_barrier();
 
     // Step 2: rms = sqrt(mean(x²) + eps)
-    let sq_sum = ascend_std::ascend_reduce_sum_f32(work, work, rwork, n);
+    let sq_sum = tile_std::__tile_reduce_sum_f32(work, work, rwork, n);
     let inv_rms = 1.0 / (sq_sum / (n as f32) + eps).sqrt();
 
     // Step 3: output = (x * inv_rms) * gamma
-    ascend_std::ascend_muls_f32(work, in_buf, inv_rms, n);
-    ascend_std::ascend_pipe_barrier();
-    ascend_std::ascend_mul_f32(work, work, gamma_buf, n);
+    tile_std::__tile_muls_f32(work, in_buf, inv_rms, n);
+    tile_std::__tile_pipe_barrier();
+    tile_std::__tile_mul_f32(work, work, gamma_buf, n);
 
-    ascend_std::ascend_pipe_barrier();
-    ascend_std::ascend_buf_store_f32(output, work, n);
+    tile_std::__tile_pipe_barrier();
+    tile_std::__tile_buf_store_f32(output, work, n);
 }
 ```
 
-This buffer-API kernel runs on the Ascend AIV backend. A tile-API `safe::tile_rms_norm_f32` variant is additionally lowered by `rustc_codegen_mlir` to all 9 backends (Ascend AIV, CUDA, Apple Metal, Vulkan SPIR-V, AWS NKI, AMD AIE, Cambricon BANG, Intel Gaudi, Google TPU) — RMS Norm is one of the four "hot path" tile ops (alongside matmul, softmax, silu) that is lowered on every backend currently targeted.
+This buffer-API kernel runs on the Ascend AIV backend. A tile-API `safe::tile_rms_norm_f32` variant is additionally lowered by `rustc_codegen_tile` to all 9 backends (Ascend AIV, CUDA, Apple Metal, Vulkan SPIR-V, AWS NKI, AMD AIE, Cambricon BANG, Intel Gaudi, Google TPU) — RMS Norm is one of the four "hot path" tile ops (alongside matmul, softmax, silu) that is lowered on every backend currently targeted.
 
 ## Benchmark configurations
 
