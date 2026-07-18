@@ -3,3 +3,6 @@
 /src/data/*.json
 /target/
 __pycache__/
+
+# Curated (not DB-generated): the Ds4LocalLLM reference snapshot IS tracked.
+!/src/data/metrics-snapshot.json
