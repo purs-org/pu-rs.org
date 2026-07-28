@@ -1,0 +1,49 @@
+{
+  "_comment": [
+    "Served at https://pu-rs.org/v1/news.json — read by Local Mind's Models screen.",
+    "mdBook copies non-chapter files under src/ verbatim, so this path IS the URL.",
+    "RULES, from the client (apps/Ds4LocalLLM/Ds4LocalLLM/NewsFeed.swift):",
+    "  · Curated, first-party only. Nothing user-authored, so App Review 1.2 does not attach.",
+    "  · NEVER a price. An item may carry ticker/tickerURL, which the app renders as a LINK",
+    "    to the source's page; redistributing quotes carries exchange terms, linking does not.",
+    "  · The app shows at most 5 items and re-checks at most twice an hour (ttlMinutes is a",
+    "    server hint; the client floor is 30 minutes and wins if this is lower).",
+    "  · kind is one of ai | market | release and only picks the leading glyph.",
+    "  · published is optional — omit it rather than guess a date.",
+    "Every url here was checked to return 200 before it was added. Keep doing that."
+  ],
+  "generated": "2026-07-28T19:58:09Z",
+  "ttlMinutes": 720,
+  "items": [
+    {
+      "title": "Qwen3.6-35B-A3B — GGUF weights",
+      "url": "https://huggingface.co/bartowski/Qwen_Qwen3.6-35B-A3B-GGUF",
+      "source": "Hugging Face",
+      "kind": "ai"
+    },
+    {
+      "title": "GLM-5.2 — GGUF weights",
+      "url": "https://huggingface.co/unsloth/GLM-5.2-GGUF",
+      "source": "Hugging Face",
+      "kind": "ai"
+    },
+    {
+      "title": "Laguna-S-2.1 — GGUF weights",
+      "url": "https://huggingface.co/antirez/Laguna-S-2.1-GGUF",
+      "source": "Hugging Face",
+      "kind": "ai"
+    },
+    {
+      "title": "Qwen3-32B — GGUF weights",
+      "url": "https://huggingface.co/Qwen/Qwen3-32B-GGUF",
+      "source": "Hugging Face",
+      "kind": "ai"
+    },
+    {
+      "title": "xPU Kernel Benchmark — kernel leaderboard",
+      "url": "https://pu-rs.org/leaderboard.html",
+      "source": "pu-rs.org",
+      "kind": "release"
+    }
+  ]
+}
